@@ -7,6 +7,10 @@ namespace ProgressBar
     {
         private GameObject indicator;
 
+        public delegate void OnComplete();
+
+        public OnComplete Complete;
+
         const float deltaX = 0.1f;
         private float startX, endX;
         /*private*/ public int flinchCounter = 0;
@@ -55,10 +59,9 @@ namespace ProgressBar
             var inset = indicator.guiTexture.pixelInset;
 
             if (flinchCounter > 0) {
-                flinchCounter--;
-
                 inset.x = Mathf.Max(startX, inset.x - 2*deltaX);
 
+                flinchCounter--;
                 if (inset.x == startX)
                     flinchCounter = 0;
             } else {
@@ -75,11 +78,15 @@ namespace ProgressBar
 
             indicator.guiTexture.pixelInset = inset;
 
+            if (inset.x == endX) {
+                /* Fim da execução */
+                enabled = false;
+                Complete();
+            }
+
             // Teste:
             //if (Random.value < .001f)
             //    Hit((int) (10 * Random.value));
         }
     }
 }
-
-
