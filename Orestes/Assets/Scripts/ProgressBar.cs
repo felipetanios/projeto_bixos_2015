@@ -31,21 +31,20 @@ public class ProgressBar : MonoBehaviour
 
 	    useGUILayout = true;
 
-	    transform.localScale = Vector3.zero;
-
 	    guiTexture.pixelInset = new Rect {
 	        x = Screen.width * (1 / 20f),
 	        y = Screen.height * (1 / 20f),
 	        width = Screen.width * (18 / 20f),
 	        height = Screen.width * (1 / 40f)
 	    };
-	    guiTexture.border = guiTexture.border; //TODO: definir a borda quando tiver a arte final
+
+	    indicator.transform.position = new Vector3(0, 0, 1);
 
 	    indicator.guiTexture.pixelInset = new Rect {
 	        x = Screen.width * (1 / 20f),
-	        y = Screen.height * (1 / 20f),
-	        width = Screen.width * (1 / 20f), //TODO: tamanhos certos
-	        height = Screen.width * (1 / 40f)
+	        y = Screen.height * (1 / 20f) - 25,
+	        width = 100,
+	        height = 100
 	    };
 
 	    start = guiTexture.pixelInset.x;
@@ -83,7 +82,7 @@ public class ProgressBar : MonoBehaviour
 
 	    if (blinkCounter > 0) {
 	        if (blinkCounter % 24 < 12)
-	            indicator.guiTexture.color = Color.white;
+	            indicator.guiTexture.color = Color.grey;
 	        else
 	            indicator.guiTexture.color = Color.red;
 	        blinkCounter--;
