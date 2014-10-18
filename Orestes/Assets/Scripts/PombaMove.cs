@@ -11,6 +11,10 @@ public class PombaMove : MonoBehaviour {
 
 	float oscilation = 0f;
 
+	void Start () {
+		StartCoroutine("Die");
+	}
+	
 	void Update () {
 		if (!pombaShot.isShooting)
 		{
@@ -20,5 +24,10 @@ public class PombaMove : MonoBehaviour {
 
 			rigidbody2D.transform.Translate (new Vector2 (speed * Time.deltaTime, Mathf.Sin (oscilation) * oscilationMagnitude));
 		}
+	}
+
+	IEnumerator Die () {
+		yield return new WaitForSeconds(3f);
+		Destroy (gameObject);
 	}
 }
