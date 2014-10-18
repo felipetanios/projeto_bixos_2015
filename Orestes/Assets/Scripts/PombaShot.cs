@@ -18,7 +18,7 @@ public class PombaShot : MonoBehaviour {
 	int down = -1;
 	
 	void Start () {
-		shotCooldown = Random.Range (.5f, 1.8f);
+		shotCooldown = Random.Range (.5f, 1.5f);
 		shotRate = shotCooldown;
 	}
 

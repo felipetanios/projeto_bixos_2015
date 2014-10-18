@@ -17,7 +17,7 @@ public class CharacterMovement : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown(KeyCode.UpArrow))
 		{
-			Time.timeScale = 1.5f;
+			Time.timeScale = 1.25f;
 		}
 		if (Input.GetKeyUp(KeyCode.UpArrow))
 		{
@@ -48,12 +48,12 @@ public class CharacterMovement : MonoBehaviour {
 					}
 			}
 
-		if (transform.position.x < -7.8f) {
-			transform.position = new Vector3 (-7.8f, transform.position.y, transform.position.z);
+		if (transform.position.x < -7.11f) {
+			transform.position = new Vector3 (-7.11f, transform.position.y, transform.position.z);
 			speed = 0f;
 		}
-		if (transform.position.x > 7.8f) {
-			transform.position = new Vector3 (7.8f, transform.position.y, transform.position.z);
+		if (transform.position.x > 7f) {
+			transform.position = new Vector3 (7f, transform.position.y, transform.position.z);
 			speed = 0f;
 		}
 	}
