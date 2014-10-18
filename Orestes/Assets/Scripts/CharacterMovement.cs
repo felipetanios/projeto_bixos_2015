@@ -15,6 +15,15 @@ public class CharacterMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (Input.GetKeyDown(KeyCode.UpArrow))
+		{
+			Time.timeScale = 1.5f;
+		}
+		if (Input.GetKeyUp(KeyCode.UpArrow))
+		{
+			Time.timeScale = 1f;
+		}
+
 		float move = Input.GetAxisRaw("Horizontal");
 
 		speed += acceleration * Time.deltaTime * move;

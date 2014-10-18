@@ -33,7 +33,6 @@ namespace ProgressBar
 
             useGUILayout = true;
 
-            transform.position = Vector3.zero;
             transform.localScale = Vector3.zero;
 
             guiTexture.pixelInset = new Rect {

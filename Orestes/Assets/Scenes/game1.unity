@@ -602,8 +602,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b80307349f9f3649b47ad5ba32b942b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flinchCounter: 0
-  blinkCounter: 0
 --- !u!131 &1658600177
 GUITexture:
   m_ObjectHideFlags: 0
