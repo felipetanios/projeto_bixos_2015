@@ -2,9 +2,11 @@
 using System.Collections;
 
 public class TextBox : MonoBehaviour {
-	public string texto;
-	public float delay = 0.02f;
-
+	static string[] texto = {	"Texto1", "Texto2", "Texto3", "Texto4", "Texto5", 
+		"Texto6", "Texto7", "Texto8", "Texto9", "Texto10"};
+	int numDeTextos = 10;
+	public float delay = 0.1f;
+	
 	static int size = 25;
 	
 	int x = 5;
@@ -12,7 +14,8 @@ public class TextBox : MonoBehaviour {
 	int w = Screen.width - 3*size;
 	int h = 3*size;
 	
-	int cont = 0;
+	public int textNumber=0;
+	
 	bool flag = true;
 	string output = "";
 	
@@ -23,19 +26,13 @@ public class TextBox : MonoBehaviour {
 		paused = !paused ;
 		Time.timeScale = paused ? 0 : 1 ;
 	}
-
+	
 	void OnGUI() {
 		//GUIStyle myStyle = new GUIStyle(GUI.skin.textField);
 		//myStyle.alignment = TextAnchor.UpperLeft;
-
+		
 		GUI.color = Color.yellow;
 		
-		//pausa/despausa o texto caso clique 
-		if(!GUI.Button(new Rect(x+w+5, y, 2*size+10, h), "Click"))
-		{
-			pause();
-		}
-
 		//muda as configuracoes da GUI
 		GUI.skin.box.fontSize = size;
 		GUI.skin.box.normal.textColor = Color.yellow;
@@ -43,10 +40,40 @@ public class TextBox : MonoBehaviour {
 		//cria a caixa de texto
 		GUI.Box(new Rect(x, y, w, h), output);
 		
+		//pausa/despausa o texto caso clique 
+		if(!GUI.Button(new Rect(x+w+5, y, 2*size+10, h), "Click"))
+		{
+			pause();
+		}
+		
 	}
-
+	
 	IEnumerator TypeText() {
-		foreach (char letra in texto.ToCharArray()){
+		char letra;
+		int cont = 0;
+		int i;
+		
+		for (i = 0; textNumber < numDeTextos; i++){
+			//acabou o texto atual
+			
+			if(i+1 == texto[textNumber].Length )
+				pause ();
+			
+			else if(i == texto[textNumber].Length)
+			{
+				textNumber++;
+
+				output = "";
+				flag = true;
+				i = -1;
+				cont = 0;
+				
+				continue;
+				//Debug.Log("Ariba");
+			}
+			
+			letra = texto[textNumber][i];
+			
 			//quebra de linha
 			if( (cont)*(size+1) >= 2*w && flag){
 				output += '\n';
@@ -60,18 +87,18 @@ public class TextBox : MonoBehaviour {
 				flag = true;
 			}
 			//pausa antes de limpar
-			else if((cont+1)*(size+1) >= 2*w && !flag){
-				pause();
+			else if((cont+1)*(size+1) >= 2*w && !flag && !paused){
+				pause ();
 			}
-
-			cont++;
+			
 			output += letra;
-
+			cont++;
+			
 			//delay da impressao do texto
-			yield return new WaitForSeconds (delay);
+			yield return new WaitForSeconds (3*delay);
 		}
 	}
-
+	
 	void Start(){
 		StartCoroutine(TypeText());
 	}
