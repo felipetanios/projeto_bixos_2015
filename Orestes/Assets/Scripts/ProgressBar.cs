@@ -39,32 +39,45 @@ namespace ProgressBar
 
         public void Hit(int power)
         {
-            flinchCounter = 10 * power;
-            blinkCounter = power * 4;
+            if (flinchCounter == 0 &&  blinkCounter == 0) {
+                flinchCounter = 10 * power;
+                blinkCounter = power * 8;
+            } else {
+                // Já foi atingido, aumentar ligeiramente o tempo apenas
+                flinchCounter += power;
+                blinkCounter += power / 2;
+            }
         }
 
         // Update is called once per frame
         void Update()
         {
             var inset = indicator.guiTexture.pixelInset;
+
             if (flinchCounter > 0) {
                 flinchCounter--;
+
                 inset.x = Mathf.Max(startX, inset.x - 2*deltaX);
+
+                if (inset.x == startX)
+                    flinchCounter = 0;
             } else {
                 inset.x = Mathf.Min(endX, inset.x + 2*deltaX);
             }
+
             if (blinkCounter > 0) {
-                switch (blinkCounter % 24) {
-                    case 23:
-                        indicator.guiTexture.color = Color.red;
-                        break;
-                    case 11:
-                        indicator.guiTexture.color = Color.white;
-                        break;
-                }
+                if (blinkCounter % 24 < 12)
+                    indicator.guiTexture.color = Color.white;
+                else
+                    indicator.guiTexture.color = Color.red;
                 blinkCounter--;
             }
+
             indicator.guiTexture.pixelInset = inset;
+
+            // Teste:
+            //if (Random.value < .001f)
+            //    Hit((int) (10 * Random.value));
         }
     }
 }
