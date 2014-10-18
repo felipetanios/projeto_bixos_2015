@@ -14,12 +14,12 @@ public class TableMove : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update()
+	void FixedUpdate()
 	{
 		foreach (Transform child in transform){
 			if(child){
 				child.Translate(lugar * (0.01f));
-				child.transform.localScale += (0.1F, 0.1F, 0f);
+				child.transform.localScale += new Vector3(0.004f, 0.002f, 0);
 			}
 		}
 	}
@@ -28,7 +28,7 @@ public class TableMove : MonoBehaviour
 	{
 		cloneMesa = Instantiate(Mesa, transform.position, transform.rotation) as GameObject;
 		
-		lugar = new Vector2(transform.position.x, transform.position.y * (-1));
+		lugar = new Vector2(transform.position.x * 1.5f, transform.position.y * (-1));
 
 		if(cloneMesa)
 			cloneMesa.transform.parent = this.transform;
