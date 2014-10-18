@@ -20,7 +20,7 @@ public class TableMove : MonoBehaviour
 			if(child){
 				var k = Mesa.transform.position.y - child.transform.position.y;
 				child.Translate(lugar * 0.00014f * k * k);
-				child.transform.localScale += new Vector3(0.004f, 0.002f, 0);
+				child.transform.localScale += new Vector3(0.025f, 0.0125f, 0);
 			}
 		}
 	}
@@ -29,7 +29,7 @@ public class TableMove : MonoBehaviour
 	{
 		cloneMesa = Instantiate(Mesa, transform.position, transform.rotation) as GameObject;
 		
-		lugar = new Vector2(transform.position.x * 1.2f, transform.position.y * (-1));
+		lugar = new Vector2(transform.position.x * 0.8f, transform.position.y * (-1));
 
 		if(cloneMesa)
 			cloneMesa.transform.parent = this.transform;
