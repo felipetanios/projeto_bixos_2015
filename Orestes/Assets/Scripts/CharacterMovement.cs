@@ -5,8 +5,8 @@ public class CharacterMovement : MonoBehaviour {
 	
 	public float speed = 0.0f;
 	public float maxspeed = 15.0f;
-	public float acceleration = 10f;
-	public float arrasto = 0.7f;
+	public float acceleration = 20f;
+	public float arrasto = 1.2f;
 	// Use this for initialization
 	void Start () {
 		
