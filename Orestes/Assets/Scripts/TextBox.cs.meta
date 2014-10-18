@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 053ebdb3eec48b441ab2a24766b536e4
+=======
+guid: 597f807cf6d940c4d80ef3e976290132
+>>>>>>> textbox
 MonoImporter:
   serializedVersion: 2
   defaultReferences: []

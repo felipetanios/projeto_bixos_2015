@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: Texto
+  m_Name: texto
   m_TagString: TextBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39,9 +39,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 053ebdb3eec48b441ab2a24766b536e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: .0500000007
-  texto: "Ol\xE1, bixo burro. Voc\xEA est\xE1 prestes a realizar a sua maior jornada
-    pok\xE9mon. Que Jesus esteja com voc\xEA."
+  texto: "Ol\xE1, bixo. Voc\xEA est\xE1 prestes a come\xE7ar a sua maior jornada pok\xE9mon."
+  delay: .0199999996
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
