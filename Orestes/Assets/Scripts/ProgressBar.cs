@@ -9,12 +9,22 @@ namespace ProgressBar
 
         public delegate void OnComplete();
 
-        public OnComplete Complete;
+        public OnComplete Complete {
+            get; set;
+        }
 
-        const float deltaX = 0.1f;
-        private float startX, endX;
-        /*private*/ public int flinchCounter = 0;
-        /*private*/ public int blinkCounter = 0;
+        public float progresso {
+            get;
+            private set;
+        }
+
+        private readonly int TEMPO_TOTAL = 2 * 60; //segundos
+
+        private int flinchCounter = 0;
+        private int blinkCounter = 0;
+
+        private float start;
+        private float width;
 
         // Use this for initialization
         void Start()
@@ -23,49 +33,55 @@ namespace ProgressBar
 
             useGUILayout = true;
 
+            transform.position = Vector3.zero;
+            transform.localScale = Vector3.zero;
+
             guiTexture.pixelInset = new Rect {
                 x = Screen.width * (1 / 20f),
                 y = Screen.height * (1 / 20f),
                 width = Screen.width * (18 / 20f),
                 height = Screen.width * (1 / 40f)
             };
+            guiTexture.border = guiTexture.border; //TODO: definir a borda quando tiver a arte final
 
             indicator.guiTexture.pixelInset = new Rect {
                 x = Screen.width * (1 / 20f),
                 y = Screen.height * (1 / 20f),
-                width = Screen.width * (1 / 20f),
+                width = Screen.width * (1 / 20f), //TODO: tamanhos certos
                 height = Screen.width * (1 / 40f)
             };
 
-            startX = guiTexture.pixelInset.x;
-            endX = guiTexture.pixelInset.width - indicator.guiTexture.pixelInset.width;
+            start = guiTexture.pixelInset.x;
+            width = guiTexture.pixelInset.width - indicator.guiTexture.pixelInset.width;
         }
 
         public void Hit(int power)
         {
-            if (flinchCounter == 0 &&  blinkCounter == 0) {
-                flinchCounter = 10 * power;
-                blinkCounter = power * 8;
+            if (flinchCounter == 0 && blinkCounter == 0) {
+                flinchCounter = power * 100;
+                blinkCounter = power * 80;
             } else {
-                // Já foi atingido, aumentar ligeiramente o tempo apenas
-                flinchCounter += power;
-                blinkCounter += power / 2;
+                // Já foi atingido, aumentar menos o tempo
+                flinchCounter += power * 50;
+                blinkCounter += power * 40;
             }
         }
 
-        // Update is called once per frame
-        void Update()
+        // FixedUpdate is called once per physics frame
+        void FixedUpdate()
         {
             var inset = indicator.guiTexture.pixelInset;
 
+            // Dano, retroceder
             if (flinchCounter > 0) {
-                inset.x = Mathf.Max(startX, inset.x - 2*deltaX);
+
+                progresso -= 2 * (Time.fixedDeltaTime / TEMPO_TOTAL);
 
                 flinchCounter--;
-                if (inset.x == startX)
+                if (progresso == 0)
                     flinchCounter = 0;
             } else {
-                inset.x = Mathf.Min(endX, inset.x + 2*deltaX);
+                progresso += (Time.fixedDeltaTime / TEMPO_TOTAL);
             }
 
             if (blinkCounter > 0) {
@@ -76,17 +92,17 @@ namespace ProgressBar
                 blinkCounter--;
             }
 
+            progresso = Mathf.Clamp01(progresso);
+            inset.x = start + (width * progresso);
+
             indicator.guiTexture.pixelInset = inset;
 
-            if (inset.x == endX) {
-                /* Fim da execução */
+            if (progresso == 1) {
+                // Fim da execução, parar os Updates
                 enabled = false;
-                Complete();
+                if (Complete != null)
+                    Complete();
             }
-
-            // Teste:
-            //if (Random.value < .001f)
-            //    Hit((int) (10 * Random.value));
         }
     }
 }
