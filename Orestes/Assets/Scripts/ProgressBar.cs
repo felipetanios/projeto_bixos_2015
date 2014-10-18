@@ -55,12 +55,12 @@ public class ProgressBar : MonoBehaviour
 	public void Hit(int power)
 	{
 	    if (flinchCounter == 0 && blinkCounter == 0) {
-	        flinchCounter = power * 100;
-	        blinkCounter = power * 80;
+	        flinchCounter = power * 25;
+	        blinkCounter = power * 20;
 	    } else {
 	        // Já foi atingido, aumentar menos o tempo
-	        flinchCounter += power * 50;
-	        blinkCounter += power * 40;
+	        flinchCounter += power * 12;
+	        blinkCounter += power * 10;
 	    }
 	}
 

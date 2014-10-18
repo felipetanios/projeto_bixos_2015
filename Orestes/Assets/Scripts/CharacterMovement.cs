@@ -15,11 +15,22 @@ public class CharacterMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		// FAST FAST! SCREW U TIME, NOW IM SUPER DUPER FAST.
 		if (Input.GetKeyDown(KeyCode.UpArrow))
 		{
 			Time.timeScale = 1.25f;
 		}
 		if (Input.GetKeyUp(KeyCode.UpArrow))
+		{
+			Time.timeScale = 1f;
+		}
+
+		// Easter egg
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			Time.timeScale = 2f;
+		}
+		if (Input.GetKeyUp(KeyCode.Space))
 		{
 			Time.timeScale = 1f;
 		}

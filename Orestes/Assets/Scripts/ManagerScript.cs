@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
 // Class responsavel por realizar as atualizacoes gerais do jogo como:
 // Aparecimento de pombas
 public class ManagerScript : MonoBehaviour {
@@ -11,16 +10,43 @@ public class ManagerScript : MonoBehaviour {
 	public GameObject pombaObject;
 	public Transform[] spawnPoint;
 
+	public GameObject progressObject;
+	ProgressBar progressScript;
+
+	public float score;
+
+	bool finished = false;
+
 	// Update is called once per frame
 	void Start () {
 		StartCoroutine ("SpawnPomba");
+
+		progressScript = progressObject.GetComponent<ProgressBar> ();
+
+		score = UnityEngine.Time.realtimeSinceStartup;
+	}
+
+	void Update () {
+		if (progressScript.progresso >= .25f)
+			relativeDistance = progressScript.progresso;
+		else
+			relativeDistance = .25f;
+
+		// Jogo foi finalizado
+		if (progressScript.enabled == false && !finished) {
+			score = UnityEngine.Time.realtimeSinceStartup - score;
+			score = 110/score * 1000;
+			finished = true;
+			Debug.Log (score);
+			//TODO: finalizar o jogo here!
+		}
 	}
 
 	IEnumerator SpawnPomba () {
 		int i, aux = 0;
 
 		while (true) {
-			yield return new WaitForSeconds (1 / (relativeDistance * 1.2f));
+			yield return new WaitForSeconds (1 / (relativeDistance * 1.05f));
 			pombaSpawn = Random.Range (1, 3);
 
 			for (i = 0; i < pombaSpawn; i++) 
@@ -35,6 +61,7 @@ public class ManagerScript : MonoBehaviour {
 					aux = Random.Range(0, 1);
 
 				Instantiate(pombaObject, spawnPoint[aux].position, spawnPoint[aux].rotation);
+				yield return new WaitForSeconds (.2f);
 			}
 		}
 	}
