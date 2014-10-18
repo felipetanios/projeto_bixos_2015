@@ -6,7 +6,7 @@ public class CharacterMovement : MonoBehaviour {
 	public float speed = 0.0f;
 	public float maxspeed = 15.0f;
 	public float acceleration = 10f;
-	public float arrasto = 4f;
+	public float arrasto = 0.2f;
 	// Use this for initialization
 	void Start () {
 		
@@ -19,13 +19,23 @@ public class CharacterMovement : MonoBehaviour {
 		speed += acceleration * Time.deltaTime * move;
 		
 		speed = Mathf.Clamp (speed, -maxspeed, maxspeed);
-
-		if (move == 0) {
-			if (speed != 0)
-				speed += arrasto * Mathf.Sign (speed) * (-1);
-			}
-		
+				
 		transform.Translate (Vector2.right * Time.deltaTime * speed);
+
+		if (move == 0 && speed != 0) {
+					if (speed > 0) {			
+							speed += arrasto * Mathf.Sign (speed) * (-1);
+							if (speed < 0) {
+									speed = 0;
+							}
+					}
+					else {			
+						speed += arrasto * Mathf.Sign (speed) * (-1);
+						if (speed > 0) {
+							speed = 0;
+						}
+					}
+			}
 
 		if (transform.position.x < -7.8f) {
 						transform.position = new Vector2 (-7.8f, transform.position.y);
