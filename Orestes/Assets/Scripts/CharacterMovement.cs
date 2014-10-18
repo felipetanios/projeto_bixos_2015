@@ -7,6 +7,7 @@ public class CharacterMovement : MonoBehaviour {
 	public float maxspeed = 15.0f;
 	public float acceleration = 20f;
 	public float arrasto = 1.2f;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -22,6 +23,7 @@ public class CharacterMovement : MonoBehaviour {
 				
 		transform.Translate (Vector2.right * Time.deltaTime * speed);
 
+		// Garante que o arrasto seja realizado adequadamente
 		if (move == 0 && speed != 0) {
 					if (speed > 0) {			
 							speed += arrasto * Mathf.Sign (speed) * (-1);
@@ -38,13 +40,13 @@ public class CharacterMovement : MonoBehaviour {
 			}
 
 		if (transform.position.x < -7.8f) {
-						transform.position = new Vector2 (-7.8f, transform.position.y);
-						speed = 0f;
-				}
+			transform.position = new Vector3 (-7.8f, transform.position.y, transform.position.z);
+			speed = 0f;
+		}
 		if (transform.position.x > 7.8f) {
-						transform.position = new Vector2 (7.8f, transform.position.y);
-						speed = 0f;
-				}
+			transform.position = new Vector3 (7.8f, transform.position.y, transform.position.z);
+			speed = 0f;
+		}
 	}
 	
 }	
