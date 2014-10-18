@@ -42,11 +42,12 @@ namespace ProgressBar
                 width = Screen.width * (18 / 20f),
                 height = Screen.width * (1 / 40f)
             };
+            guiTexture.border = guiTexture.border; //TODO: definir a borda quando tiver a arte final
 
             indicator.guiTexture.pixelInset = new Rect {
                 x = Screen.width * (1 / 20f),
                 y = Screen.height * (1 / 20f),
-                width = Screen.width * (1 / 40f), //TODO: tamanhos certos
+                width = Screen.width * (1 / 20f), //TODO: tamanhos certos
                 height = Screen.width * (1 / 40f)
             };
 
