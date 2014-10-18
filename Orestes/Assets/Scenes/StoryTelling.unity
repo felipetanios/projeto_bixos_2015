@@ -200,7 +200,9 @@ Prefab:
     - target: {fileID: 11400000, guid: b566b9872623872478ee6d80a465f09c, type: 2}
       propertyPath: texto
       value: "Ol\xE1, bixo. Voc\xEA est\xE1 prestes a come\xE7ar a sua maior jornada
-        pok\xE9mon. Que jesus esteja com voc\xEA."
+        pok\xE9mon. Que jesus esteja com voc\xEA. Eu nao sei o que o bixo far\xE1
+        agora, mas quero testar a engine de plotar os texto aqui, entao vo fica escrevendo
+        bastante pra encher a caixa de texto"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b566b9872623872478ee6d80a465f09c, type: 2}
@@ -236,7 +238,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   texto: "Ol\xE1, bixo. Voc\xEA est\xE1 prestes a come\xE7ar a sua maior jornada pok\xE9mon.
-    Que jesus esteja com voc\xEA."
+    Que jesus esteja com voc\xEA. Eu nao sei o que o bixo far\xE1 agora, mas quero
+    testar a engine de plotar os texto aqui, entao vo fica escrevendo bastante pra
+    encher a caixa de texto"
   delay: .0199999996
 --- !u!4 &1043002644
 Transform:
