@@ -1,13 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class JesusSeMexe : MonoBehaviour {
+public class CharacterMovement : MonoBehaviour {
 	
 	public float speed = 0.0f;
 	public float maxspeed = 15.0f;
-	public float accelerationMax = 2.0f;
-	public float accZoeiro = 3.8f;
-	public float acceleration = 0;
+	public float acceleration = 10f;
+	public float arrasto = 4f;
 	// Use this for initialization
 	void Start () {
 		
@@ -16,16 +15,26 @@ public class JesusSeMexe : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		float move = Input.GetAxisRaw("Horizontal");
-		
-		acceleration += accZoeiro * move;
-		
-		acceleration = Mathf.Clamp (acceleration, -accelerationMax, accelerationMax);
-		
-		speed += acceleration * Time.deltaTime;
+
+		speed += acceleration * Time.deltaTime * move;
 		
 		speed = Mathf.Clamp (speed, -maxspeed, maxspeed);
+
+		if (move == 0) {
+			if (speed != 0)
+				speed += arrasto * Mathf.Sign (speed) * (-1);
+			}
 		
 		transform.Translate (Vector2.right * Time.deltaTime * speed);
+
+		if (transform.position.x < -7.8f) {
+						transform.position = new Vector2 (-7.8f, transform.position.y);
+						speed = 0f;
+				}
+		if (transform.position.x > 7.8f) {
+						transform.position = new Vector2 (7.8f, transform.position.y);
+						speed = 0f;
+				}
 	}
 	
 }	
