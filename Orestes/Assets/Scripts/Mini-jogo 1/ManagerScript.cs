@@ -35,7 +35,7 @@ public class ManagerScript : MonoBehaviour {
 		// Jogo foi finalizado
 		if (progressScript.enabled == false && !finished) {
 			score = UnityEngine.Time.realtimeSinceStartup - score;
-			score = 110/score * 1000;
+			score = 120/score * 1000;
 			finished = true;
 			Debug.Log (score);
 			//TODO: finalizar o jogo here!
@@ -46,7 +46,7 @@ public class ManagerScript : MonoBehaviour {
 		int i, aux = 0;
 
 		while (true) {
-			yield return new WaitForSeconds (1 / (relativeDistance * 1.05f));
+			yield return new WaitForSeconds (1 / (relativeDistance * 0.9f));
 			pombaSpawn = Random.Range (1, 3);
 
 			for (i = 0; i < pombaSpawn; i++) 
