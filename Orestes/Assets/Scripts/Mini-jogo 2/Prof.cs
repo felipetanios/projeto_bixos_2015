@@ -52,7 +52,7 @@ public class Prof : MonoBehaviour {
 
 	IEnumerator InitialDelay () 
 	{
-		yield return new WaitForSeconds (Random.Range (0, 1f));
+		yield return new WaitForSeconds (Random.Range (0, 2f));
 		isAppearing = false;
 	}
 
