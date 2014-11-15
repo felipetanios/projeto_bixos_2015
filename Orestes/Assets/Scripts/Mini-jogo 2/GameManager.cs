@@ -10,6 +10,13 @@ public class GameManager : MonoBehaviour {
 	List<Spot> spots = new List<Spot> ();
 	int totalSpots;
 
+	private int mouseClicks;
+	private float gameTime;
+
+	[HideInInspector] public bool finished;
+	[HideInInspector] public float score;
+	public float scoreIdeal;
+
 	// Use this for initialization
 	void Awake () {
 		activatedProfs = GameObject.FindGameObjectsWithTag ("Prof").Length;
@@ -21,6 +28,18 @@ public class GameManager : MonoBehaviour {
 
 		foreach (GameObject spot in spotsObjects)
 			spots.Add(spot.GetComponent<Spot> ());
+	}
+
+	void Update () {
+		if (!finished) {
+			if (Input.GetMouseButton(1))
+				mouseClicks++;
+			gameTime += Time.deltaTime;
+		}
+		else if (finished) {
+			score = scoreIdeal/(gameTime * mouseClicks) * 1000;
+			Debug.Log (score);
+		}
 	}
 
 	public Spot FindSpot () {
