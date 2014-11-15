@@ -43,6 +43,6 @@ public class Prof : MonoBehaviour {
 		isAppearing = false;
 		gameObject.active = false;
 
-		yield return new WaitForSeconds();
+		yield return new WaitForSeconds(2);
 	}
 }
