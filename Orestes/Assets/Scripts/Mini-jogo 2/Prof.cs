@@ -54,14 +54,20 @@ public class Prof : MonoBehaviour {
 		gameObject.renderer.enabled = true;
 		gameObject.collider2D.enabled = true;
 		moving.SetBool ("isAnimating", true);
-		if (gameManager.activatedProfs != 0)
-			moving.speed = 1/(totalProfs - gameManager.activatedProfs)*(gameManager.activatedProfs/totalProfs);
+
+		moving.speed = ((float)totalProfs / (gameManager.activatedProfs + totalProfs)) ;
 
 		Spot spotScript = gameManager.FindSpot ();
 		transform.parent.transform.position = spotScript.spotPosition;
 		transform.localScale = spotScript.spotScale;
 
-		yield return new WaitForSeconds((totalProfs - gameManager.activatedProfs)*(gameManager.activatedProfs/totalProfs)+ Random.Range(0.5F, 1));
+		float appearRange;
+		if (totalProfs == gameManager.activatedProfs)
+			appearRange = - Random.Range (0, 0.2f);
+		else 
+			appearRange = Random.Range (0.5f, 1);
+
+		yield return new WaitForSeconds((gameManager.activatedProfs / totalProfs) + appearRange);
 
 		gameObject.renderer.enabled = false;
 		gameObject.collider2D.enabled = false;
@@ -69,8 +75,7 @@ public class Prof : MonoBehaviour {
 
 		spotScript.isAvailable = true;
 
-		yield return new WaitForSeconds((totalProfs - gameManager.activatedProfs)*(gameManager.activatedProfs/totalProfs) + Random.Range(0, 3));
-		Debug.Log ("oculos");
+		yield return new WaitForSeconds((gameManager.activatedProfs / totalProfs) + Random.Range (0.5F, 1));
 		isAppearing = false;
 	}
 }
