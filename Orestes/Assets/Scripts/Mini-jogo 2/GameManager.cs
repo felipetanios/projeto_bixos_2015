@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Text;
 using System.Collections;
 using System.Collections.Generic; 
 
@@ -22,14 +23,14 @@ public class GameManager : MonoBehaviour {
 			spots.Add(spot.GetComponent<Spot> ());
 	}
 
-	public Vector3 FindSpot () {
-		int choosedSpot = Random.Range (0, totalSpots - 1);
+	public Spot FindSpot () {
+		int chosenSpot = Random.Range (0, totalSpots);
 
 		// Enquanto nao encontra uma posicao valida
-//		while (!spots[choosedSpot].isAvailable)
-//			choosedSpot = Random.Range (0, totalSpots - 1);
+		for (int i = 0; i < totalSpots && !spots[chosenSpot].isAvailable; i++)
+			chosenSpot = Random.Range (0, totalSpots);
 
-		spots[choosedSpot].isAvailable = false;
-		return spots[choosedSpot].spotPosition;
+		spots[chosenSpot].isAvailable = false;
+		return spots[chosenSpot];
 	}
 }

@@ -41,13 +41,17 @@ public class Prof : MonoBehaviour {
 		moving.SetTrigger ("isAnimating");
 		moving.speed = 1/(gameManager.activatedProfs / totalProfs);
 		
-		transform.position = gameManager.FindSpot ();
+		Spot spotScript = gameManager.FindSpot ();
+		transform.position = spotScript.spotPosition;
+		transform.localScale = spotScript.spotScale;
 
 		yield return new WaitForSeconds(gameManager.activatedProfs/totalProfs);
 
 		gameObject.renderer.enabled = false;
 		gameObject.collider2D.enabled = false;
 		moving.ResetTrigger ("isAnimating");
+
+		spotScript.isAvailable = true;
 
 		yield return new WaitForSeconds(gameManager.activatedProfs/totalProfs);
 
