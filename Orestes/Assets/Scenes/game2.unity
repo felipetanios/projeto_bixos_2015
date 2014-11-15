@@ -186,7 +186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e172d98ec49b54c47b8337bd9640784a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moving: {fileID: 0}
 --- !u!212 &233929356
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -348,7 +347,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 311977977}
-  - 61: {fileID: 311977976}
+  - 58: {fileID: 311977976}
   m_Layer: 0
   m_Name: MouseCollider
   m_TagString: Untagged
@@ -356,17 +355,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &311977976
-BoxCollider2D:
+--- !u!58 &311977976
+CircleCollider2D:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 6100000, guid: 8cd6046196e3416449ae6eadddd25b11,
-    type: 2}
-  m_PrefabInternal: {fileID: 615572489}
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 311977975}
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Size: {x: 1, y: 1}
+  m_Radius: 1
   m_Center: {x: 0, y: 0}
 --- !u!4 &311977977
 Transform:
@@ -469,7 +467,8 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6100000, guid: 8cd6046196e3416449ae6eadddd25b11, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 8cd6046196e3416449ae6eadddd25b11, type: 2}
   m_RootGameObject: {fileID: 311977975}
   m_IsPrefabParent: 0
@@ -649,7 +648,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e172d98ec49b54c47b8337bd9640784a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moving: {fileID: 970117465}
 --- !u!212 &970117464
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1339,7 +1337,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e172d98ec49b54c47b8337bd9640784a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moving: {fileID: 0}
 --- !u!212 &1854686764
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1601,7 +1598,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e172d98ec49b54c47b8337bd9640784a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moving: {fileID: 0}
 --- !u!212 &2135915540
 SpriteRenderer:
   m_ObjectHideFlags: 0
