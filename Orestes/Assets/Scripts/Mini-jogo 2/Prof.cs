@@ -4,12 +4,12 @@ using System.Collections;
 public class Prof : MonoBehaviour {
 	private GameObject gameManagerObject;
 	private GameManager gameManager;
-
+	
 	private bool isAppearing = false;
 	private bool isActivated = true;
-
+	public Animator moving;
+	
 	private int totalProfs;
-	private 
 
 	void Start () {
 		gameManagerObject = GameObject.FindGameObjectWithTag("GameManager");
@@ -34,15 +34,23 @@ public class Prof : MonoBehaviour {
 
 	IEnumerator Appears () {
 		isAppearing = true;
-        gameObject.SetActive(true);
+		gameObject.renderer.enabled = true;
+		gameObject.collider2D.enabled = true;
+		isAppearing = true;
 
+		moving.SetTrigger ("isAnimating");
+		moving.speed = 1/(gameManager.activatedProfs / totalProfs);
+		
 		transform.position = gameManager.FindSpot ();
 
 		yield return new WaitForSeconds(gameManager.activatedProfs/totalProfs);
 
-		isAppearing = false;
-        gameObject.SetActive(false);
+		gameObject.renderer.enabled = false;
+		gameObject.collider2D.enabled = false;
+		moving.ResetTrigger ("isAnimating");
 
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(gameManager.activatedProfs/totalProfs);
+
+		isAppearing = false;
 	}
 }
