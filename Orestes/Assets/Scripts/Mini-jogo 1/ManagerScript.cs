@@ -13,15 +13,23 @@ public class ManagerScript : MonoBehaviour {
 	public GameObject progressObject;
 	ProgressBar progressScript;
 
-	public float score;
+    public static float score;
 
-	bool finished = false;
+    // Jogo foi finalizado
+    void Finish() {
+        score = UnityEngine.Time.realtimeSinceStartup - score;
+        score = 120/score * 1000;
+
+        // Chamar a próxima cena
+        Application.LoadLevel("game1-pos");
+    }
 
 	// Update is called once per frame
 	void Start () {
-		StartCoroutine ("SpawnPomba");
+        StartCoroutine ("SpawnPomba");
 
 		progressScript = progressObject.GetComponent<ProgressBar> ();
+        progressScript.Complete += Finish;
 
 		score = UnityEngine.Time.realtimeSinceStartup;
 	}
@@ -31,15 +39,6 @@ public class ManagerScript : MonoBehaviour {
 			relativeDistance = progressScript.progresso;
 		else
 			relativeDistance = .25f;
-
-		// Jogo foi finalizado
-		if (progressScript.enabled == false && !finished) {
-			score = UnityEngine.Time.realtimeSinceStartup - score;
-			score = 120/score * 1000;
-			finished = true;
-			Debug.Log (score);
-			//TODO: finalizar o jogo here!
-		}
 	}
 
 	IEnumerator SpawnPomba () {
