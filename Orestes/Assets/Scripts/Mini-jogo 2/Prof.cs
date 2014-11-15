@@ -9,6 +9,7 @@ public class Prof : MonoBehaviour {
 	private bool isActivated;
 	public Animator moving;
 
+
 	private IEnumerator appears;
 	
 	private int totalProfs;
@@ -66,6 +67,8 @@ public class Prof : MonoBehaviour {
 		Spot spotScript = gameManager.FindSpot ();
 		transform.parent.transform.position = spotScript.spotPosition;
 		transform.localScale = spotScript.spotScale;
+		moving.SetBool ("isMirror", spotScript.isMirror);
+		moving.SetBool ("isWindow", spotScript.isWindow);
 
 		float appearRange;
 		if (totalProfs == gameManager.activatedProfs)
