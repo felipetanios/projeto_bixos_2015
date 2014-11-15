@@ -14,7 +14,7 @@ public class Prof : MonoBehaviour {
 	private int totalProfs;
 
 	void Start () {
-		isAppearing = false;
+		isAppearing = true;
 		isActivated = true;
 		gameManagerObject = GameObject.FindGameObjectWithTag("GameManager");
 
@@ -22,6 +22,8 @@ public class Prof : MonoBehaviour {
 			gameManager = gameManagerObject.GetComponent<GameManager> ();
 
 		totalProfs = gameManager.activatedProfs;
+
+		StartCoroutine(InitialDelay ());
 	}
 
 	void OnMouseDown() {
@@ -47,9 +49,13 @@ public class Prof : MonoBehaviour {
 		}
 	}
 
+	IEnumerator InitialDelay () 
+	{
+		yield return new WaitForSeconds (Random.Range (0, 1f));
+		isAppearing = false;
+	}
 
 	IEnumerator Appears () {
-
 		isAppearing = true;
 		gameObject.renderer.enabled = true;
 		gameObject.collider2D.enabled = true;
