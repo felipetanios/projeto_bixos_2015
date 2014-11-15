@@ -21,9 +21,9 @@ public class Prof : MonoBehaviour {
 	}
 
 	void Update () {
-		if (isAppearing)
+		if (!isAppearing)
 		{
-
+			StartCoroutine("Appears");
 		}
 	}
 
@@ -33,9 +33,16 @@ public class Prof : MonoBehaviour {
 	}
 
 	IEnumerator Appears () {
+		isAppearing = true;
+		gameObject.active = true;
+
 		transform.position = gameManager.FindSpot ();
 
 		yield return new WaitForSeconds(gameManager.activatedProfs/totalProfs);
 
+		isAppearing = false;
+		gameObject.active = false;
+
+		yield return new WaitForSeconds();
 	}
 }
