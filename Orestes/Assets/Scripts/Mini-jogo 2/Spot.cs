@@ -6,6 +6,7 @@ public class Spot : MonoBehaviour {
 	[HideInInspector] public Vector3 spotPosition;
 	[HideInInspector] public Vector3 spotScale;
 	[HideInInspector] public bool isAvailable;
+	public bool isWindow;
 
 	void Start () {
 		spotPosition = this.transform.position;
