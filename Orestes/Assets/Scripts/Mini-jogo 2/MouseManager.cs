@@ -21,7 +21,7 @@ public class MouseManager : MonoBehaviour
         Cursor.SetCursor(normalCursorTexture, hotspot, CursorMode.Auto);
     }
 	
-    Update is called once per frame
+    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) {
