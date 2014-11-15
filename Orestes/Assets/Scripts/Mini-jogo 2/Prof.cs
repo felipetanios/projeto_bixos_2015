@@ -62,6 +62,7 @@ public class Prof : MonoBehaviour {
 		moving.SetBool ("isAnimating", true);
 
 		moving.speed = ((float)totalProfs / (gameManager.activatedProfs + totalProfs)) ;
+		moving.speed = -(moving.speed);
 
 		Spot spotScript = gameManager.FindSpot ();
 		transform.parent.transform.position = spotScript.spotPosition;
