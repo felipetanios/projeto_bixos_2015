@@ -26,8 +26,8 @@ public class GameManager : MonoBehaviour {
 		int choosedSpot = Random.Range (0, totalSpots - 1);
 
 		// Enquanto nao encontra uma posicao valida
-		while (!spots[choosedSpot].isAvailable)
-			choosedSpot = Random.Range (0, totalSpots - 1);
+//		while (!spots[choosedSpot].isAvailable)
+//			choosedSpot = Random.Range (0, totalSpots - 1);
 
 		spots[choosedSpot].isAvailable = false;
 		return spots[choosedSpot].spotPosition;
