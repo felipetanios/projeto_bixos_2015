@@ -36,31 +36,32 @@ public class Prof : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		Debug.Log ("foi clicado");
-		if (appears != null)
-			StopCoroutine (appears);
+		if (isActivated) {
+			Debug.Log ("foi clicado");
+			if (appears != null)
+				StopCoroutine (appears);
 		
-		isActivated = false;
-		gameManager.activatedProfs--;
+			isActivated = false;
+			gameManager.activatedProfs--;
 
-		gameObject.renderer.enabled = true;
-		gameObject.collider2D.enabled = true;
-		moving.SetBool ("isAnimating", false);
-		transform.position = new Vector3 (transform.position.x, transform.position.y, 2.0F);
-		moving.SetBool ("isClicked", true);
-		FuckYou ();
+			gameObject.renderer.enabled = true;
+			gameObject.collider2D.enabled = true;
+			moving.SetBool ("isAnimating", false);
+			transform.position = new Vector3 (transform.position.x, transform.position.y, 2.0F);
+			moving.SetBool ("isClicked", true);
+			FuckYou ();
+		}
 
 	}
 
 
 	void Update () {
-		Debug.Log (isActivated);
 		if (!isAppearing && isActivated)
 		{
 			appears = Appears();
             StartCoroutine(appears);
 		}
-		else if (!isActivated && (targetPosition.x - transform.parent.transform.position.x < 0.1)) {
+		else if (!isActivated && (targetPosition.x - transform.parent.transform.position.x > 0.1)) {
 			FuckYou();
 		}
 	}
@@ -69,7 +70,7 @@ public class Prof : MonoBehaviour {
 
 	IEnumerator InitialDelay () 
 	{
-		yield return new WaitForSeconds (Random.Range (0, 2f));
+		yield return new WaitForSeconds (Random.Range (0.2f, 2f));
 		isAppearing = false;
 	}
 
@@ -86,7 +87,7 @@ public class Prof : MonoBehaviour {
 
 		Spot spotScript = gameManager.FindSpot ();
 		transform.parent.transform.position = spotScript.spotPosition;
-		transform.localScale = spotScript.spotScale;
+		transform.parent.localScale = spotScript.spotScale;
 		moving.SetBool ("isMirror", spotScript.isMirror);
 		moving.SetBool ("isWindow", spotScript.isWindow);
 
@@ -114,7 +115,7 @@ public class Prof : MonoBehaviour {
 	{
 		Debug.Log (target.position.x + " " + target.position.y);
 		Vector3 velocidade = Vector3.zero;
-		transform.parent.transform.position = Vector3.SmoothDamp (transform.parent.transform.position, targetPosition, ref velocidade, 0.8f);
+		transform.parent.transform.position = Vector3.SmoothDamp (transform.parent.transform.position, targetPosition, ref velocidade, 0.2f);
 		transform.parent.transform.position = new Vector3(transform.parent.transform.position.x, transform.parent.transform.position.y, -5.0f);
 
 	//	float targetPositionX = Mathf.SmoothDamp (transform.parent.transform.position.x , target.position.x, ref velocidade, 0.3F, Time.deltaTime);

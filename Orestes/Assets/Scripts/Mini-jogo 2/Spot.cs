@@ -11,7 +11,7 @@ public class Spot : MonoBehaviour {
 
 	void Start () {
 		spotPosition = this.transform.position;
-		spotScale = this.transform.localScale;
+		spotScale = this.transform.lossyScale;
 		isAvailable = true;
 	}
 }
