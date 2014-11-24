@@ -1675,6 +1675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activatedProfs: 4
   finished: 0
+  profOnScreen: 0
   score: 0
   scoreIdeal: 0
 --- !u!4 &1372632419

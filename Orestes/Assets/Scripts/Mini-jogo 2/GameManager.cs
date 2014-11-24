@@ -13,7 +13,12 @@ public class GameManager : MonoBehaviour {
 	private int mouseClicks;
 	private float gameTime;
 
-	[HideInInspector] public bool finished;
+	// Is the game finished?
+	[HideInInspector] public bool finished = false;
+
+	// Is the prof on screen?
+	[HideInInspector] public bool profOnScreen = false;
+
 	[HideInInspector] public float score;
 	public float scoreIdeal;
 
@@ -35,6 +40,8 @@ public class GameManager : MonoBehaviour {
 			if (Input.GetMouseButton(1))
 				mouseClicks++;
 			gameTime += Time.deltaTime;
+			if (activatedProfs == 0)
+				finished = true;
 		}
 		else if (finished) {
 			score = scoreIdeal/(gameTime * mouseClicks) * 1000;

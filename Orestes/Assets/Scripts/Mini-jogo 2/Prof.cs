@@ -37,26 +37,35 @@ public class Prof : MonoBehaviour {
 
 	void OnMouseDown() {
 		if (isActivated) {
-			Debug.Log ("foi clicado");
+			// If the coroutine is running - it should be
 			if (appears != null)
 				StopCoroutine (appears);
 		
+			// Isnt activated anymore
 			isActivated = false;
 			gameManager.activatedProfs--;
 
+			// The object is still running, until the animation runs off
 			gameObject.renderer.enabled = true;
 			gameObject.collider2D.enabled = true;
 			moving.SetBool ("isAnimating", false);
+
+			// Changes the layer (just in case)
 			transform.position = new Vector3 (transform.position.x, transform.position.y, 2.0F);
+
+			// Starts the animation + moving
 			moving.SetBool ("isClicked", true);
+			gameManager.profOnScreen = true;
+
 			FuckYou ();
+			StartCoroutine(BeGone ());
 		}
 
 	}
 
 
 	void Update () {
-		if (!isAppearing && isActivated)
+		if (!isAppearing && isActivated && !gameManager.profOnScreen)
 		{
 			appears = Appears();
             StartCoroutine(appears);
@@ -121,6 +130,12 @@ public class Prof : MonoBehaviour {
 	//	float targetPositionX = Mathf.SmoothDamp (transform.parent.transform.position.x , target.position.x, ref velocidade, 0.3F, Time.deltaTime);
 	//	float targetPositionY = Mathf.SmoothDamp (transform.parent.transform.position.y, targetPosition.y , ref velocidade, 0.3F, Time.deltaTime);
 	//	transform.position = new Vector3(targetPositionX, targetPositionY, -3.0f);
+	}
+
+	IEnumerator BeGone () 
+	{
+		yield return new WaitForSeconds (5);
+		gameManager.profOnScreen = false;
 	}
 }
 
