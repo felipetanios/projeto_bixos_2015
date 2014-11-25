@@ -47,12 +47,12 @@ TextureImporter:
     - name: "Bixo dois p\xE9s levantados_0"
       rect:
         serializedVersion: 2
-        x: 1383
+        x: 1232
         y: 281
-        width: 810
-        height: 920
+        width: 948
+        height: 915
       alignment: 9
-      pivot: {x: .559227288, y: .475932717}
+      pivot: {x: .613898695, y: .475932717}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
