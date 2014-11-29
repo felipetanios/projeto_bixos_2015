@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RunMovement : MonoBehaviour
 {
-    private RunMovement instance;
+    private static RunMovement instance;
 
     public static RunMovement Instance {
         get { return instance; }

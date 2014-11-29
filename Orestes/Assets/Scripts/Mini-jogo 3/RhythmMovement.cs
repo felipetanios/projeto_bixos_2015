@@ -3,7 +3,7 @@ using System.Collections;
 
 public class RhythmMovement : MonoBehaviour
 {
-    private RhythmMovement instance;
+    private static RhythmMovement instance;
 
     public static RhythmMovement Instance {
         get { return instance; }
