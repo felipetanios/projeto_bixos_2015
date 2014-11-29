@@ -9,6 +9,8 @@ public class RunMovement : MonoBehaviour
         get { return instance; }
     }
 
+	public float currentSpeed;
+
     void Awake()
     {
         instance = this;
