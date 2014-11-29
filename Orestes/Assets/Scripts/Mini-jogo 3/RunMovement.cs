@@ -11,9 +11,15 @@ public class RunMovement : MonoBehaviour
 
 	[HideInInspector] public float currentSpeed;
 
+	[HideInInspector] public float defaultSpeed = 20;
 	public float maxSpeed = 50;
-	public float defaultSpeed = 20;
 	public float accelaration = 40;
+
+	public float gravity = 20;
+	public float jumpSpeed = 35;
+
+	private bool grounded = false;
+	public Transform groundCheck;
 
     void Awake()
     {
@@ -43,5 +49,17 @@ public class RunMovement : MonoBehaviour
 		currentSpeed = Mathf.Clamp (currentSpeed, -maxSpeed, maxSpeed);
 
 		transform.Translate(Vector2.right * Time.deltaTime * currentSpeed);
+
+		grounded = Physics2D.OverlapCircle (groundCheck.transform.position, .02f, 10);
+
+		// Set the gravity if the player isnt in the ground
+		if (!grounded) 
+		{
+			transform.Translate(-Vector2.up * Time.deltaTime * gravity);
+		}
+		else if (Input.GetButtonDown("Jump"))
+		{
+			transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
+		}
     }
 }
