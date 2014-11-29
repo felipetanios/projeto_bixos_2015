@@ -20,15 +20,28 @@ public class RhythmBar : MonoBehaviour
     private int  requiredHits;
     private float hits;
 
+    private static RhythmBar instance;
+
+    public delegate void HitCallback();
+
     public void SpeedUp(int percent)
     {
         velocity *= 1 + percent;
+    }
+
+    public static RhythmBar Instance
+    {
+        get { return instance; }
     }
 
     public int RequiredHits
     {
         get { return requiredHits; }
         set { requiredHits = value; }
+    }
+
+    public HitCallback OnHit {
+        get; set;
     }
 
     public void ResetHits()
@@ -39,6 +52,8 @@ public class RhythmBar : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        instance = this;
+
         useGUILayout = false;
 
         guiTexture.pixelInset = new Rect {
@@ -101,6 +116,11 @@ public class RhythmBar : MonoBehaviour
         velocity = 0.75f;
         requiredHits = 30; // FIXME
     }
+
+    void OnDestroy()
+    {
+        instance = null;
+    }
 	
     void Update()
     {
@@ -137,15 +157,19 @@ public class RhythmBar : MonoBehaviour
             var distanceRight = Mathf.Abs((inset.x + (inset.width / 2)) - rightTarget);
             var distance = Mathf.Min(distanceLeft, distanceRight);
 
-            float tmp = 0;
+            float incr = 0;
             if (distance <= (1/3f)*spacing)
-                tmp = 1.2f;
+                incr = 1.2f;
             else if (distance <= (2/3f)*spacing)
-                tmp = 1.0f;
+                incr = 1.0f;
             else if (distance <= (3/3f)*spacing)
-                tmp = 0.5f;
+                incr = 0.5f;
+            else
+                return;
 
-            hits += tmp;
+            hits += incr;
+            if (OnHit != null)
+                OnHit();
         }
     }
 }
