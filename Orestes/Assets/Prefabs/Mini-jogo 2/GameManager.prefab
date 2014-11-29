@@ -9,6 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 400000}
   - 114: {fileID: 11400000}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -23,10 +24,11 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.37260556, y: -.177005693, z: .484375}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -39,6 +41,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activatedProfs: 4
+  finished: 0
+  profOnScreen: 0
+  score: 0
+  scoreIdeal: 700
+--- !u!114 &11400002
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3493202e397d7da439f03c76ad61c037, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalCursorTexture: {fileID: 2800000, guid: 39b77fc5e185df34ca52cab6673f35bf, type: 3}
+  intermediateCursorTexture: {fileID: 2800000, guid: 750ad83d78d55764c973aa8786ce85ee,
+    type: 3}
+  pressedCursorTexture: {fileID: 2800000, guid: 4147bb7c89e7b1943a941529dff011c9,
+    type: 3}
+  mouseCollider: {fileID: 100000, guid: 8cd6046196e3416449ae6eadddd25b11, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

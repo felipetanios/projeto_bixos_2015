@@ -4,6 +4,7 @@ using System;
 
 public class MouseManager : MonoBehaviour
 {
+    static MouseManager instance;
 
     public Texture2D normalCursorTexture;
     public Texture2D intermediateCursorTexture;
@@ -12,16 +13,30 @@ public class MouseManager : MonoBehaviour
 
     private Vector2 hotspot;
     private IEnumerator mouseAnimation;
-    private bool pressed;
 
-    // Use this for initialization
-    void Start()
+    public static MouseManager Instance {
+        get {
+            return instance;
+        }
+    }
+
+    public bool IsMouseNear(Spot spot)
     {
+        return mouseCollider.collider.bounds.Intersects(spot.collider2D.bounds);
+    }
+
+    void Awake()
+    {
+        instance = this;
         hotspot = new Vector2(normalCursorTexture.width / 2, normalCursorTexture.height / 2);
         Cursor.SetCursor(normalCursorTexture, hotspot, CursorMode.Auto);
     }
+
+    void OnDestroy()
+    {
+        instance = null;
+    }
 	
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) {
@@ -39,7 +54,8 @@ public class MouseManager : MonoBehaviour
         }
 
         var mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mouseCollider.transform.position = new Vector3(mousePosition.x, mousePosition.y, mouseCollider.transform.position.z);
+        mousePosition.z = 0f;
+        mouseCollider.transform.position = mousePosition;
     }
 
     IEnumerator pressAnimation()
