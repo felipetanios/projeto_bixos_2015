@@ -3,34 +3,24 @@ using System.Collections;
 
 public class Parallax : MonoBehaviour
 {
-
-    public float spaceGoneInX;
-    private bool isOnCollider;
-	public float layersSpeed;
-	public float defaultSpeed;
-
-    // Use this for initialization
-    void Start()
-    {
-        isOnCollider = false;
-        spaceGoneInX = 20.0F;
-
-    }
+    public float scalingFactor;
+    public float jumpSize;
 	
     // Update is called once per frame
     void Update()
     {
-        if (isOnCollider) {
-            transform.position = new Vector3(transform.position.x + spaceGoneInX, transform.position.y, transform.position.z);
-            isOnCollider = false;
-        } else {
-            transform.Translate((-1) * defaultSpeed * layersSpeed * Time.deltaTime, 0, 0);
-        }
+        var cameraScrolling = CameraScrolling.Instance;
+        transform.Translate(cameraScrolling.defaultSpeed * scalingFactor, 0, 0, Space.Self);
     }
 
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        isOnCollider = true;
+        if (other.CompareTag("End")) {
+            var translateX = jumpSize * (transform.collider2D as BoxCollider2D).size.x;
+            translateX *= transform.lossyScale.x;
+            transform.Translate(translateX, 0, 0, Space.Self);
+        }
+
     }
 }

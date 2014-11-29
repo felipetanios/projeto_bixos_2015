@@ -13,7 +13,7 @@ TagManager:
   - Spot
   - AlmostFinal
   - Rhythm
-  - 
+  - End
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -51,4 +51,16 @@ TagManager:
   - name: Default
     userID: 0
     uniqueID: 0
+    locked: 0
+  - name: Back
+    userID: 1
+    uniqueID: 2366906127
+    locked: 0
+  - name: Front
+    userID: 2
+    uniqueID: 3482775261
+    locked: 0
+  - name: Player
+    userID: 3
+    uniqueID: 3560375741
     locked: 0
