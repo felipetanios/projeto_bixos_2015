@@ -35,11 +35,6 @@ public class RunMovement : MonoBehaviour
     {
         instance = null;
     }
-
-    // Use this for initialization
-    void Start()
-    {
-    }
 	
     // Update is called once per frame
     void Update()
