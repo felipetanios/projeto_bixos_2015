@@ -69,7 +69,6 @@ public class TextBox : MonoBehaviour {
 				cont = 0;
 				
 				continue;
-				//Debug.Log("Ariba");
 			}
 			
 			letra = texto[textNumber][i];

@@ -122,7 +122,6 @@ public class Prof : MonoBehaviour {
 
 	void FuckYou ()
 	{
-		Debug.Log (target.position.x + " " + target.position.y);
 		Vector3 velocidade = Vector3.zero;
 		transform.parent.transform.position = Vector3.SmoothDamp (transform.parent.transform.position, targetPosition, ref velocidade, 0.2f);
 		transform.parent.transform.position = new Vector3(transform.parent.transform.position.x, transform.parent.transform.position.y, -5.0f);
