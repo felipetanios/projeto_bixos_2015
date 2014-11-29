@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour {
 	[HideInInspector] public bool profOnScreen = false;
 
 	[HideInInspector] public float score;
-	public float scoreIdeal;
+	public float scoreIdeal = 700;
 
 	// Use this for initialization
 	void Awake () {
@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour {
 
 	void Update () {
 		if (!finished) {
-			if (Input.GetMouseButton(1))
+			if (Input.GetMouseButtonDown(0))
 				mouseClicks++;
 			gameTime += Time.deltaTime;
 			if (activatedProfs == 0)
@@ -45,7 +45,8 @@ public class GameManager : MonoBehaviour {
 		}
 		else if (finished) {
 			score = scoreIdeal/(gameTime * mouseClicks) * 1000;
-			Debug.Log (score);
+			Debug.Log (gameTime + " " + mouseClicks);
+			enabled = false;
 		}
 	}
 
