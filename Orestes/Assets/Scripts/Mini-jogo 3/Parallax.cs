@@ -5,14 +5,16 @@ public class Parallax : MonoBehaviour
 {
 
     public float spaceGoneInX;
-    public float speedInX;
     private bool isOnCollider;
+	public float layersSpeed;
+	public float defaultSpeed;
+
     // Use this for initialization
     void Start()
     {
         isOnCollider = false;
         spaceGoneInX = 20.0F;
-        speedInX = 0.09F;
+
     }
 	
     // Update is called once per frame
@@ -22,7 +24,7 @@ public class Parallax : MonoBehaviour
             transform.position = new Vector3(transform.position.x + spaceGoneInX, transform.position.y, transform.position.z);
             isOnCollider = false;
         } else {
-            transform.Translate(-speedInX, 0, 0);
+            transform.Translate((-1) * defaultSpeed * layersSpeed * Time.deltaTime, 0, 0);
         }
     }
 

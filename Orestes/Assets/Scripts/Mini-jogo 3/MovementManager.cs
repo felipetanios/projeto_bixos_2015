@@ -10,7 +10,7 @@ public class MovementManager : MonoBehaviour
         Rhythm
     }
 
-    private Mode mode;
+    public Mode mode;
 
     private static MovementManager instance;
 
