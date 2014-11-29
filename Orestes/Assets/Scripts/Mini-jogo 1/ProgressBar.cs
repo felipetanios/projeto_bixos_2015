@@ -25,11 +25,11 @@ public class ProgressBar : MonoBehaviour
 	private float width;
 
 	// Use this for initialization
-	void Start()
+    void Awake()
 	{
 	    indicator = transform.GetChild(0).gameObject;
 
-	    useGUILayout = true;
+        useGUILayout = false;
 
 	    guiTexture.pixelInset = new Rect {
 	        x = Screen.width * (1 / 20f),
