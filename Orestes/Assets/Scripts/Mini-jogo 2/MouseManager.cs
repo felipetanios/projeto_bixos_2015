@@ -36,7 +36,7 @@ public class MouseManager : MonoBehaviour
     {
         instance = null;
     }
-	
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0)) {

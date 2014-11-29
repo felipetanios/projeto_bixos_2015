@@ -1,33 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PombaMove : MonoBehaviour {
+public class PombaMove : MonoBehaviour
+{
 
-	public float speed = 10f;
-	public float oscilationMagnitude = .05f;
-	public float oscilationSpeed = 10f;
+    public float speed = 10f;
+    public float oscilationMagnitude = .05f;
+    public float oscilationSpeed = 10f;
 
-	public PombaShot pombaShot;
+    public PombaShot pombaShot;
 
-	float oscilation = 0f;
+    float oscilation = 0f;
 
-	void Start () {
-		StartCoroutine("Die");
-	}
-	
-	void Update () {
-		if (!pombaShot.isShooting)
-		{
-			oscilation += Time.deltaTime * oscilationSpeed;
-			if (oscilation >= Mathf.PI * 2)
-				oscilation -= Mathf.PI * 2;
+    void Start()
+    {
+        StartCoroutine("Die");
+    }
 
-			rigidbody2D.transform.Translate (new Vector2 (speed * Time.deltaTime, Mathf.Sin (oscilation) * oscilationMagnitude));
-		}
-	}
+    void Update()
+    {
+        if (!pombaShot.isShooting) {
+            oscilation += Time.deltaTime * oscilationSpeed;
+            if (oscilation >= Mathf.PI * 2)
+                oscilation -= Mathf.PI * 2;
 
-	IEnumerator Die () {
-		yield return new WaitForSeconds(3f);
-		Destroy (gameObject);
-	}
+            rigidbody2D.transform.Translate(new Vector2(speed * Time.deltaTime, Mathf.Sin(oscilation) * oscilationMagnitude));
+        }
+    }
+
+    IEnumerator Die()
+    {
+        yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
+    }
 }

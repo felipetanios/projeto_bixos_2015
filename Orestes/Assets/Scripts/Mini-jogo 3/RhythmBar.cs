@@ -17,7 +17,7 @@ public class RhythmBar : MonoBehaviour
     private float leftTarget;
     private float rightTarget;
 
-    private int  requiredHits;
+    private int requiredHits;
     private float hits;
 
     private static RhythmBar instance;
@@ -29,19 +29,18 @@ public class RhythmBar : MonoBehaviour
         velocity *= 1 + percent;
     }
 
-    public static RhythmBar Instance
-    {
+    public static RhythmBar Instance {
         get { return instance; }
     }
 
-    public int RequiredHits
-    {
+    public int RequiredHits {
         get { return requiredHits; }
         set { requiredHits = value; }
     }
 
     public HitCallback OnHit {
-        get; set;
+        get;
+        set;
     }
 
     public void ResetHits()
@@ -79,7 +78,7 @@ public class RhythmBar : MonoBehaviour
         };
 
         start = indicator.guiTexture.pixelInset.x;
-        width = guiTexture.pixelInset.width - (3*indicator.guiTexture.pixelInset.width);
+        width = guiTexture.pixelInset.width - (3 * indicator.guiTexture.pixelInset.width);
 
         var objectLeftTarget = new GameObject();
         objectLeftTarget.AddComponent<GUITexture>();
@@ -121,7 +120,7 @@ public class RhythmBar : MonoBehaviour
     {
         instance = null;
     }
-	
+
     void Update()
     {
         UpdatePosition();
@@ -158,11 +157,11 @@ public class RhythmBar : MonoBehaviour
             var distance = Mathf.Min(distanceLeft, distanceRight);
 
             float incr = 0;
-            if (distance <= (1/3f)*spacing)
+            if (distance <= (1 / 3f) * spacing)
                 incr = 1.2f;
-            else if (distance <= (2/3f)*spacing)
+            else if (distance <= (2 / 3f) * spacing)
                 incr = 1.0f;
-            else if (distance <= (3/3f)*spacing)
+            else if (distance <= (3 / 3f) * spacing)
                 incr = 0.5f;
             else
                 return;
