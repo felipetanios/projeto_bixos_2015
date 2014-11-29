@@ -36,11 +36,7 @@ public class Prof : MonoBehaviour {
 	}
 
 	void OnMouseDown() {
-		if (isActivated) {
-			// If the coroutine is running - it should be
-			if (appears != null)
-				StopCoroutine (appears);
-		
+		if (isActivated) {		
 			// Isnt activated anymore
 			isActivated = false;
 			gameManager.activatedProfs--;
