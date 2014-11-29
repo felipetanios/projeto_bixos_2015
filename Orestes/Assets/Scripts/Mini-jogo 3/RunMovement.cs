@@ -19,7 +19,12 @@ public class RunMovement : MonoBehaviour
 	public float jumpSpeed = 35;
 
 	private bool grounded = false;
+	private bool isJumping;
+	private bool doubleJump;
 	public Transform groundCheck;
+	public LayerMask groundMask;
+
+	public float jumpHeight;
 
     void Awake()
     {
@@ -50,16 +55,18 @@ public class RunMovement : MonoBehaviour
 
 		transform.Translate(Vector2.right * Time.deltaTime * currentSpeed);
 
-		grounded = Physics2D.OverlapCircle (groundCheck.transform.position, .02f, 10);
+		grounded = Physics2D.OverlapCircle (groundCheck.position, .02f, groundMask);
 
 		// Set the gravity if the player isnt in the ground
-		if (!grounded) 
+		if (grounded && Input.GetButtonDown("Jump"))
 		{
-			transform.Translate(-Vector2.up * Time.deltaTime * gravity);
+			rigidbody2D.AddForce (Vector2.up * 500);
+			doubleJump = true;
 		}
-		else if (Input.GetButtonDown("Jump"))
+		else if (!grounded && doubleJump && Input.GetButtonDown("Jump"))
 		{
-			transform.Translate(Vector2.up * Time.deltaTime * jumpSpeed);
+			rigidbody2D.AddForce (Vector2.up * 500);
+			doubleJump = false;
 		}
     }
 }
