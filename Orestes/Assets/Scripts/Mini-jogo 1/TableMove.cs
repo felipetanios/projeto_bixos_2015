@@ -18,9 +18,10 @@ public class TableMove : MonoBehaviour
     {
         foreach (Transform child in transform) {
             if (child) {
-                var k = Mesa.transform.position.y - child.transform.position.y;
-                child.Translate(lugar * 0.00014f * k * k);
+				float k = 0.04f;
+				child.transform.Translate(lugar* k);
                 child.transform.localScale += new Vector3(0.025f, 0.0125f, 0);
+				k+=0.02f;
             }
         }
     }
@@ -28,8 +29,11 @@ public class TableMove : MonoBehaviour
     void CriaMesa()
     {
         cloneMesa = Instantiate(Mesa, transform.position, transform.rotation) as GameObject;
-		
-        lugar = new Vector2(transform.position.x * 0.8f, transform.position.y * (-1));
+
+		if (transform.position.x > 0.0f)
+			lugar = new Vector2(1 * transform.position.x*0.9f, -1);
+		else
+			lugar = new Vector2(-1 * transform.position.x*0.9f, -1);
 
         if (cloneMesa)
             cloneMesa.transform.parent = this.transform;
