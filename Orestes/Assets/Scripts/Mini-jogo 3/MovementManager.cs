@@ -17,9 +17,15 @@ public class MovementManager : MonoBehaviour
         get { return instance; }
     }
 
+	void Start ()
+	{
+		ChangeMode (Mode.Run);
+	}
+
     public void ChangeMode(Mode mode)
     {
-        this.mode = mode;
+		this.mode = mode;
+
         switch (mode) {
             case Mode.Run:
                 RunMovement.Instance.enabled = true;

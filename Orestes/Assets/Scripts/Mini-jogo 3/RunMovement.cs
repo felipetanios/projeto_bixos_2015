@@ -12,9 +12,10 @@ public class RunMovement : MonoBehaviour
 	[HideInInspector] public float currentSpeed; // The speed the parallax should get
 	private float currentYSpeed;
 	private Vector2 amountToMove;
+	private float inputX;
 
 	// Player handling
-	public float defaultSpeed = 20;
+	private float defaultSpeed = 30f;
 	public float maxSpeed = 50;
 	public float accelaration = 40;
 	public float gravity = 20;
@@ -41,27 +42,19 @@ public class RunMovement : MonoBehaviour
     {
         instance = null;
     }
-	
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-		// Player is always on movement
-		currentSpeed = defaultSpeed * Time.deltaTime;
 
-		float move = Input.GetAxisRaw ("Horizontal");
-		
-		// If the button is pressed, aka it accelarates
-		if (move != 0)
-			currentSpeed = accelaration * move * Time.deltaTime;
+	void Start ()
+	{
+		defaultSpeed = 30f;
+	}
 
-		// Set the max speed
-		currentSpeed = Mathf.Clamp (currentSpeed, -maxSpeed, maxSpeed);
-
-		amountToMove.x = currentSpeed;
+	void Update ()
+	{
+		inputX = Input.GetAxisRaw ("Horizontal");
 
 		// Is he grounded?
 		grounded = Physics2D.OverlapCircle (groundCheck.position, .02f, groundMask);
-
+		
 		// If he is grounded and wants to jump
 		if (grounded && Input.GetButtonDown("Jump"))
 		{
@@ -82,6 +75,22 @@ public class RunMovement : MonoBehaviour
 			isJumping = false;
 			doubleJump = false;
 		}
+	}
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+		// Player is always on movement
+		currentSpeed = defaultSpeed * Time.deltaTime;
+		
+		// If the button is pressed, aka it accelarates
+		if (inputX != 0)
+			currentSpeed = accelaration * inputX * Time.deltaTime;
+
+		// Set the max speed
+		currentSpeed = Mathf.Clamp (currentSpeed, -maxSpeed, maxSpeed);
+
+		amountToMove.x = currentSpeed;
 		
 		// Set the gravity if the player isnt in the ground
 		if (!grounded)

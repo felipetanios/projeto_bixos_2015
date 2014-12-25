@@ -27,18 +27,12 @@ public class CameraScrolling : MonoBehaviour
         instance = null;
     }
 
-    // Use this for initialization
-    void Start()
-    {
-	
-    }
-
     // Update is called once per frame
     void Update()
     {
         if (MovementManager.Instance.mode == MovementManager.Mode.Run) {
             defaultVector = runVector * Time.deltaTime;
-            defaultSpeed = runSpeed * Time.deltaTime;
+            defaultSpeed = runSpeed;
             transform.Translate(defaultVector);
         } else { // MovementManager.Instance.mode == MovementManager.Mode.Rhythm
             defaultVector = rhythmVector * Time.deltaTime;
