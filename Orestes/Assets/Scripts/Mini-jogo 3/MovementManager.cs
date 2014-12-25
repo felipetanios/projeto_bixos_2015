@@ -3,7 +3,6 @@ using System.Collections;
 
 public class MovementManager : MonoBehaviour
 {
-
     public enum Mode
     {
         Run,
@@ -33,7 +32,7 @@ public class MovementManager : MonoBehaviour
         }
     }
 
-    // Use this for initialization
+    // Singletons
     void Awake()
     {
         instance = this;
@@ -42,11 +41,5 @@ public class MovementManager : MonoBehaviour
     void OnDestroy()
     {
         instance = null;
-    }
-	
-    // Update is called once per frame
-    void Update()
-    {
-	
     }
 }

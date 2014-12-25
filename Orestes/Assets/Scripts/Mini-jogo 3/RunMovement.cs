@@ -4,27 +4,33 @@ using System.Collections;
 public class RunMovement : MonoBehaviour
 {
     private static RunMovement instance;
-
     public static RunMovement Instance {
         get { return instance; }
     }
 
-	[HideInInspector] public float currentSpeed;
+	// System
+	[HideInInspector] public float currentSpeed; // The speed the parallax should get
+	private float currentYSpeed;
+	private Vector2 amountToMove;
 
-	[HideInInspector] public float defaultSpeed = 20;
+	// Player handling
+	public float defaultSpeed = 20;
 	public float maxSpeed = 50;
 	public float accelaration = 40;
-
 	public float gravity = 20;
-	public float jumpSpeed = 35;
+	public float jumpHeight = 500;
+	public float doubleJumpHeight = 20;
 
+	// States
 	private bool grounded = false;
-	private bool isJumping;
+	private bool isJumping = false;
 	private bool doubleJump;
+
+	// Components
 	public Transform groundCheck;
 	public LayerMask groundMask;
 
-	public float jumpHeight;
+	float yVelocity = 0;
 
     void Awake()
     {
@@ -37,31 +43,53 @@ public class RunMovement : MonoBehaviour
     }
 	
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+		// Player is always on movement
 		currentSpeed = defaultSpeed * Time.deltaTime;
 
 		float move = Input.GetAxisRaw ("Horizontal");
-
+		
+		// If the button is pressed, aka it accelarates
 		if (move != 0)
 			currentSpeed = accelaration * move * Time.deltaTime;
 
+		// Set the max speed
 		currentSpeed = Mathf.Clamp (currentSpeed, -maxSpeed, maxSpeed);
 
-		transform.Translate(Vector2.right * Time.deltaTime * currentSpeed);
+		amountToMove.x = currentSpeed;
 
+		// Is he grounded?
 		grounded = Physics2D.OverlapCircle (groundCheck.position, .02f, groundMask);
 
-		// Set the gravity if the player isnt in the ground
+		// If he is grounded and wants to jump
 		if (grounded && Input.GetButtonDown("Jump"))
 		{
-			rigidbody2D.AddForce (Vector2.up * 500);
+			currentYSpeed = jumpHeight;
+			isJumping = true;
 			doubleJump = true;
 		}
-		else if (!grounded && doubleJump && Input.GetButtonDown("Jump"))
+		// Doublejump!?
+		else if (isJumping && doubleJump && Input.GetButtonDown("Jump"))
 		{
-			rigidbody2D.AddForce (Vector2.up * 500);
+			currentYSpeed = jumpHeight;
 			doubleJump = false;
 		}
+		// Or if he just reached the ground
+		else if (grounded && currentYSpeed < 0)
+		{
+			currentYSpeed = 0;
+			isJumping = false;
+			doubleJump = false;
+		}
+		
+		// Set the gravity if the player isnt in the ground
+		if (!grounded)
+			currentYSpeed -= gravity * Time.deltaTime;
+
+		amountToMove.y = currentYSpeed;
+
+		// Finally, translates
+		transform.Translate(amountToMove * Time.deltaTime);
     }
 }
