@@ -581,7 +581,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: b34214e3b12f73444a6c0482a153b3e1, type: 2}
       propertyPath: gravity
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5000000, guid: b34214e3b12f73444a6c0482a153b3e1, type: 2}
       propertyPath: m_FixedAngle
@@ -625,7 +625,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: b34214e3b12f73444a6c0482a153b3e1, type: 2}
       propertyPath: jumpHeight
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5000000, guid: b34214e3b12f73444a6c0482a153b3e1, type: 2}
       propertyPath: m_GravityScale
@@ -781,8 +781,9 @@ Transform:
   - {fileID: 488093141}
   - {fileID: 46519923}
   - {fileID: 953814372}
+  - {fileID: 1388402769}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 1
 --- !u!1 &488093140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1092,8 +1093,8 @@ MonoBehaviour:
   currentSpeed: 0
   maxSpeed: 200
   accelaration: 200
-  gravity: 20
-  jumpHeight: 10
+  gravity: 30
+  jumpHeight: 12
   doubleJumpHeight: 20
   groundCheck: {fileID: 969193306}
   groundMask:
@@ -1466,7 +1467,15 @@ Prefab:
       objectReference: {fileID: 2800000, guid: b5a0aca9917fda1448fb4ec70862a1d8, type: 3}
     - target: {fileID: 11400000, guid: 640349fd800be164a8c226507e240230, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 640349fd800be164a8c226507e240230, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13100000, guid: 640349fd800be164a8c226507e240230, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 640349fd800be164a8c226507e240230, type: 2}
@@ -1560,7 +1569,7 @@ Transform:
   - {fileID: 1438697360}
   - {fileID: 1524837791}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &1311872235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1585,7 +1594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967e414afbfd5e74580635445d564f88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mode: 0
+  mode: 1
 --- !u!1001 &1340289186
 Prefab:
   m_ObjectHideFlags: 0
@@ -1683,12 +1692,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1388402767}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 1, z: 3}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: .0948034674, w: -.995496035}
+  m_LocalPosition: {x: 35.0056, y: 2.17938733, z: 3}
+  m_LocalScale: {x: 1.72413802, y: 1.72413802, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 407089835}
+  m_RootOrder: 4
 --- !u!114 &1388402770
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1701,8 +1710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTurned: 0
-  scalingFactorX: .300000012
-  scalingFactorY: .899999976
+  scalingFactorX: .800000012
 --- !u!1 &1438697359
 GameObject:
   m_ObjectHideFlags: 0
@@ -2157,7 +2165,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1307093581}
   m_GameObject: {fileID: 2101375663}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ad969e6097a3864da6daeb98d60a9fd, type: 3}
   m_Name: 
@@ -2195,4 +2203,4 @@ Transform:
   m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3

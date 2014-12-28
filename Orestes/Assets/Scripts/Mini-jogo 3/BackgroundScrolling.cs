@@ -5,7 +5,6 @@ public class BackgroundScrolling : MonoBehaviour {
 
     public bool isTurned;
     public float scalingFactorX;
-    public float scalingFactorY;
 
 	// Update is called once per frame
 	void Update () {
@@ -14,8 +13,8 @@ public class BackgroundScrolling : MonoBehaviour {
         if (isTurned)
             transform.Translate(cameraScrolling.defaultSpeed * scalingFactorX, 0, 0);
         else
-            transform.Translate(cameraScrolling.defaultVector.x * scalingFactorX,
-                                cameraScrolling.defaultVector.y * scalingFactorY,
+			transform.Translate(cameraScrolling.defaultVector.x * scalingFactorX,
+                                cameraScrolling.defaultVector.y,
                                 0);
 	}
 }

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CameraScrolling : MonoBehaviour
 {
-    private static readonly Vector3 runVector = new Vector3(0.5f, 0.0881635f, 0);
+    private static readonly Vector3 runVector = new Vector3(1.94f, 0.37f, 0);
     private static readonly Vector3 rhythmVector = new Vector3(0.8f, 0.1410615f, 0);
     private static readonly float runSpeed = runVector.magnitude;
     private static readonly float rhythmSpeed = rhythmVector.magnitude;
@@ -31,12 +31,12 @@ public class CameraScrolling : MonoBehaviour
     void Update()
     {
         if (MovementManager.Instance.mode == MovementManager.Mode.Run) {
-            defaultVector = runVector * Time.deltaTime;
-            defaultSpeed = runSpeed;
+            defaultVector = runVector * Time.deltaTime * 0.3f;
+            defaultSpeed = runSpeed * 0.5f;
             transform.Translate(defaultVector);
         } else { // MovementManager.Instance.mode == MovementManager.Mode.Rhythm
-            defaultVector = rhythmVector * Time.deltaTime;
-            defaultSpeed = rhythmSpeed * Time.deltaTime;
+			defaultVector = runVector * 0.05f * Time.deltaTime;
+			defaultSpeed = runSpeed * 0.1f;
             transform.Translate(defaultVector);
         }
     }
