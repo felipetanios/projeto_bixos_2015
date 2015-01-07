@@ -22,6 +22,11 @@ public class MovementManager : MonoBehaviour
 		ChangeMode (Mode.Run);
 	}
 
+	void OnTriggerEnter2D (Collider2D other) {
+		if (other.tag == "EndGame")
+			Debug.Log ("Reached the end.");
+	}
+
     public void ChangeMode(Mode mode)
     {
 		this.mode = mode;

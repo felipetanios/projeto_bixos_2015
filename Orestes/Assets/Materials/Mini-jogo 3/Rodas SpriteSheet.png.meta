@@ -1,7 +1,10 @@
 fileFormatVersion: 2
 guid: d02db084dcc222e468ffe7ed089d26b9
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Rodas SpriteSheet_0
+    21300002: Rodas SpriteSheet_1
+    21300004: Rodas SpriteSheet_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -25,13 +28,13 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
+    wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -42,6 +45,36 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Rodas SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1331
+        height: 411
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Rodas SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 1331
+        y: 0
+        width: 1331
+        height: 411
+      alignment: 1
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Rodas SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 2662
+        y: 5
+        width: 1343
+        height: 406
+      alignment: 1
+      pivot: {x: 0, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

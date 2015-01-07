@@ -14,6 +14,7 @@ TagManager:
   - AlmostFinal
   - Rhythm
   - End
+  - EndGame
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -28,7 +29,7 @@ TagManager:
   User Layer 10: Ground
   User Layer 11: PlayerCollider
   User Layer 12: Player
-  User Layer 13: 
+  User Layer 13: Camera
   User Layer 14: 
   User Layer 15: 
   User Layer 16: 
