@@ -27,6 +27,8 @@ public class CameraScrolling : MonoBehaviour
         instance = null;
     }
 
+	//void OnCollider
+
     // Update is called once per frame
     void Update()
     {

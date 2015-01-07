@@ -98,7 +98,25 @@ public class RunMovement : MonoBehaviour
 
 		amountToMove.y = currentYSpeed;
 
+		//Prevents the player from skipping the camera YEA BITCH
+		var dist = (transform.position - Camera.main.transform.position).z;
+		
+		var leftBorder = Camera.main.ViewportToWorldPoint (new Vector3 (0, 0, dist)).x;
+		var rightBorder = Camera.main.ViewportToWorldPoint (new Vector3 (1, 0, dist)).x;
+		var bottomBorder = Camera.main.ViewportToWorldPoint (new Vector3 (0, 1, dist)).y;
+		// Keep in mind that we must consider the bottom as the ground, which is corrected by .12
+		var topBorder = Camera.main.ViewportToWorldPoint (new Vector3 (0, .12f, dist)).y;
+
+		// If its on the limits, the player must move only the usual
+		if (transform.position.x + amountToMove.x * Time.deltaTime < leftBorder || transform.position.x + amountToMove.x * Time.deltaTime > rightBorder)
+			amountToMove.x = defaultSpeed * Time.deltaTime;
+
 		// Finally, translates
 		transform.Translate(amountToMove * Time.deltaTime);
+
+		// Now, checks if the player desired position has passed the limits - if so, force him to stay
+		transform.position = new Vector2( 
+		                                 Mathf.Clamp(transform.position.x, leftBorder, rightBorder),
+		                                 Mathf.Clamp(transform.position.y, topBorder, bottomBorder));
     }
 }
