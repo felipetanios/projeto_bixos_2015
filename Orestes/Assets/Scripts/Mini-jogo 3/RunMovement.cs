@@ -82,6 +82,7 @@ public class RunMovement : MonoBehaviour
 
 			PlayerSprites.Instance.IsFalling(false);
 		}
+		// In case he is falling, set up the sprites
 		else if (currentYSpeed < 0)
 		{
 			PlayerSprites.Instance.IsFalling(true);
@@ -110,6 +111,8 @@ public class RunMovement : MonoBehaviour
 
 		amountToMove.y = currentYSpeed;
 
+		#region Dont skip the camera properties!
+
 		//Prevents the player from skipping the camera YEA BITCH
 		var dist = (transform.position - Camera.main.transform.position).z;
 		
@@ -122,6 +125,8 @@ public class RunMovement : MonoBehaviour
 		// If its on the limits, the player must move only the usual
 		if (transform.position.x + amountToMove.x * Time.deltaTime < leftBorder || transform.position.x + amountToMove.x * Time.deltaTime > rightBorder)
 			amountToMove.x = defaultSpeed * Time.deltaTime;
+
+		#endregion
 
 		// Finally, translates
 		transform.Translate(amountToMove * Time.deltaTime);

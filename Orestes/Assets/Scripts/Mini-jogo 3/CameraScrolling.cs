@@ -4,9 +4,11 @@ using System.Collections;
 public class CameraScrolling : MonoBehaviour
 {
     private static readonly Vector3 runVector = new Vector3(1.94f, 0.37f, 0);
-    //private static readonly Vector3 rhythmVector = new Vector3(0.8f, 0.1410615f, 0);
     private static readonly float runSpeed = runVector.magnitude;
-    //private static readonly float rhythmSpeed = rhythmVector.magnitude;
+
+	// I just use the rhythm speed as some scale of the run speed...
+	// private static readonly Vector3 rhythmVector = new Vector3(0.8f, 0.1410615f, 0);
+	// private static readonly float rhythmSpeed = rhythmVector.magnitude;
 
     public Vector3 defaultVector;
     public float defaultSpeed;

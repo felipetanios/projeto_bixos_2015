@@ -137,9 +137,10 @@ public class RhythmBar : MonoBehaviour
         DetectHit();
 		
 		if (hits >= requiredHits) {
-			Debug.Log ("Now you can run. " + timesTried);
 			hits = 0;
 			timesTried++;
+
+			// Change it back to run mode
 			MovementManager.Instance.ChangeMode(0);
         }
     }
@@ -176,7 +177,7 @@ public class RhythmBar : MonoBehaviour
             else if (distance <= (3 / 3f) * spacing)
                 incr = 0.5f;
             else {
-				Debug.Log ("Missed it!");
+				Debug.Log ("Missed it!"); // TODO
                 return;
 			}
 

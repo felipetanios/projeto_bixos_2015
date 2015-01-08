@@ -24,7 +24,7 @@ public class MovementManager : MonoBehaviour
 
 	void OnTriggerEnter2D (Collider2D other) {
 		if (other.tag == "EndGame")
-			Debug.Log ("Reached the end.");
+			Debug.Log ("Reached the end."); // TODO
 	}
 
     public void ChangeMode(Mode mode)
@@ -34,6 +34,8 @@ public class MovementManager : MonoBehaviour
         switch (mode) {
             case Mode.Run:
                 RunMovement.Instance.enabled = true;
+
+				// Never forget the sprites
 				PlayerSprites.Instance.IsRunning(true);
 
                 RhythmMovement.Instance.enabled = false;
@@ -43,11 +45,14 @@ public class MovementManager : MonoBehaviour
 
             case Mode.Rhythm:
                 RhythmMovement.Instance.enabled = true;
+
+				// Never forget the sprites
 				PlayerSprites.Instance.IsRunning(false);
 
 				RunMovement.Instance.enabled = false;
-				RhythmBar.Instance.gameObject.SetActive(true);
 
+				RhythmBar.Instance.gameObject.SetActive(true);
+				// Set your stuff, Im waking you up!
 				RhythmBar.Instance.WokeUp ();
 
 				break;

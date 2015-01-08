@@ -23,7 +23,6 @@ public class RhythmMovement : MonoBehaviour
         instance = null;
     }
 
-    // Use this for initialization
     void Start()
     {
         RhythmBar.Instance.OnHit += OnHit;
