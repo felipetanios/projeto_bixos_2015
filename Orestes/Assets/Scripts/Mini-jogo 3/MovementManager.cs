@@ -19,7 +19,7 @@ public class MovementManager : MonoBehaviour
 
 	void Start ()
 	{
-		ChangeMode (Mode.Run);
+		ChangeMode (Mode.Rhythm);
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
@@ -34,12 +34,23 @@ public class MovementManager : MonoBehaviour
         switch (mode) {
             case Mode.Run:
                 RunMovement.Instance.enabled = true;
+				PlayerSprites.Instance.IsRunning(true);
+
                 RhythmMovement.Instance.enabled = false;
+				RhythmBar.Instance.gameObject.SetActive(false);
+
                 break;
+
             case Mode.Rhythm:
                 RhythmMovement.Instance.enabled = true;
-                RunMovement.Instance.enabled = false;
-                break;
+				PlayerSprites.Instance.IsRunning(false);
+
+				RunMovement.Instance.enabled = false;
+				RhythmBar.Instance.gameObject.SetActive(true);
+
+				RhythmBar.Instance.WokeUp ();
+
+				break;
         }
     }
 

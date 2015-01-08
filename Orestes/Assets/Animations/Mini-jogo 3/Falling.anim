@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Jump
+  m_Name: Falling
   serializedVersion: 4
   m_AnimationType: 2
   m_Compressed: 0
@@ -21,7 +21,7 @@ AnimationClip:
         value: {x: 1, y: 1, z: 1}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
+        tangentMode: 742911348
       m_PreInfinity: 2
       m_PostInfinity: 2
     path: 
@@ -30,10 +30,6 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: 21300000, guid: a2b5cec1adb7fd84c9f19f5c9b5fd794, type: 3}
-    - time: .150000006
-      value: {fileID: 21300002, guid: a2b5cec1adb7fd84c9f19f5c9b5fd794, type: 3}
-    - time: .816666663
-      value: {fileID: 21300002, guid: a2b5cec1adb7fd84c9f19f5c9b5fd794, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -59,12 +55,10 @@ AnimationClip:
       isPPtrCurve: 0
     pptrCurveMapping:
     - {fileID: 21300000, guid: a2b5cec1adb7fd84c9f19f5c9b5fd794, type: 3}
-    - {fileID: 21300002, guid: a2b5cec1adb7fd84c9f19f5c9b5fd794, type: 3}
-    - {fileID: 21300002, guid: a2b5cec1adb7fd84c9f19f5c9b5fd794, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .833333313
+    m_StopTime: .0166666675
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

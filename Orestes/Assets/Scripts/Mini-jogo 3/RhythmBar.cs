@@ -19,10 +19,13 @@ public class RhythmBar : MonoBehaviour
 
     private int requiredHits;
     private float hits;
+	private int timesTried;
 
     private static RhythmBar instance;
 
     public delegate void HitCallback();
+
+	public bool justWoke;
 
     public void SpeedUp(int percent)
     {
@@ -113,7 +116,9 @@ public class RhythmBar : MonoBehaviour
         rightTarget = Screen.width * (79 / 120f);
 
         velocity = 0.75f;
-        requiredHits = 30; // FIXME
+		timesTried = 1;
+
+		WokeUp ();
     }
 
     void OnDestroy()
@@ -121,14 +126,21 @@ public class RhythmBar : MonoBehaviour
         instance = null;
     }
 
+	public void WokeUp ()
+	{
+		requiredHits = 3 * timesTried;
+	}
+
     void Update()
     {
         UpdatePosition();
         DetectHit();
-
-        if (hits >= requiredHits) {
-            enabled = false;
-            // TODO mudar para o modo normal
+		
+		if (hits >= requiredHits) {
+			Debug.Log ("Now you can run. " + timesTried);
+			hits = 0;
+			timesTried++;
+			MovementManager.Instance.ChangeMode(0);
         }
     }
 
@@ -163,8 +175,10 @@ public class RhythmBar : MonoBehaviour
                 incr = 1.0f;
             else if (distance <= (3 / 3f) * spacing)
                 incr = 0.5f;
-            else
+            else {
+				Debug.Log ("Missed it!");
                 return;
+			}
 
             hits += incr;
             if (OnHit != null)

@@ -31,8 +31,6 @@ public class RunMovement : MonoBehaviour
 	public Transform groundCheck;
 	public LayerMask groundMask;
 
-	float yVelocity = 0;
-
     void Awake()
     {
         instance = this;
@@ -59,21 +57,35 @@ public class RunMovement : MonoBehaviour
 		if (grounded && Input.GetButtonDown("Jump"))
 		{
 			currentYSpeed = jumpHeight;
+
 			isJumping = true;
 			doubleJump = true;
+
+			PlayerSprites.Instance.IsJumping(true);
 		}
 		// Doublejump!?
 		else if (isJumping && doubleJump && Input.GetButtonDown("Jump"))
 		{
 			currentYSpeed = jumpHeight;
 			doubleJump = false;
+
+			PlayerSprites.Instance.IsFalling(false);
+			PlayerSprites.Instance.IsJumping(true);
 		}
 		// Or if he just reached the ground
 		else if (grounded && currentYSpeed < 0)
 		{
 			currentYSpeed = 0;
+
 			isJumping = false;
 			doubleJump = false;
+
+			PlayerSprites.Instance.IsFalling(false);
+		}
+		else if (currentYSpeed < 0)
+		{
+			PlayerSprites.Instance.IsFalling(true);
+			PlayerSprites.Instance.IsJumping(false);
 		}
 	}
 
