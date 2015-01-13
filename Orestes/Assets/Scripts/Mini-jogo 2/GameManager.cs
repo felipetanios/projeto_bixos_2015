@@ -60,7 +60,15 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < totalSpots && (!chosenSpot.isAvailable || MouseManager.Instance.IsMouseNear(chosenSpot)); i++)
             chosenSpot = spots[Random.Range(0, totalSpots)];
 
+        if (!chosenSpot.isAvailable)
+            return null;
+
         chosenSpot.isAvailable = false;
         return chosenSpot;
+    }
+
+    public void ReturnSpot(Spot spot)
+    {
+        spot.isAvailable = true;
     }
 }

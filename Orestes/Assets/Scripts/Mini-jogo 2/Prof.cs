@@ -94,6 +94,8 @@ public class Prof : MonoBehaviour
         moving.speed = ((float)totalProfs / (gameManager.activatedProfs + totalProfs));
 
         Spot spotScript = gameManager.FindSpot();
+        if (!spotScript)
+            yield break;
         transform.parent.transform.position = spotScript.spotPosition;
         transform.parent.localScale = spotScript.spotScale;
         moving.SetBool("isMirror", spotScript.isMirror);
@@ -111,7 +113,7 @@ public class Prof : MonoBehaviour
         gameObject.collider2D.enabled = false;
         moving.SetBool("isAnimating", false);
 
-        spotScript.isAvailable = true;
+        gameManager.ReturnSpot(spotScript);
 
         yield return new WaitForSeconds((gameManager.activatedProfs / totalProfs) + Random.Range(0.5F, 1));
         isAppearing = false;
