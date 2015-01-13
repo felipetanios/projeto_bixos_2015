@@ -46,6 +46,9 @@ public class Prof : MonoBehaviour
             isActivated = false;
             gameManager.activatedProfs--;
 
+            // Remove parent
+            transform.parent.parent = null;
+
             // The object is still running, until the animation runs off
             gameObject.renderer.enabled = true;
             gameObject.collider2D.enabled = true;
@@ -93,8 +96,12 @@ public class Prof : MonoBehaviour
         Spot spotScript = gameManager.FindSpot();
         if (!spotScript)
             yield break;
-        transform.parent.transform.position = spotScript.spotPosition;
-        transform.parent.localScale = spotScript.spotScale;
+
+        // Set the spot as the parent of this object
+        transform.parent.parent = spotScript.transform;
+        transform.parent.localPosition = Vector3.zero;
+        transform.parent.localScale = Vector3.one;
+
         moving.SetBool("isMirror", spotScript.isMirror);
         moving.SetBool("isWindow", spotScript.isWindow);
 
