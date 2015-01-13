@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int activatedProfs;
 
     List<Spot> spots = new List<Spot>();
+    List<Spot> highPrioritySpots = new List<Spot>();
     int totalSpots;
 
     private int mouseClicks;
@@ -34,7 +35,12 @@ public class GameManager : MonoBehaviour
         totalSpots = spotsObjects.Length;
 
         foreach (GameObject spot in spotsObjects)
-            spots.Add(spot.GetComponent<Spot>());
+        {
+            var spotScript = spot.GetComponent<Spot>();
+            spots.Add(spotScript);
+            if (spotScript.isHighPriority)
+                highPrioritySpots.Add(spotScript);
+        }
     }
 
     void Update()
@@ -54,6 +60,15 @@ public class GameManager : MonoBehaviour
 
     public Spot FindSpot()
     {
+        if (Random.Range(0f, 1f) < .4f)
+        {
+            // Try high priority Spot first
+            var prioritySpot = highPrioritySpots[Random.Range(0, highPrioritySpots.Count)];
+            if (prioritySpot.isAvailable)
+                return prioritySpot;
+        }
+
+        // Normal spots
         Spot chosenSpot = spots[Random.Range(0, totalSpots)];
 
         // Enquanto nao encontra uma posicao valida
@@ -63,12 +78,6 @@ public class GameManager : MonoBehaviour
         if (!chosenSpot.isAvailable)
             return null;
 
-        chosenSpot.isAvailable = false;
         return chosenSpot;
-    }
-
-    public void ReturnSpot(Spot spot)
-    {
-        spot.isAvailable = true;
     }
 }

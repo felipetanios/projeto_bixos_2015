@@ -48,6 +48,7 @@ public class Prof : MonoBehaviour
 
             // Remove parent
             transform.parent.parent = null;
+            transform.parent.localScale = Vector3.one;
 
             // The object is still running, until the animation runs off
             gameObject.renderer.enabled = true;
@@ -97,6 +98,8 @@ public class Prof : MonoBehaviour
         if (!spotScript)
             yield break;
 
+        spotScript.isAvailable = false;
+
         // Set the spot as the parent of this object
         transform.parent.parent = spotScript.transform;
         transform.parent.localPosition = Vector3.zero;
@@ -117,7 +120,7 @@ public class Prof : MonoBehaviour
         gameObject.collider2D.enabled = false;
         moving.SetBool("isAnimating", false);
 
-        gameManager.ReturnSpot(spotScript);
+        spotScript.isAvailable = true;
 
         yield return new WaitForSeconds((gameManager.activatedProfs / totalProfs) + Random.Range(0.5F, 1));
         isAppearing = false;

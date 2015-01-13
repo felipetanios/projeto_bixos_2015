@@ -10,8 +10,9 @@ public class Spot : MonoBehaviour
     [HideInInspector] public bool isAvailable;
     public bool isWindow;
     public bool isMirror;
+    public bool isHighPriority;
 
-    void Start()
+    void Awake()
     {
         spotPosition = this.transform.position;
         spotScale = this.transform.lossyScale;

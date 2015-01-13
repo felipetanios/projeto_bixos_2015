@@ -149,6 +149,7 @@ MonoBehaviour:
   isAvailable: 0
   isWindow: 0
   isMirror: 0
+  isHighPriority: 0
 --- !u!4 &247080720
 Transform:
   m_ObjectHideFlags: 0
@@ -518,6 +519,10 @@ Prefab:
       propertyPath: m_Icon
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 7df039d3f05b9174cb589dee9d8d0412, type: 2}
+      propertyPath: isHighPriority
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7df039d3f05b9174cb589dee9d8d0412, type: 2}
   m_RootGameObject: {fileID: 1552499323}
@@ -830,6 +835,7 @@ MonoBehaviour:
   isAvailable: 0
   isWindow: 1
   isMirror: 0
+  isHighPriority: 0
 --- !u!61 &736142631
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -983,6 +989,7 @@ MonoBehaviour:
   isAvailable: 0
   isWindow: 0
   isMirror: 0
+  isHighPriority: 0
 --- !u!61 &853599684
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1863,6 +1870,7 @@ MonoBehaviour:
   isAvailable: 0
   isWindow: 1
   isMirror: 0
+  isHighPriority: 0
 --- !u!61 &1314459738
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2016,6 +2024,7 @@ MonoBehaviour:
   isAvailable: 0
   isWindow: 0
   isMirror: 1
+  isHighPriority: 0
 --- !u!61 &1481672500
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2074,6 +2083,7 @@ MonoBehaviour:
   isAvailable: 0
   isWindow: 1
   isMirror: 0
+  isHighPriority: 1
 --- !u!4 &1552499326
 Transform:
   m_ObjectHideFlags: 0
@@ -2353,6 +2363,7 @@ MonoBehaviour:
   isAvailable: 0
   isWindow: 1
   isMirror: 0
+  isHighPriority: 0
 --- !u!61 &1832725826
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2411,6 +2422,7 @@ MonoBehaviour:
   isAvailable: 0
   isWindow: 1
   isMirror: 0
+  isHighPriority: 0
 --- !u!61 &1851102630
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2529,6 +2541,7 @@ MonoBehaviour:
   isAvailable: 0
   isWindow: 1
   isMirror: 0
+  isHighPriority: 1
 --- !u!1001 &2021995089
 Prefab:
   m_ObjectHideFlags: 0
@@ -2660,6 +2673,10 @@ Prefab:
       propertyPath: m_Icon
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 7df039d3f05b9174cb589dee9d8d0412, type: 2}
+      propertyPath: isHighPriority
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7df039d3f05b9174cb589dee9d8d0412, type: 2}
   m_RootGameObject: {fileID: 1993764000}
@@ -2708,6 +2725,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2049841659}
   - 212: {fileID: 2049841660}
+  - 114: {fileID: 2049841661}
   m_Layer: 0
   m_Name: Van
   m_TagString: Untagged
@@ -2721,8 +2739,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2049841658}
-  m_LocalRotation: {x: 0, y: 0, z: -.023329623, w: .999727845}
-  m_LocalPosition: {x: 6.6500001, y: -3.6500001, z: -1}
+  m_LocalRotation: {x: 0, y: 0, z: -.0233294442, w: .999727845}
+  m_LocalPosition: {x: 15, y: -3.6500001, z: -1}
   m_LocalScale: {x: .300000012, y: .300000012, z: 1}
   m_Children:
   - {fileID: 430652856}
@@ -2754,3 +2772,15 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 714b61eb5bd1b6d438a5e7d0e3055d89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &2049841661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2049841658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06875d6acec510468ece4918a629c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
