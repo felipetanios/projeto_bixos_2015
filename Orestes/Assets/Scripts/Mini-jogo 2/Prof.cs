@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(Collider2D))]
 public class Prof : MonoBehaviour
 {
     private GameObject gameManagerObject;
@@ -39,7 +40,8 @@ public class Prof : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (isActivated) {		
+        // Don't run if there is another prof animating
+        if (isActivated && !gameManager.profOnScreen) {
             // Isnt activated anymore
             isActivated = false;
             gameManager.activatedProfs--;
@@ -57,7 +59,6 @@ public class Prof : MonoBehaviour
             gameManager.profOnScreen = true;
 
             FuckYou();
-            StartCoroutine(BeGone());
         }
 
     }
@@ -129,9 +130,9 @@ public class Prof : MonoBehaviour
         //	transform.position = new Vector3(targetPositionX, targetPositionY, -3.0f);
     }
 
-    IEnumerator BeGone()
+    // Called from an animation event
+    void BeGone()
     {
-        yield return new WaitForSeconds(5);
         gameManager.profOnScreen = false;
     }
 }
