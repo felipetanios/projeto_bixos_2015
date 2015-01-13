@@ -17,4 +17,17 @@ public class Spot : MonoBehaviour
         spotScale = this.transform.lossyScale;
         isAvailable = true;
     }
+
+    #if UNITY_EDITOR
+    static readonly Vector3 gizmoSize = new Vector3(.5f, .5f, 0);
+    void OnDrawGizmos()
+    {
+        if (isAvailable)
+            Gizmos.color = Color.green;
+        else
+            Gizmos.color = Color.red;
+
+        Gizmos.DrawCube(transform.position, gizmoSize);
+    }
+    #endif
 }

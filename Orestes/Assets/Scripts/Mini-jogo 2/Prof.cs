@@ -51,9 +51,6 @@ public class Prof : MonoBehaviour
             gameObject.collider2D.enabled = true;
             moving.SetBool("isAnimating", false);
 
-            // Changes the layer (just in case)
-            transform.position = new Vector3(transform.position.x, transform.position.y, 2.0F);
-
             // Starts the animation + moving
             moving.SetBool("isClicked", true);
             gameManager.profOnScreen = true;
@@ -69,7 +66,7 @@ public class Prof : MonoBehaviour
         if (!isAppearing && isActivated && !gameManager.profOnScreen) {
             appears = Appears();
             StartCoroutine(appears);
-        } else if (!isActivated && (targetPosition.x - transform.parent.transform.position.x > 0.1)) {
+        } else if (!isActivated && (Vector2.Distance(targetPosition, transform.parent.position) > 0.1)) {
             FuckYou();
         }
     }
@@ -124,12 +121,9 @@ public class Prof : MonoBehaviour
     void FuckYou()
     {
         Vector3 velocidade = Vector3.zero;
-        transform.parent.transform.position = Vector3.SmoothDamp(transform.parent.transform.position, targetPosition, ref velocidade, 0.2f);
-        transform.parent.transform.position = new Vector3(transform.parent.transform.position.x, transform.parent.transform.position.y, -5.0f);
-
-        //	float targetPositionX = Mathf.SmoothDamp (transform.parent.transform.position.x , target.position.x, ref velocidade, 0.3F, Time.deltaTime);
-        //	float targetPositionY = Mathf.SmoothDamp (transform.parent.transform.position.y, targetPosition.y , ref velocidade, 0.3F, Time.deltaTime);
-        //	transform.position = new Vector3(targetPositionX, targetPositionY, -3.0f);
+        var position = Vector3.SmoothDamp(transform.parent.transform.position, targetPosition, ref velocidade, 0.2f);
+        position.z = -5f;
+        transform.parent.transform.position = position;
     }
 
     // Called from an animation event
