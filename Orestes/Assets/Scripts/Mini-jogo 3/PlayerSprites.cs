@@ -20,6 +20,11 @@ public class PlayerSprites : MonoBehaviour
 		instance = null;
 	}
 
+	public void DoubleJump (bool state)
+	{
+		animator.SetBool ("doubleJump", state);
+	}
+
 	public void IsRunning (bool state)
 	{
 		animator.SetBool ("Running", state);

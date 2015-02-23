@@ -69,8 +69,8 @@ public class RunMovement : MonoBehaviour
 			currentYSpeed = jumpHeight;
 			doubleJump = false;
 
-			PlayerSprites.Instance.IsFalling(false);
 			PlayerSprites.Instance.IsJumping(true);
+			PlayerSprites.Instance.IsFalling(false);
 		}
 		// Or if he just reached the ground
 		else if (grounded && currentYSpeed < 0)
@@ -87,6 +87,7 @@ public class RunMovement : MonoBehaviour
 		{
 			PlayerSprites.Instance.IsFalling(true);
 			PlayerSprites.Instance.IsJumping(false);
+			PlayerSprites.Instance.DoubleJump(false);
 		}
 	}
 
