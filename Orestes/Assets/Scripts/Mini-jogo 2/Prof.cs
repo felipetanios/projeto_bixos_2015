@@ -49,6 +49,7 @@ public class Prof : MonoBehaviour
             // Remove parent
             transform.parent.parent = null;
             transform.parent.localScale = Vector3.one;
+            transform.parent.localRotation = Quaternion.identity;
 
             // The object is still running, until the animation runs off
             gameObject.renderer.enabled = true;
