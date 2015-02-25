@@ -10,6 +10,7 @@ public class Spawner : MonoBehaviour {
 	public GameObject layer;
 
 	private bool isRunning;
+	private static bool alreadyVehicle;
 
 	void Start () {
 		isRunning = true;
@@ -79,6 +80,8 @@ public class Spawner : MonoBehaviour {
 			currentEnemy.transform.parent = layer.transform;
 			currentEnemy.transform.localEulerAngles = new Vector3(0, 0, 0);
 			currentEnemy.transform.localPosition = position;
+
+			GameObject.Destroy(currentEnemy, 10.0f);
 			
 			yield return new WaitForSeconds (Random.Range (3f, 5f));
 		}
@@ -87,13 +90,23 @@ public class Spawner : MonoBehaviour {
 	IEnumerator VehicleDisplay()
 	{
 		while (true) {
-			Vector3 position = new Vector3(transform.localPosition.x, vehicle.transform.position.y, vehicle.transform.position.z);
+			if (!alreadyVehicle) {
+				Vector3 position = new Vector3(transform.localPosition.x, vehicle.transform.position.y, vehicle.transform.position.z);
 
-			GameObject currentVehicle = Instantiate(vehicle, position, transform.rotation) as GameObject;
+				GameObject currentVehicle = Instantiate(vehicle, position, transform.rotation) as GameObject;
 
-			currentVehicle.transform.parent = layer.transform;
-			currentVehicle.transform.localEulerAngles = new Vector3(0, 0, 0);
-			currentVehicle.transform.localPosition = position;
+				currentVehicle.transform.parent = layer.transform;
+				currentVehicle.transform.localEulerAngles = new Vector3(0, 0, 0);
+				currentVehicle.transform.localPosition = position;
+
+				GameObject.Destroy(currentVehicle, 20.0f);
+
+				alreadyVehicle = true;
+			}
+
+			else {
+				alreadyVehicle = false;
+			}
 			
 			yield return new WaitForSeconds (Random.Range (20f, 23f));
 		}
