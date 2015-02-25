@@ -5,10 +5,97 @@ public class Spawner : MonoBehaviour {
 
 	public float scalingFactorX = 1;
 
+	public GameObject[] enemies;
+	public GameObject vehicle;
+	public GameObject layer;
+
+	private bool isRunning;
+
+	void Start () {
+		isRunning = true;
+	}
+
 	// Update is called once per frame
 	void Update () {
 		var cameraScrolling = CameraScrolling.Instance;
 
-		transform.Translate(CameraScrolling.Instance.defaultVector.magnitude * scalingFactorX, 0, 0);
+		transform.Translate(cameraScrolling.defaultVector.magnitude * scalingFactorX, 0, 0);
+
+		// If the player is running
+		if (MovementManager.Instance.mode == 0) {
+			if (!isRunning) {
+				prepareRun();
+
+				isRunning = true;
+			}
+		}
+		else {
+			if (isRunning) {
+				stopRun();
+
+				isRunning = false;
+			}
+		}
+	}
+
+	void prepareRun ()
+	{
+		if (enemies.Length > 0) {
+			StartCoroutine ("SetEnemies");
+		}
+
+		StopCoroutine("VehicleDisplay");
+	}
+
+	void stopRun ()
+	{
+		StartCoroutine("SetVehicles");
+
+		if (enemies.Length > 0) {
+			StopCoroutine ("EnemiesDisplay");
+		}
+	}
+
+	IEnumerator SetEnemies()
+	{
+		yield return new WaitForSeconds(Random.Range(0.5f, 2f));
+		StartCoroutine ("EnemiesDisplay");
+	}
+
+	IEnumerator SetVehicles()
+	{
+		yield return new WaitForSeconds(Random.Range(0.5f, 2f));
+		StartCoroutine ("VehicleDisplay");
+	}
+
+	IEnumerator EnemiesDisplay()
+	{
+		while (true) {
+			int chosen = Random.Range (0, enemies.Length);
+			Vector3 position = new Vector3(transform.localPosition.x, enemies[chosen].transform.position.y, transform.position.z);
+
+			GameObject currentEnemy = Instantiate(enemies[chosen], enemies[chosen].transform.position, transform.rotation) as GameObject;
+
+			currentEnemy.transform.parent = layer.transform;
+			currentEnemy.transform.localEulerAngles = new Vector3(0, 0, 0);
+			currentEnemy.transform.localPosition = position;
+			
+			yield return new WaitForSeconds (Random.Range (3f, 5f));
+		}
+	}
+
+	IEnumerator VehicleDisplay()
+	{
+		while (true) {
+			Vector3 position = new Vector3(transform.localPosition.x, vehicle.transform.position.y, vehicle.transform.position.z);
+
+			GameObject currentVehicle = Instantiate(vehicle, position, transform.rotation) as GameObject;
+
+			currentVehicle.transform.parent = layer.transform;
+			currentVehicle.transform.localEulerAngles = new Vector3(0, 0, 0);
+			currentVehicle.transform.localPosition = position;
+			
+			yield return new WaitForSeconds (Random.Range (20f, 23f));
+		}
 	}
 }
