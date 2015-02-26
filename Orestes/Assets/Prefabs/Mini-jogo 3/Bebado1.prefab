@@ -11,6 +11,8 @@ GameObject:
   - 212: {fileID: 21251734}
   - 61: {fileID: 6151734}
   - 114: {fileID: 11451734}
+  - 50: {fileID: 5021314}
+  - 114: {fileID: 11423732}
   m_Layer: 0
   m_Name: Bebado1
   m_TagString: Enemy
@@ -25,11 +27,26 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151734}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .829999983, z: 0}
+  m_LocalPosition: {x: 0, y: .829999983, z: -.100000001}
   m_LocalScale: {x: .550000012, y: .549999952, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5021314
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151734}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_FixedAngle: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!61 &6151734
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -41,6 +58,17 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_Size: {x: 7.38000011, y: 3.5}
   m_Center: {x: -.0500000007, y: .0399999991}
+--- !u!114 &11423732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25f7bf60bc79f143bb434a1875eda3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11451734
 MonoBehaviour:
   m_ObjectHideFlags: 1

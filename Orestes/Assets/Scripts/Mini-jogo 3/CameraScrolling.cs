@@ -13,6 +13,10 @@ public class CameraScrolling : MonoBehaviour
     public Vector3 defaultVector;
     public float defaultSpeed;
 
+	[HideInInspector] public float progress;
+
+	private Transform gameEnd;
+
     private static CameraScrolling instance;
 
     public static CameraScrolling Instance {
@@ -24,6 +28,12 @@ public class CameraScrolling : MonoBehaviour
         instance = this;
     }
 
+	void Start () 
+	{
+		var gameEndObject = GameObject.FindGameObjectWithTag ("EndGame");
+		gameEnd = gameEndObject.transform;
+	}
+
     void OnDestroy()
     {
         instance = null;
@@ -32,14 +42,20 @@ public class CameraScrolling : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		var endLocation = gameEnd.position.x + 20.6f;
+		progress = (transform.position.x + 9)/endLocation;
+
         if (MovementManager.Instance.mode == MovementManager.Mode.Run) {
-            defaultVector = runVector * Time.deltaTime * 0.3f;
-            defaultSpeed = runSpeed * 0.5f;
-            transform.Translate(defaultVector);
-        } else { // MovementManager.Instance.mode == MovementManager.Mode.Rhythm
+			defaultVector = runVector * Time.deltaTime * 0.3f;
+			defaultSpeed = runSpeed * 0.5f;
+			transform.Translate (defaultVector);
+		} else if (MovementManager.Instance.mode == MovementManager.Mode.Rhythm) { // MovementManager.Instance.mode == MovementManager.Mode.Rhythm
 			defaultVector = runVector * 0.05f * Time.deltaTime;
 			defaultSpeed = runSpeed * 0.1f;
-            transform.Translate(defaultVector);
-        }
+			transform.Translate (defaultVector);
+		} else {
+			defaultVector = Vector2.zero;
+			defaultSpeed = 0;
+		}
     }
 }

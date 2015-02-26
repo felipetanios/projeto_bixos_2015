@@ -11,6 +11,8 @@ GameObject:
   - 212: {fileID: 21252090}
   - 61: {fileID: 6152090}
   - 114: {fileID: 11452090}
+  - 50: {fileID: 5021314}
+  - 114: {fileID: 11423732}
   m_Layer: 0
   m_Name: Ator 1
   m_TagString: Enemy
@@ -25,11 +27,26 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.93000007, z: 0}
+  m_LocalPosition: {x: 0, y: 2.93000007, z: -.100000001}
   m_LocalScale: {x: .550000072, y: .550000012, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5021314
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152090}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_FixedAngle: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
 --- !u!61 &6152090
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -39,8 +56,19 @@ BoxCollider2D:
   m_Enabled: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Size: {x: 4.80999994, y: 6.5}
-  m_Center: {x: 2.86102295e-06, y: -.100000001}
+  m_Size: {x: 4.81000137, y: 5.17000008}
+  m_Center: {x: -.25999999, y: -.560000002}
+--- !u!114 &11423732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25f7bf60bc79f143bb434a1875eda3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11452090
 MonoBehaviour:
   m_ObjectHideFlags: 1

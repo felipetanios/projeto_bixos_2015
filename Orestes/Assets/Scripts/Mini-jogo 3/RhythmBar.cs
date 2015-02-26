@@ -27,7 +27,7 @@ public class RhythmBar : MonoBehaviour
 
 	public bool justWoke;
 
-    public void SpeedUp(int percent)
+    public void SpeedUp(float percent)
     {
         velocity *= 1 + percent;
     }
@@ -138,7 +138,7 @@ public class RhythmBar : MonoBehaviour
 		
 		if (hits >= requiredHits) {
 			hits = 0;
-			timesTried++;
+			SpeedUp(0.2f);
 
 			// Change it back to run mode
 			MovementManager.Instance.ChangeMode(0);
@@ -177,7 +177,6 @@ public class RhythmBar : MonoBehaviour
             else if (distance <= (3 / 3f) * spacing)
                 incr = 0.5f;
             else {
-				Debug.Log ("Missed it!"); // TODO
                 return;
 			}
 

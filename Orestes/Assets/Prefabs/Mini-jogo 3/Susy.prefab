@@ -27,9 +27,11 @@ GameObject:
   - 212: {fileID: 21279638}
   - 61: {fileID: 6179638}
   - 95: {fileID: 9579638}
+  - 50: {fileID: 5068298}
+  - 114: {fileID: 11476096}
   m_Layer: 0
   m_Name: Susy-Sprite
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179638}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 6.6500001, z: 0}
+  m_LocalPosition: {x: 0, y: 6.6500001, z: -.100000001}
   m_LocalScale: {x: 1.10000002, y: 1.10000002, z: 1}
   m_Children:
   - {fileID: 479640}
@@ -54,11 +56,26 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.1800003, y: -2.52999997, z: 0}
+  m_LocalPosition: {x: 0, y: -2.52999997, z: 0}
   m_LocalScale: {x: .899999917, y: .899999917, z: 1}
   m_Children: []
   m_Father: {fileID: 479638}
   m_RootOrder: 0
+--- !u!50 &5068298
+Rigidbody2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179640}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_FixedAngle: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
 --- !u!61 &6179638
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -85,6 +102,17 @@ Animator:
   m_ApplyRootMotion: 0
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11476096
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 179640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25f7bf60bc79f143bb434a1875eda3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11479638
 MonoBehaviour:
   m_ObjectHideFlags: 1

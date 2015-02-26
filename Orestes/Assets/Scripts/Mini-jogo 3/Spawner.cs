@@ -81,9 +81,9 @@ public class Spawner : MonoBehaviour {
 			currentEnemy.transform.localEulerAngles = new Vector3(0, 0, 0);
 			currentEnemy.transform.localPosition = position;
 
-			GameObject.Destroy(currentEnemy, 10.0f);
+			GameObject.Destroy(currentEnemy, 30.0f);
 			
-			yield return new WaitForSeconds (Random.Range (3f, 5f));
+			yield return new WaitForSeconds (Random.Range (1/(CameraScrolling.Instance.progress) * 1.75f, 1/(CameraScrolling.Instance.progress) * 3.5f));
 		}
 	}
 

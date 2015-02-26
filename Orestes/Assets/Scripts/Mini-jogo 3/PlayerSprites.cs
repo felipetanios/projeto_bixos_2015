@@ -39,4 +39,9 @@ public class PlayerSprites : MonoBehaviour
 	{
 		animator.SetBool ("Falling", state);
 	}
+
+	public void End()
+	{
+		animator.SetTrigger ("End");
+	}
 }
