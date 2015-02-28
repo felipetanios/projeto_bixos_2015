@@ -3,30 +3,31 @@ using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Text))]
+[RequireComponent(typeof(Text), typeof(AudioSource))]
 public class InputString : MonoBehaviour
 {
+	[TextArea(3, 5)]
 	public string text;
-	public float delay = 0.1f;
+	public float delay = 0.075f;
+	[HideInInspector]
 	public bool finished = false;
 	
 	Text textComponent;
 	IEnumerator coroutine;
 	
-	private static InputString instance;
-	
-	public static InputString Instance {
-		get { return instance; }
-	}
+	public static InputString Instance { get; private set; }
 	
 	void Awake()
 	{
-		instance = this;
+		if (Instance == null)
+			Instance = this;
+		textComponent = GetComponent<Text>();
 	}
 	
 	void OnDestroy()
 	{
-		instance = null;
+		if (Instance == this)
+			Instance = null;
 	}
 	
 	public void StartScript()
@@ -59,6 +60,7 @@ public class InputString : MonoBehaviour
 				sb.Append(c);
 				textComponent.text = sb.ToString();
 				// TODO: sound
+				audio.Play();
 				
 				if (!Input.GetButton("Next"))
 					yield return new WaitForSeconds(delay);
