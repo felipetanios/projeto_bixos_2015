@@ -92,7 +92,7 @@ public class TextBox : MonoBehaviour
         }
 
         // TODO: fire event
-        while (!Input.GetButton("Jump"))
+        while (!Input.GetButton("Next"))
             yield return new WaitForFixedUpdate();
 
         // Clear onscreen text
