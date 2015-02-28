@@ -85,16 +85,17 @@ public class TextBox : MonoBehaviour
                 while (!Input.GetButton("Next"))
                     yield return new WaitForFixedUpdate();
             }
+
+            // Clear text buffer
+            // sb.Clear(); ← .NET 4
+            sb.Length = 0;
         }
 
         // TODO: fire event
         while (!Input.GetButton("Jump"))
             yield return new WaitForFixedUpdate();
 
-		// Clear text
-		// sb.Clear(); ← .NET 4
-		sb.Length = 0;
-
+        // Clear onscreen text
         textComponent.text = string.Empty;
         finished = true;
     }
