@@ -83,7 +83,7 @@ public class Spawner : MonoBehaviour {
 
 			GameObject.Destroy(currentEnemy, 30.0f);
 			
-			yield return new WaitForSeconds (Random.Range (1/(CameraScrolling.Instance.progress) * 1.4f, 1/(CameraScrolling.Instance.progress) * 3.5f));
+			yield return new WaitForSeconds (Random.Range (1/(CameraScrolling.Instance.progress) * 0.75f, 1/(CameraScrolling.Instance.progress) * 2.5f));
 		}
 	}
 

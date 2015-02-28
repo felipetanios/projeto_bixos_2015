@@ -40,6 +40,11 @@ public class PlayerSprites : MonoBehaviour
 		animator.SetBool ("Falling", state);
 	}
 
+	public void Ops()
+	{
+		animator.SetTrigger ("Ops");
+	}
+
 	public void End()
 	{
 		animator.SetTrigger ("End");

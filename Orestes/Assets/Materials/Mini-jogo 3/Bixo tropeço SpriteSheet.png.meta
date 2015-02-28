@@ -1,15 +1,13 @@
 fileFormatVersion: 2
-guid: b58b8a7a263686b4585213624d5dac30
+guid: 985421424d999a14d95f374dc22d7e58
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Bixo cansado SpriteSheet_0
-    21300002: Bixo cansado SpriteSheet_1
-    21300004: Bixo cansado SpriteSheet_2
-    21300006: Bixo cansado SpriteSheet_3
+    21300000: "Bixo trope\xE7o SpriteSheet_0"
+    21300002: "Bixo trope\xE7o SpriteSheet_1"
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -29,7 +27,7 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: 2
-    aniso: 1
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
@@ -47,43 +45,23 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: Bixo cansado SpriteSheet_0
+    - name: "Bixo trope\xE7o SpriteSheet_0"
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 501
-        height: 596
+        width: 489
+        height: 608
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bixo cansado SpriteSheet_1
+    - name: "Bixo trope\xE7o SpriteSheet_1"
       rect:
         serializedVersion: 2
-        x: 501
+        x: 489
         y: 0
-        width: 501
-        height: 596
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bixo cansado SpriteSheet_2
-      rect:
-        serializedVersion: 2
-        x: 1002
-        y: 0
-        width: 501
-        height: 596
-      alignment: 1
-      pivot: {x: 0, y: 1}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Bixo cansado SpriteSheet_3
-      rect:
-        serializedVersion: 2
-        x: 1503
-        y: 0
-        width: 501
-        height: 596
+        width: 489
+        height: 608
       alignment: 1
       pivot: {x: 0, y: 1}
       border: {x: 0, y: 0, z: 0, w: 0}

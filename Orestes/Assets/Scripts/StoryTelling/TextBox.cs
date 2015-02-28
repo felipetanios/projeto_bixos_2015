@@ -58,7 +58,7 @@ public class TextBox : MonoBehaviour
                 textComponent.text = sb.ToString();
                 // TODO: sound
 
-                if (!Input.GetButton("Jump"))
+                if (!Input.GetButton("Next"))
                     yield return new WaitForSeconds(delay);
                 else
                     yield return new WaitForSeconds(delay / 4);
@@ -69,18 +69,18 @@ public class TextBox : MonoBehaviour
                 // Wait for confirmation
                 yield return new WaitForSeconds(.35f);
                 // TODO: arrow
-                while (!Input.GetButton("Jump"))
+                while (!Input.GetButton("Next"))
                     yield return new WaitForFixedUpdate();
             }
-
-            // Clear text
-            // sb.Clear(); ← .NET 4
-            sb.Length = 0;
         }
 
         // TODO: fire event
-		while (!Input.GetButton("Jump"))
+		while (!Input.GetButton("Next"))
 			yield return new WaitForFixedUpdate();
+
+		// Clear text
+		// sb.Clear(); ← .NET 4
+		sb.Length = 0;
 
         textComponent.text = string.Empty;
 		finished = true;

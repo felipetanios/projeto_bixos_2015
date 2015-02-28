@@ -20,7 +20,6 @@ public class MovementManager : MonoBehaviour
 
 	void Start ()
 	{
-		ChangeMode (Mode.Rhythm);
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
@@ -50,6 +49,7 @@ public class MovementManager : MonoBehaviour
 
 				// Never forget the sprites
 				PlayerSprites.Instance.IsRunning(false);
+				PlayerSprites.Instance.Ops();
 
 				RunMovement.Instance.enabled = false;
 
