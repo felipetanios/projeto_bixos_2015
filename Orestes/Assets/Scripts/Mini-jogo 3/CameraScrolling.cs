@@ -46,8 +46,8 @@ public class CameraScrolling : MonoBehaviour
 		progress = (transform.position.x + 9)/endLocation;
 
         if (MovementManager.Instance.mode == MovementManager.Mode.Run) {
-			defaultVector = runVector * Time.deltaTime * 0.3f;
-			defaultSpeed = runSpeed * 0.5f;
+			defaultVector = runVector * Time.deltaTime * 0.3f * 1.1f;
+			defaultSpeed = runSpeed * 0.5f * 1.1f;
 			transform.Translate (defaultVector);
 		} else if (MovementManager.Instance.mode == MovementManager.Mode.Rhythm) { // MovementManager.Instance.mode == MovementManager.Mode.Rhythm
 			defaultVector = runVector * 0.05f * Time.deltaTime;

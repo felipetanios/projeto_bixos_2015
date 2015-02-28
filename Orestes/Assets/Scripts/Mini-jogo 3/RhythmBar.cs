@@ -8,6 +8,7 @@ public class RhythmBar : MonoBehaviour
 
     private GameObject indicator;
 
+	public float maxVelocity = 3;
     private float velocity;
     private float position;
 
@@ -29,7 +30,8 @@ public class RhythmBar : MonoBehaviour
 
     public void SpeedUp(float percent)
     {
-        velocity *= 1 + percent;
+		if (velocity < maxVelocity)
+	        velocity *= 1 + percent;
     }
 
     public static RhythmBar Instance {

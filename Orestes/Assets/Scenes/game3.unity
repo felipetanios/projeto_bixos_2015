@@ -1505,6 +1505,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 640349fd800be164a8c226507e240230, type: 2}
+      propertyPath: maxVelocity
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 640349fd800be164a8c226507e240230, type: 2}
   m_RootGameObject: {fileID: 2101375663}
@@ -2506,6 +2510,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorTexture: {fileID: 2800000, guid: b5a0aca9917fda1448fb4ec70862a1d8, type: 3}
   targetTexture: {fileID: 2800000, guid: b5a0aca9917fda1448fb4ec70862a1d8, type: 3}
+  maxVelocity: 3
   justWoke: 0
 --- !u!131 &2101375665
 GUITexture:

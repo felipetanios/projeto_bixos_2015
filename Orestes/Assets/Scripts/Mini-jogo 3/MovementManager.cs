@@ -63,11 +63,12 @@ public class MovementManager : MonoBehaviour
 				
 				// Never forget the sprites
 				PlayerSprites.Instance.IsRunning(false);
+				PlayerSprites.Instance.IsJumping(false);
+				PlayerSprites.Instance.IsFalling(false);
 				PlayerSprites.Instance.End();
 				
 				RunMovement.Instance.enabled = false;
 				RhythmMovement.Instance.enabled = true;
-
 				RhythmBar.Instance.gameObject.SetActive(false);
 				
 				break;

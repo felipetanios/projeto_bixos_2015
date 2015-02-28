@@ -37,8 +37,13 @@ public class RhythmMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
 	{
-		// Player is always on movement
-		amountToMove.x = defaultSpeed;
+		if (MovementManager.Instance.mode != MovementManager.Mode.End) {
+			// Player is always on movement
+			amountToMove.x = defaultSpeed;
+		}
+		else {
+			amountToMove.x = 0;
+		}
 
 		if (!Physics2D.OverlapCircle (groundCheck.position, .02f, groundMask)) {
 			toGoY -= gravity * Time.deltaTime;
