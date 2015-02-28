@@ -1,29 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PanelManager : MonoBehaviour {
-	public GameObject textBox;
-
-	private static PanelManager instance;
-	public static PanelManager Instance {
-		get { return instance; }
-	}
+public class PanelManager : MonoBehaviour
+{
 	
-	void Awake()
-	{
-		instance = this;
-	}
-	
-	void OnDestroy()
-	{
-		instance = null;
-	}
+    public static PanelManager Instance { get; private set; }
 
-	public void CreateNewText (string myText) {
-		TextBox.Instance.text = myText;
+    void Awake()
+    {
+        if (Instance == null)
+            Instance = this;
+    }
 
-		TextBox.Instance.StartScript ();
-	}
+    void Destroy()
+    {
+        if (Instance == this)
+            Instance = null;
+    }
+
+    public void EnableUI()
+    {
+        CanvasManager.Instance.SetUIEnabled(true);
+    }
+
+    public void CreateNewText(string myText)
+    {
+        TextBox.Instance.text = myText;
+
+        TextBox.Instance.StartScript();
+    }
 
 	public void CreateNewInput (string myText) {
 		InputString.Instance.text = myText;
