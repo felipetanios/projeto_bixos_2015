@@ -34,6 +34,8 @@ public class TextBox : MonoBehaviour
 	{
 		coroutine = TypeText();
 		StartCoroutine(coroutine);
+
+		finished = false;
 	}
 	
 	public IEnumerator Type(string text)
