@@ -48,9 +48,43 @@ Mal posso esperar para saborear as delícias que me aguardam!");
         while (ret.MoveNext())
             yield return ret.Current;
 
-        ret = TextBox.Instance.Type("Cozido misto >:D", Color.red);
+        ret = TextBox.Instance.Type("Escolha sua refeição", Color.yellow, false);
         while (ret.MoveNext())
             yield return ret.Current;
+
+        ButtonsManager.Instance.AddOptions(
+            "Filé de Salmão",
+            "Batata frita",
+            "Lasanha",
+            "Macarrão",
+            "Hambúrguer de picanha",
+            "Cozido Misto");
+
+        while (!ButtonsManager.Instance.HasChosen)
+            yield return new WaitForFixedUpdate();
+
+        yield return new WaitForSeconds(.2f);
+
+        ButtonsManager.Instance.DeleteOptions();
+
+        ret = TextBox.Instance.Type("(Blergh, cozido misto...)", Color.blue, false);
+        while (ret.MoveNext())
+            yield return ret.Current;
+
+        ret = TextBox.Instance.Type("Vocẽ quer MUITO, ou POUCO?", Color.yellow, false);
+        while (ret.MoveNext())
+            yield return ret.Current;
+
+        ButtonsManager.Instance.AddOptions(
+            "MUITO",
+            "POUCO");
+
+        while (!ButtonsManager.Instance.HasChosen)
+            yield return new WaitForFixedUpdate();
+
+        yield return new WaitForSeconds(.2f);
+
+        ButtonsManager.Instance.DeleteOptions();
 
     }
 }

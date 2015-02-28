@@ -38,16 +38,16 @@ public class TextBox : MonoBehaviour
 		finished = false;
 	}
 	
-	public IEnumerator Type(string text)
+    public IEnumerator Type(string text, bool clear = true)
 	{
-		return Type(text, Color.black);
+        return Type(text, Color.black, clear);
 	}
 	
-	public IEnumerator Type(string text, Color color)
+    public IEnumerator Type(string text, Color color, bool clear = true)
 	{
 		this.text = text;
 		textComponent.color = color;
-		return TypeText();
+        return TypeText(clear);
 	}
 	
 	public void Stop()
@@ -55,7 +55,7 @@ public class TextBox : MonoBehaviour
 		StopCoroutine(coroutine);
 	}
 	
-	IEnumerator TypeText()
+    IEnumerator TypeText(bool clear = true)
 	{
 		StringBuilder sb = new StringBuilder();
 		
@@ -98,7 +98,8 @@ public class TextBox : MonoBehaviour
 			yield return new WaitForFixedUpdate();
 		
 		// Clear onscreen text
-		textComponent.text = string.Empty;
+		if (clear)
+			textComponent.text = string.Empty;
 		finished = true;
 	}
 }
