@@ -8,18 +8,35 @@ public class TextBox : MonoBehaviour
 {
     public string text;
     public float delay = 0.1f;
+	public bool finished = false;
 
     Text textComponent;
     IEnumerator coroutine;
 
-    void Start()
+	private static TextBox instance;
+	
+	public static TextBox Instance {
+		get { return instance; }
+	}
+
+	void Awake()
+	{
+		instance = this;
+	}
+	
+	void OnDestroy()
+	{
+		instance = null;
+	}
+
+    public void StartScript()
     {
         textComponent = GetComponent<Text>();
         coroutine = TypeText();
         StartCoroutine(coroutine);
     }
 
-    void Destroy()
+    public void Stop()
     {
         StopCoroutine(coroutine);
     }
@@ -62,6 +79,10 @@ public class TextBox : MonoBehaviour
         }
 
         // TODO: fire event
+		while (!Input.GetButton("Jump"))
+			yield return new WaitForFixedUpdate();
+
         textComponent.text = string.Empty;
+		finished = true;
     }
 }
