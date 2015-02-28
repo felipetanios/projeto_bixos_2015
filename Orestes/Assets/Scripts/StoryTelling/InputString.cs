@@ -33,6 +33,8 @@ public class InputString : MonoBehaviour
 	{
 		textComponent = GetComponent<Text>();
 		coroutine = TypeText();
+		
+		finished = false;
 		StartCoroutine(coroutine);
 	}
 	
@@ -69,15 +71,16 @@ public class InputString : MonoBehaviour
 				// Wait for confirmation
 				yield return new WaitForSeconds(.35f);
 				// TODO: arrow
-				while (!Input.GetButton("Next"))
+				while (i != lines.Length - 1 && !Input.GetButton("Next"))
 					yield return new WaitForFixedUpdate();
 			}
 			
 			// Clear text
 			// sb.Clear(); ← .NET 4
+			if (i != lines.Length - 1)
+				sb.Length = 0;
 		}
 
-		bool written = false;
 		bool finishedWritten = false;
 		int qt = 0;
 
@@ -88,10 +91,13 @@ public class InputString : MonoBehaviour
 					sb.Append(c);
 					textComponent.text = sb.ToString();
 					qt++;
-
-					written = true;
 				}
-				else if (written || qt > 20) {
+				else if (c == 08 && qt > 0) {
+					qt--;
+					textComponent.text = textComponent.text.Substring(0, textComponent.text.Length - 1);
+					sb.Remove(sb.Length - 1, 1);
+				}
+				else if (qt > 0 && (qt > 20 || c == 32 || c == 13)) {
 					finishedWritten = true;
 				}
 			}
@@ -100,7 +106,6 @@ public class InputString : MonoBehaviour
 		}
 		
 		textComponent.text = string.Empty;
-		sb.Length = 0;
 		finished = true;
 	}
 }

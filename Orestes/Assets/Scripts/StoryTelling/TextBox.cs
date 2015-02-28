@@ -32,7 +32,9 @@ public class TextBox : MonoBehaviour
 
     public void StartScript()
     {
-        coroutine = TypeText();
+		coroutine = TypeText ();
+		
+		finished = false;
         StartCoroutine(coroutine);
     }
 

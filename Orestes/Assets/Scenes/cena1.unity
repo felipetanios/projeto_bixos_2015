@@ -620,7 +620,7 @@ GameObject:
   - 212: {fileID: 1784166408}
   - 95: {fileID: 1784166407}
   m_Layer: 0
-  m_Name: "Prof de bra\xE7os cruzados"
+  m_Name: Prof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

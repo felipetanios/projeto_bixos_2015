@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTurned: 1
-  scalingFactorX: -.100000001
+  scalingFactorX: -.0900000036
 --- !u!212 &21266886
 SpriteRenderer:
   m_ObjectHideFlags: 1
