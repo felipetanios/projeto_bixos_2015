@@ -7,10 +7,12 @@ public class Parallax : MonoBehaviour
     public float jumpSize;
 	
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         var cameraScrolling = CameraScrolling.Instance;
-        transform.Translate(cameraScrolling.defaultSpeed * scalingFactor * Time.deltaTime, 0, 0, Space.Self);
+
+		if (Time.timeScale == 1)
+	        transform.Translate(cameraScrolling.defaultSpeed * scalingFactor * Time.timeScale, 0, 0, Space.Self);
     }
 
 

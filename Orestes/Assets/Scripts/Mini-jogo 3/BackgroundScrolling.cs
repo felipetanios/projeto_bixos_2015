@@ -12,7 +12,7 @@ public class BackgroundScrolling : MonoBehaviour {
 
         if (isTurned)
             transform.Translate(cameraScrolling.defaultSpeed * scalingFactorX, 0, 0);
-        else
+		else
 			transform.Translate(cameraScrolling.defaultVector.x * scalingFactorX,
                                 cameraScrolling.defaultVector.y,
                                 0);

@@ -44,7 +44,7 @@ public class Cena1Manager : MonoBehaviour {
 		}
 
 		ProfSprites.Instance.Pose2 ();
-		PanelManager.Instance.CreateNewText ("Você tem certeza que quer se chamar \"BIXO BURRO\"?\n...");
+		PanelManager.Instance.CreateNewText ("Você tem certeza que quer se chamar \"BIXÃO\"?\n...");
 		
 		while (TextBox.Instance.finished == false) {
 			yield return null;
@@ -62,7 +62,7 @@ public class Cena1Manager : MonoBehaviour {
 		ButtonsManager.Instance.DeleteOptions();
 		
 		ProfSprites.Instance.Pose1 ();
-		PanelManager.Instance.CreateNewText ("Neste caso: bem-vindo, BIXO BURRO!");
+		PanelManager.Instance.CreateNewText ("Neste caso: bem-vindo, BIXÃO!");
 
 		while (TextBox.Instance.finished == false) {
 			yield return null;
@@ -81,7 +81,7 @@ public class Cena1Manager : MonoBehaviour {
 		
 		canProceed = false;
 
-		PanelManager.Instance.CreateNewText ("Excelente escolha, BIXO BURRO, exceto que...");
+		PanelManager.Instance.CreateNewText ("Excelente escolha, BIXÃO, exceto que...");
 
 		yield return new WaitForSeconds(4);
 		Maquina0.Instance.Raspe ();

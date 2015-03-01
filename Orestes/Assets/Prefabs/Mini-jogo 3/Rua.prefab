@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653dd8d2d017e3447b2315d2274fae9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scalingFactor: -2
+  scalingFactor: -.0900000036
   jumpSize: 5
 --- !u!212 &21200000
 SpriteRenderer:

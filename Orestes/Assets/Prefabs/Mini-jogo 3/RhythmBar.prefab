@@ -40,8 +40,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ad969e6097a3864da6daeb98d60a9fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indicatorTexture: {fileID: 0}
-  targetTexture: {fileID: 0}
+  indicatorTexture: {fileID: 2800000, guid: b5a0aca9917fda1448fb4ec70862a1d8, type: 3}
+  targetTexture: {fileID: 2800000, guid: b5a0aca9917fda1448fb4ec70862a1d8, type: 3}
+  maxVelocity: 3
+  justWoke: 0
 --- !u!131 &13100000
 GUITexture:
   m_ObjectHideFlags: 1
@@ -49,7 +51,7 @@ GUITexture:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: b5a0aca9917fda1448fb4ec70862a1d8, type: 3}
+  m_Texture: {fileID: 2800000, guid: ff6c1b6b4ea614c4294e3353634cd299, type: 3}
   m_Color: {r: .5, g: .5, b: .5, a: .5}
   m_PixelInset:
     serializedVersion: 2
