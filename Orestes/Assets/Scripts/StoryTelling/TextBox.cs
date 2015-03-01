@@ -69,14 +69,18 @@ public class TextBox : MonoBehaviour
 		
         for (int i = 0; i < lines.Length; i++) {
             if (i != 0) {
-                sb.Append(lines[i - 1]);
+                foreach (var c in lines[i - 1])
+                    if (c != '\t')
+                        sb.Append(c);
                 sb.Append('\n');
             }
 			
             foreach (char c in lines[i]) {
+                var fast = Input.GetButton("Next");
+
                 // Use \t as an extra delay when typing
                 if (c == '\t') {
-                    if (!Input.GetButton("Next"))
+                    if (!fast)
                         yield return new WaitForSeconds(delay * 3);
                     else
                         yield return new WaitForSeconds(delay);
@@ -86,10 +90,12 @@ public class TextBox : MonoBehaviour
 
                 sb.Append(c);
                 textComponent.text = sb.ToString();
-                // Play keystroke effect
-                audio.Play();
+                // Do not play spaces
+                if (c != ' ')
+                    // Play keystroke effect
+                    audio.Play();
 				
-                if (!Input.GetButton("Next"))
+                if (!fast)
                     yield return new WaitForSeconds(delay);
                 else
                     yield return new WaitForSeconds(delay / 3);
