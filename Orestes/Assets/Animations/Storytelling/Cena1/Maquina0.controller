@@ -5,11 +5,11 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Bixo3
+  m_Name: Maquina0
   serializedVersion: 2
   m_AnimatorParameters:
-  - m_Name: Careca
-    m_Type: 4
+  - m_Name: Raspe
+    m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
@@ -17,7 +17,7 @@ AnimatorController:
   m_AnimatorLayers:
   - serializedVersion: 3
     m_Name: Base Layer
-    m_StateMachine: {fileID: 110752000}
+    m_StateMachine: {fileID: 110730420}
     m_Mask: {fileID: 0}
     m_BlendingMode: 0
     m_SyncedLayerIndex: -1
@@ -26,7 +26,7 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1101 &110121818
+--- !u!1101 &110118706
 Transition:
   serializedVersion: 2
   m_ObjectHideFlags: 3
@@ -34,72 +34,72 @@ Transition:
   m_PrefabInternal: {fileID: 0}
   m_Name: 
   m_SrcState: {fileID: 0}
-  m_DstState: {fileID: 110211800}
+  m_DstState: {fileID: 110223766}
   m_TransitionDuration: .100000001
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Careca
+    m_ConditionEvent: Raspe
     m_EventTreshold: 0
     m_ExitTime: .899999976
   m_Atomic: 1
   m_Solo: 0
   m_Mute: 0
   m_CanTransitionToSelf: 0
---- !u!1102 &110211800
+--- !u!1102 &110204600
 State:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Careca
+  m_Name: Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: 894649c51e22d3748a587f8ba2f49298, type: 2}
-  m_ParentStateMachine: {fileID: 110752000}
-  m_Position: {x: 235, y: 65, z: 0}
+  - {fileID: 7400000, guid: 22c7a074781d4c1429a798a8610ab597, type: 2}
+  m_ParentStateMachine: {fileID: 110730420}
+  m_Position: {x: 192, y: -48, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
---- !u!1102 &110243348
+--- !u!1102 &110223766
 State:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Haired
+  m_Name: RASPE
   m_Speed: 1
   m_CycleOffset: 0
   m_Motions:
-  - {fileID: 7400000, guid: 02c3667e9f2dcf3479347373a5d00814, type: 2}
-  m_ParentStateMachine: {fileID: 110752000}
-  m_Position: {x: 240, y: -24, z: 0}
+  - {fileID: 7400000, guid: 533a015ccffb811438b14aba3073ae1d, type: 2}
+  m_ParentStateMachine: {fileID: 110730420}
+  m_Position: {x: 180, y: 72, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
---- !u!1107 &110752000
+--- !u!1107 &110730420
 StateMachine:
   serializedVersion: 2
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Base Layer
-  m_DefaultState: {fileID: 110243348}
+  m_DefaultState: {fileID: 110204600}
   m_States:
-  - {fileID: 110243348}
-  - {fileID: 110211800}
+  - {fileID: 110204600}
+  - {fileID: 110223766}
   m_ChildStateMachine: []
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110211800}
+      first: {fileID: 110223766}
       second: []
     data:
-      first: {fileID: 110243348}
+      first: {fileID: 110204600}
       second: []
     data:
       first: {fileID: 0}
       second:
-      - {fileID: 110121818}
+      - {fileID: 110118706}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

@@ -32,7 +32,6 @@ public class PanelManager : MonoBehaviour
     }
 
 	public void CreateNewInput (string myText) {
-		InputString.Instance.Stop ();
 		InputString.Instance.text = myText;
 		
 		InputString.Instance.StartScript ();

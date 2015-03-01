@@ -15,6 +15,9 @@ public class TextBox : MonoBehaviour
     Text textComponent;
     IEnumerator coroutine;
 
+	[HideInInspector]
+	public bool isCoroutineRunning;
+
     public static TextBox Instance { get; private set; }
 
     void Awake()
@@ -52,11 +55,14 @@ public class TextBox : MonoBehaviour
 
     public void Stop()
     {
-        StopCoroutine(coroutine);
+		if (isCoroutineRunning)
+			StopCoroutine(coroutine);
     }
 
     IEnumerator TypeText(bool clear = true, bool wait = true)
     {
+		isCoroutineRunning = true;
+
         StringBuilder sb = new StringBuilder();
 		
         var lines = text.Split('\n');
@@ -111,5 +117,7 @@ public class TextBox : MonoBehaviour
         if (clear)
             textComponent.text = string.Empty;
         finished = true;
+
+		isCoroutineRunning = false;
     }
 }

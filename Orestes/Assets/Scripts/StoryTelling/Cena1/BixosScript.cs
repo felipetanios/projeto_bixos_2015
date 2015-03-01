@@ -6,8 +6,14 @@ public class BixosScript : MonoBehaviour {
 
 	void OnMouseDown () {
 		if (isCorrect)
-			Cena1Manager.Instance.correctChoice = true;
+			Cena1Manager.Instance.canProceed = true;
 		else
 			PanelManager.Instance.CreateNewText ("TENTE NOVAMENTE, BIXO BURRO.");
+	}
+
+	void Update () {
+		if (Cena1Manager.Instance.goAway == true && !isCorrect) {
+			Destroy(gameObject);
+		}
 	}
 }
