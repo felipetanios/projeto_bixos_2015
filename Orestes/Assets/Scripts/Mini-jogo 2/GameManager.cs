@@ -49,12 +49,14 @@ public class GameManager : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
                 mouseClicks++;
             gameTime += Time.deltaTime;
-            if (activatedProfs == 0)
+            if (activatedProfs == 0 && !profOnScreen)
                 finished = true;
         } else if (finished) {
+            MouseManager.Instance.ResetCursor();
+            // TODO: do something with the score
             score = scoreIdeal / (gameTime * mouseClicks) * 1000;
-            Debug.Log(gameTime + " " + mouseClicks);
-            enabled = false;
+            //Debug.Log(gameTime + " " + mouseClicks);
+            Application.LoadLevel("cena3b");
         }
     }
 

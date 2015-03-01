@@ -4,8 +4,6 @@ using System;
 
 public class MouseManager : MonoBehaviour
 {
-    static MouseManager instance;
-
     public Texture2D normalCursorTexture;
     public Texture2D intermediateCursorTexture;
     public Texture2D pressedCursorTexture;
@@ -15,9 +13,8 @@ public class MouseManager : MonoBehaviour
     private IEnumerator mouseAnimation;
 
     public static MouseManager Instance {
-        get {
-            return instance;
-        }
+        get;
+        private set;
     }
 
     public bool IsMouseNear(Spot spot)
@@ -25,16 +22,21 @@ public class MouseManager : MonoBehaviour
         return mouseCollider.collider.bounds.Intersects(spot.collider2D.bounds);
     }
 
+    public void ResetCursor()
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+    }
+
     void Awake()
     {
-        instance = this;
+        Instance = this;
         hotspot = new Vector2(normalCursorTexture.width / 2, normalCursorTexture.height / 2);
         Cursor.SetCursor(normalCursorTexture, hotspot, CursorMode.Auto);
     }
 
     void OnDestroy()
     {
-        instance = null;
+        Instance = null;
     }
 
     void Update()

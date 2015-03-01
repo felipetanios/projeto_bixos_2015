@@ -68,6 +68,16 @@ public class TextBox : MonoBehaviour
             }
 			
             foreach (char c in lines[i]) {
+                // Use \t as an extra delay when typing
+                if (c == '\t') {
+                    if (!Input.GetButton("Next"))
+                        yield return new WaitForSeconds(delay * 3);
+                    else
+                        yield return new WaitForSeconds(delay);
+                    continue;
+                }
+
+
                 sb.Append(c);
                 textComponent.text = sb.ToString();
                 // Play keystroke effect
