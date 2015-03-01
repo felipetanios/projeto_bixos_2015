@@ -46,7 +46,7 @@ um lugar bem longínquo e desconhecido pela maior parte da Unicamp.", Color.gree
 
         yield return new WaitForSeconds(.2f);
 
-        ret = TextBox.Instance.Type("Bixo.\t.\t.\t.\t.\t. Você tem um mapa...");
+        ret = TextBox.Instance.Type("Bixo.\t.\t.\t.\t.\t. Você tem um mapa...", Color.green);
         while (ret.MoveNext())
             yield return ret.Current;
 
