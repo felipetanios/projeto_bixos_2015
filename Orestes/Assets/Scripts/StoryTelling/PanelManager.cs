@@ -25,12 +25,14 @@ public class PanelManager : MonoBehaviour
 
     public void CreateNewText(string myText)
     {
+		TextBox.Instance.Stop ();
         TextBox.Instance.text = myText;
 
         TextBox.Instance.StartScript();
     }
 
 	public void CreateNewInput (string myText) {
+		InputString.Instance.Stop ();
 		InputString.Instance.text = myText;
 		
 		InputString.Instance.StartScript ();

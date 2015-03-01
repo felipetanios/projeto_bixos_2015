@@ -4,7 +4,22 @@ using System.Collections;
 public class Cena1Manager : MonoBehaviour {
 
 	public GameObject[] bixos;
-
+	[HideInInspector] public bool correctChoice = false;
+	
+	public static Cena1Manager Instance { get; private set; }
+	
+	void Awake()
+	{
+		if (Instance == null)
+			Instance = this;
+	}
+	
+	void OnDestroy()
+	{
+		if (Instance == this)
+			Instance = null;
+	}
+	
 	// Use this for initialization
 	void Start () {
 		StartCoroutine ("Scene1");
@@ -44,5 +59,9 @@ public class Cena1Manager : MonoBehaviour {
 		}
 
 		PanelManager.Instance.CreateNewText ("Escolha o avatar em que você mais se identifica!");
+
+		while (correctChoice == false) {
+			yield return null;
+		}
 	}
 }
