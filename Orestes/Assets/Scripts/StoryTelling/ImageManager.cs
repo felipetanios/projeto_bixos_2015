@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ImageManager : MonoBehaviour
 {
 
-    private Image image;
+    protected Image image;
 
     public static ImageManager Instance { get; private set; }
 
