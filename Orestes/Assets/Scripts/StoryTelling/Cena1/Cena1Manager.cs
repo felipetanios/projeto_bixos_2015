@@ -121,5 +121,33 @@ public class Cena1Manager : MonoBehaviour {
 		yield return new WaitForSeconds(.2f);
 		
 		ButtonsGamux.Instance.DeleteOptions();
+		
+		ProfSprites.Instance.Pose1 ();
+		PanelManager.Instance.CreateNewText ("Muito bem, agora deixe-me explicar um pouquinho melhor:");
+		
+		while (TextBox.Instance.finished == false) {
+			yield return null;
+		}
+		
+		ProfSprites.Instance.Pose2 ();
+		PanelManager.Instance.CreateNewText ("O GAMUX é formado por duas distintas (ou nem tão distintas) espécies:\nPROGRAMADORES	+	ARTISTAS	=	GAMUX");
+		
+		while (TextBox.Instance.finished == false) {
+			yield return null;
+		}
+
+		ProfSprites.Instance.Pose1 ();
+		PanelManager.Instance.CreateNewText ("Acho que a melhor forma de conhecer é CONHECENDO, não é mesmo?\nEu proponho uma missão a você, caro bixo: vá até a sede do GAMUX,\nna Unicamp, investigar esse curioso \"núcleo de produção de jogos indie\".");
+		
+		while (TextBox.Instance.finished == false) {
+			yield return null;
+		}
+
+		ProfSprites.Instance.Pose3 ();
+		PanelManager.Instance.CreateNewText ("Boa sorte, e cuidado com os unicampers que rondam\nos arredores dessa curiosa faculdade.");
+		
+		while (TextBox.Instance.finished == false) {
+			yield return null;
+		}
 	}
 }
