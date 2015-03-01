@@ -26,16 +26,7 @@ public class Cena1Manager : MonoBehaviour {
 		StartCoroutine ("Scene1");
 	}
 	
-	IEnumerator Scene1 () {        
-
-		var imageManager = ImageManager.Instance;
-		
-		IEnumerator ret;
-		
-		imageManager.AlphaTo(0);
-		ret = imageManager.FadeTo(1);
-		while (ret.MoveNext())
-			yield return ret.Current;
+	IEnumerator Scene1 () {
 		
 		PanelManager.Instance.EnableUI();
 		
@@ -102,7 +93,7 @@ public class Cena1Manager : MonoBehaviour {
 		goAway = true;
 		ProfSprites.Instance.ProfObject ().SetActive (true);
 
-		PanelManager.Instance.CreateNewText ("Pois bem, você parece-me ser um bixo bastante perspicaz,\no que você imagina que o GAMUX é, a partir\nda ilustríssima apresentação que você acabou de presenciar?");
+		PanelManager.Instance.CreateNewText ("Pois bem, você parece-me ser um bixo bastante perspicaz,\no que você imagina que o GAMUX é, a partir da ilustríssima\napresentação que você acabou de presenciar?");
 
 		while (TextBox.Instance.finished == false) {
 			yield return null;
@@ -111,7 +102,7 @@ public class Cena1Manager : MonoBehaviour {
 		ButtonsGamux.Instance.AddOptions(
 			"Um núcleo de produção de jogos indie",
 			"Uma padaria",
-			"Uma confecção camisetas de animais fofos",
+			"Uma fábrica de camisetas de animais fofos",
 			"Uma montadora de veículos",
 			"Time de e-sport");
 
@@ -130,7 +121,7 @@ public class Cena1Manager : MonoBehaviour {
 		}
 		
 		ProfSprites.Instance.Pose2 ();
-		PanelManager.Instance.CreateNewText ("O GAMUX é formado por duas distintas (ou nem tão distintas) espécies:\nPROGRAMADORES	+	ARTISTAS	=	GAMUX");
+		PanelManager.Instance.CreateNewText ("O GAMUX é formado por duas distintas (ou nem tão tanto) espécies:\nOs bravos programadores e os destemidos artistas!");
 		
 		while (TextBox.Instance.finished == false) {
 			yield return null;
@@ -149,5 +140,8 @@ public class Cena1Manager : MonoBehaviour {
 		while (TextBox.Instance.finished == false) {
 			yield return null;
 		}
+
+		// Finally, load level
+		Application.LoadLevel("cena2");
 	}
 }
