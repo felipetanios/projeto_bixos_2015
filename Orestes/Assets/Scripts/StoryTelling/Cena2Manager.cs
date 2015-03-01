@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(AudioSource))]
 public class Cena2Manager : MonoBehaviour
 {
 
+    public AudioClip plop;
     public Sprite outsideSprite;
-    public Sprite insideSprite;
+    public Sprite[] insideSprites;
 
     // Use this for initialization
     void Start()
@@ -39,7 +41,7 @@ Mal posso esperar para saborear as delícias que me aguardam!");
         ret = imageManager.FadeTo(0);
         while (ret.MoveNext())
             yield return ret.Current;
-        imageManager.SwitchImage(insideSprite);
+        imageManager.SwitchImage(insideSprites[0]);
         ret = imageManager.FadeTo(1);
         while (ret.MoveNext())
             yield return ret.Current;
@@ -67,6 +69,14 @@ Mal posso esperar para saborear as delícias que me aguardam!");
 
         ButtonsManager.Instance.DeleteOptions();
 
+        ret = imageManager.FadeTo(0, .25f);
+        while (ret.MoveNext())
+            yield return ret.Current;
+        imageManager.SwitchImage(insideSprites[1]);
+        ret = imageManager.FadeTo(1, .25f);
+        while (ret.MoveNext())
+            yield return ret.Current;
+
         ret = TextBox.Instance.Type("(Blergh, cozido misto...)", Color.blue, false);
         while (ret.MoveNext())
             yield return ret.Current;
@@ -82,9 +92,26 @@ Mal posso esperar para saborear as delícias que me aguardam!");
         while (!ButtonsManager.Instance.HasChosen)
             yield return new WaitForFixedUpdate();
 
-        yield return new WaitForSeconds(.2f);
-
         ButtonsManager.Instance.DeleteOptions();
+        
+        audio.PlayOneShot(plop, .5f);
+        yield return new WaitForSeconds(.3f);
+        imageManager.SwitchImage(insideSprites[2]);
+        audio.PlayOneShot(plop, .5f);
+        yield return new WaitForSeconds(.3f);
+        imageManager.SwitchImage(insideSprites[3]);
 
+        ret = TextBox.Instance.Type("Boa sorte encontrando um... lugar, mas cuidado com as pombas!", Color.green, false);
+        while (ret.MoveNext())
+            yield return ret.Current;
+
+        yield return new WaitForSeconds(.5f);
+
+        ret = imageManager.FadeTo(0, 1f);
+        while (ret.MoveNext())
+            yield return ret.Current;
+
+        // Finally, load level
+        Application.LoadLevel("game1");
     }
 }

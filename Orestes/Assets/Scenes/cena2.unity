@@ -170,8 +170,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06601f692b439a4a815770bc634fb36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plop: {fileID: 0}
   outsideSprite: {fileID: 21300000, guid: 78120fa533202764382e4d1fc0916593, type: 3}
-  insideSprite: {fileID: 21300000, guid: 43d120f9b0516ee46a15ccacca72c04f, type: 3}
+  insideSprites:
+  - {fileID: 21300000, guid: 654a69a96eeb39b4d93402a931c56bfd, type: 3}
+  - {fileID: 21300000, guid: 176616e2dcf96a843a58cd0cc77a8366, type: 3}
+  - {fileID: 21300000, guid: 168d8fc79aff5f745a507d13545f5fa7, type: 3}
+  - {fileID: 21300000, guid: 20cefa74856f48444952bb17899deff7, type: 3}
 --- !u!1 &300310689
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,7 +268,7 @@ AudioSource:
   m_GameObject: {fileID: 300310689}
   m_Enabled: 1
   serializedVersion: 3
-  m_audioClip: {fileID: 8300000, guid: a2c1255a2f3b38a4fa9ce0af7f5707fe, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f39cc7608bf3a5a49837d43d055708f9, type: 3}
   m_PlayOnAwake: 0
   m_Volume: .200000003
   m_Pitch: 1
