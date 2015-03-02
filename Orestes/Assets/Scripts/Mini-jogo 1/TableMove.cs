@@ -10,7 +10,7 @@ public class TableMove : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        InvokeRepeating("CriaMesa", 2, 3.4f);
+        InvokeRepeating("CriaMesa", 2, 1.8f);
     }
 	
     // Update is called once per frame
@@ -19,8 +19,8 @@ public class TableMove : MonoBehaviour
         foreach (Transform child in transform) {
             if (child) {
 				float k = 0.04f;
-				child.transform.Translate(lugar* k);
-                child.transform.localScale += new Vector3(0.025f, 0.0125f, 0);
+				child.transform.Translate(lugar*k);
+				child.transform.localScale += new Vector3(0.05f, 0.025f, 0)*1.1f;
 				k+=0.02f;
             }
         }

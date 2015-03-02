@@ -17,7 +17,7 @@ public class ProgressBar : MonoBehaviour
         private set;
     }
 
-    private readonly int TEMPO_TOTAL = 2 * 60;
+    private readonly int TEMPO_TOTAL = 1 * 60;
     //segundos
 
     private int flinchCounter = 0;
