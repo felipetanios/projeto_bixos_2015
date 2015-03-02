@@ -73,7 +73,6 @@ NavMeshSettings:
     minRegionArea: 2
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
-    tileSizeHint: 0
   m_NavMesh: {fileID: 0}
 --- !u!1 &46519922
 GameObject:
@@ -655,7 +654,7 @@ Prefab:
       objectReference: {fileID: 2800000, guid: b5a0aca9917fda1448fb4ec70862a1d8, type: 3}
     - target: {fileID: 11400000, guid: 640349fd800be164a8c226507e240230, type: 2}
       propertyPath: maxVelocity
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 640349fd800be164a8c226507e240230, type: 2}
@@ -3342,7 +3341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicatorTexture: {fileID: 2800000, guid: 64e59a1dd681a3040ab5c179015be5d9, type: 3}
   targetTexture: {fileID: 2800000, guid: b5a0aca9917fda1448fb4ec70862a1d8, type: 3}
-  maxVelocity: 2
+  maxVelocity: 1.5
   justWoke: 0
 --- !u!131 &2101375665
 GUITexture:

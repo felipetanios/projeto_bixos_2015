@@ -16,10 +16,10 @@ public class EndMovement : MonoBehaviour {
 			Instance = null;
 	}
 	
-	public float defaultSpeed = 30f;
+	public float defaultSpeed = 0.001f;
 	private Vector2 amountToMove;
 
-	void fixedUpdate () {
+	void FixedUpdate () {
 		amountToMove.x = defaultSpeed;
 
 		transform.Translate(amountToMove * Time.deltaTime);
