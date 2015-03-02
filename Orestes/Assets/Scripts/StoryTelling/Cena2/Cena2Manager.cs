@@ -9,6 +9,10 @@ public class Cena2Manager : MonoBehaviour
     public Sprite outsideSprite;
     public Sprite[] insideSprites;
 
+	public Color green;
+	public Color yellow;
+	public Color blue;
+
     // Use this for initialization
     void Start()
     {
@@ -50,7 +54,7 @@ Mal posso esperar para saborear as delícias que me aguardam!");
         while (ret.MoveNext())
             yield return ret.Current;
 
-        ret = TextBox.Instance.Type("Escolha sua refeição", Color.yellow, false);
+        ret = TextBox.Instance.Type("Escolha sua refeição:", yellow, false);
         while (ret.MoveNext())
             yield return ret.Current;
 
@@ -77,11 +81,11 @@ Mal posso esperar para saborear as delícias que me aguardam!");
         while (ret.MoveNext())
             yield return ret.Current;
 
-        ret = TextBox.Instance.Type("(Blergh, cozido misto...)", Color.blue, false);
+        ret = TextBox.Instance.Type("(Blergh, cozido misto...)", blue, false);
         while (ret.MoveNext())
             yield return ret.Current;
 
-        ret = TextBox.Instance.Type("Vocẽ quer MUITO, ou POUCO?", Color.yellow, false);
+        ret = TextBox.Instance.Type("Vocẽ quer MUITO, ou POUCO?", yellow, false);
         while (ret.MoveNext())
             yield return ret.Current;
 
@@ -101,7 +105,7 @@ Mal posso esperar para saborear as delícias que me aguardam!");
         yield return new WaitForSeconds(.3f);
         imageManager.SwitchImage(insideSprites[3]);
 
-        ret = TextBox.Instance.Type("Boa sorte encontrando um... lugar, mas cuidado com as pombas!", Color.green, false);
+        ret = TextBox.Instance.Type("Boa sorte encontrando um... lugar, mas cuidado com as pombas!", green, false);
         while (ret.MoveNext())
             yield return ret.Current;
 
