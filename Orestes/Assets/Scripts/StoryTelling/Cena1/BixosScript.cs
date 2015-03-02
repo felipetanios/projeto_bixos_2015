@@ -8,7 +8,7 @@ public class BixosScript : MonoBehaviour {
 		if (isCorrect)
 			Cena1Manager.Instance.canProceed = true;
 		else
-			PanelManager.Instance.CreateNewText ("TENTE NOVAMENTE, BIXO BURRO.");
+			PanelManager.Instance.CreateNewText ("TENTE NOVAMENTE, BIXÃO.");
 	}
 
 	void Update () {

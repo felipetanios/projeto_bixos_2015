@@ -106,8 +106,8 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FontData:
-    m_Font: {fileID: 12800000, guid: a1130e87c4ae45d4bae6ea39eeb16c39, type: 3}
-    m_FontSize: 88
+    m_Font: {fileID: 12800000, guid: 1ebada9acf767cf42a222d481a874a26, type: 3}
+    m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -133,6 +133,7 @@ MonoBehaviour:
     display extra long lines (well, kinda)"
   delay: .075000003
   finished: 0
+  isCoroutineRunning: 0
 --- !u!222 &22271340
 CanvasRenderer:
   m_ObjectHideFlags: 1

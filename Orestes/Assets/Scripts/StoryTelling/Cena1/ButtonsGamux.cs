@@ -42,14 +42,16 @@ public class ButtonsGamux : MonoBehaviour
 			newButton.transform.SetParent(transform, false);
 			newButton.GetComponentInChildren<Text>().text = option;
 			if (option.Length > 35)
-				newButton.GetComponentInChildren<Text>().fontSize = 64;
+				newButton.GetComponentInChildren<Text>().fontSize = 40;
+			else
+				newButton.GetComponentInChildren<Text>().fontSize = 60;
 			if (first == true) {
 				newButton.onClick.AddListener(() => { HasChosen = true; });
 				first = false;
 			}
 			else
 				newButton.onClick.AddListener(() => { 
-					PanelManager.Instance.CreateNewText ("TENTE NOVAMENTE, BIXO BURRO."); });
+					PanelManager.Instance.CreateNewText ("TENTE NOVAMENTE, BIXÃO."); });
 		}
 		
 		HasChosen = false;
