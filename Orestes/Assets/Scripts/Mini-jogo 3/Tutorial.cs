@@ -18,7 +18,7 @@ public class Tutorial : MonoBehaviour {
 		Time.timeScale = 1;
 		progressIC.SetActive (true);
 		
-		MovementManager.Instance.ChangeMode (MovementManager.Mode.End);
+		MovementManager.Instance.ChangeMode (MovementManager.Mode.Rhythm);
 
 		Destroy (gameObject);
 		gameObject.SetActive(false);
