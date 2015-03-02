@@ -13,4 +13,9 @@ public class ScoreText : MonoBehaviour
 
         textMesh.text = "Score\n" + Mathf.Floor(ManagerScript.score);
     }
+
+	void Update () {
+		if (Input.GetButton("Next"))
+			Application.LoadLevel("cena3");
+	}
 }
