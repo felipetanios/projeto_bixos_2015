@@ -54,7 +54,7 @@ Mal posso esperar para saborear as delícias que me aguardam!");
         while (ret.MoveNext())
             yield return ret.Current;
 
-        ret = TextBox.Instance.Type("Escolha sua refeição:", yellow, false);
+        ret = TextBox.Instance.Type("Escolha sua refeição:", yellow, false, false);
         while (ret.MoveNext())
             yield return ret.Current;
 
@@ -81,11 +81,11 @@ Mal posso esperar para saborear as delícias que me aguardam!");
         while (ret.MoveNext())
             yield return ret.Current;
 
-        ret = TextBox.Instance.Type("(Blergh, cozido misto...)", blue, false);
+        ret = TextBox.Instance.Type("(Blergh, cozido misto...)", blue);
         while (ret.MoveNext())
             yield return ret.Current;
 
-        ret = TextBox.Instance.Type("Vocẽ quer MUITO, ou POUCO?", yellow, false);
+        ret = TextBox.Instance.Type("Você quer MUITO, ou POUCO?", yellow, false, false);
         while (ret.MoveNext())
             yield return ret.Current;
 
