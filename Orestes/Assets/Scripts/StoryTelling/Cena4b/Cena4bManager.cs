@@ -87,6 +87,6 @@ Eu não devo ser apenas um bixão, afinal de contas!");
             yield return null;
 
         //  TODO: link to cena5
-        //Application.LoadLevel("cena5");
+        Application.LoadLevel("cena5");
     }
 }

@@ -12,6 +12,9 @@ public class MovementManager : MonoBehaviour
 
     public Mode mode;
 
+	public AudioSource fast;
+	public AudioSource slow;
+
     private static MovementManager instance;
 
     public static MovementManager Instance {
@@ -43,7 +46,10 @@ public class MovementManager : MonoBehaviour
 				RhythmBar.Instance.gameObject.SetActive(false);
 				EndMovement.Instance.enabled = false;
 
-                break;
+				slow.enabled = false;	
+				fast.enabled = true;
+			
+			break;
 
             case Mode.Rhythm:
                 RhythmMovement.Instance.enabled = true;
@@ -58,6 +64,9 @@ public class MovementManager : MonoBehaviour
 				RhythmBar.Instance.gameObject.SetActive(true);
 				// Set your stuff, Im waking you up!
 				RhythmBar.Instance.WokeUp ();
+
+				slow.enabled = true;	
+				fast.enabled = false;
 
 				break;
 			case Mode.End:

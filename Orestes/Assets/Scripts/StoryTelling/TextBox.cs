@@ -12,7 +12,8 @@ public class TextBox : MonoBehaviour
     [HideInInspector]
     public bool finished = false;
 	
-    Text textComponent;
+	[HideInInspector]
+	public Text textComponent;
     IEnumerator coroutine;
 
 	[HideInInspector]

@@ -124,7 +124,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 15fe42fa12995604781af2677668abed, type: 2}
   m_ParentStateMachine: {fileID: 110780910}
-  m_Position: {x: 252, y: 108, z: 0}
+  m_Position: {x: 432, y: 120, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 
@@ -139,7 +139,7 @@ State:
   m_Motions:
   - {fileID: 7400000, guid: 53b82e54b0a20db4da121541fad46ef2, type: 2}
   m_ParentStateMachine: {fileID: 110780910}
-  m_Position: {x: 132, y: 168, z: 0}
+  m_Position: {x: 228, y: 168, z: 0}
   m_IKOnFeet: 0
   m_Mirror: 0
   m_Tag: 

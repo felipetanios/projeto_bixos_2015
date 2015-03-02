@@ -19,6 +19,11 @@ public class FadeOut : MonoBehaviour {
 			Instance = null;
 	}
 
+	public void BeginFadeIn () {
+		finishedFade = false;
+		StartCoroutine (FadeTo (0, 0.5f));
+	}
+
 	public void BeginFadeOut () {
 		finishedFade = false;
 		StartCoroutine (FadeTo (1, 0.5f));
