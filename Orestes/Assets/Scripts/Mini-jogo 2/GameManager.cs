@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
+ 
+    public Interface interfaceScript;
 
     [HideInInspector] public int activatedProfs;
 
@@ -53,10 +55,9 @@ public class GameManager : MonoBehaviour
                 finished = true;
         } else if (finished) {
             MouseManager.Instance.ResetCursor();
-            // TODO: do something with the score
             score = scoreIdeal / (gameTime * mouseClicks) * 1000;
-            //Debug.Log(gameTime + " " + mouseClicks);
-            Application.LoadLevel("cena3b");
+            interfaceScript.Score(score.ToString());
+            enabled = false;
         }
     }
 
