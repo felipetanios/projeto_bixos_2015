@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
         } else if (finished) {
             MouseManager.Instance.ResetCursor();
             score = scoreIdeal / (gameTime * mouseClicks) * 1000;
-            interfaceScript.Score(score.ToString());
+            interfaceScript.Score(((int) score).ToString());
             enabled = false;
         }
     }
