@@ -16,7 +16,7 @@ public class EndMovement : MonoBehaviour {
 			Instance = null;
 	}
 	
-	public float defaultSpeed = 3f;
+	public float defaultSpeed = 30f;
 	private Vector2 amountToMove;
 
 	void fixedUpdate () {

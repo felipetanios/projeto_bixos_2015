@@ -67,16 +67,25 @@ public class MovementManager : MonoBehaviour
 				PlayerSprites.Instance.IsRunning(true);
 				PlayerSprites.Instance.IsJumping(false);
 				PlayerSprites.Instance.IsFalling(false);
-				//PlayerSprites.Instance.End();
+				PlayerSprites.Instance.End();
 				
 				RunMovement.Instance.enabled = false;
-				RhythmMovement.Instance.enabled = true;
+				RhythmMovement.Instance.enabled = false;
 				RhythmBar.Instance.gameObject.SetActive(false);
-				EndMovement.Instance.enabled = true;
+
+				//EndMovement.Instance.enabled = true;
+
+				FadeOut.Instance.BeginFadeOut ();
 
 				break;
         }
     }
+
+	void Update () {
+		if (FadeOut.Instance.finishedFade == true) {
+			Application.LoadLevel("cena4b");
+		}
+	}
 
     // Singletons
     void Awake()
