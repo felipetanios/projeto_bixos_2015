@@ -4,6 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(AudioSource))]
 public class Cena4Manager : MonoBehaviour
 {
+	public Color blue;
 
     // Use this for initialization
     void Start()
@@ -21,7 +22,7 @@ public class Cena4Manager : MonoBehaviour
         PanelManager.Instance.EnableUI();
 
         ret = TextBox.Instance.Type(@"(Segundo meu mapa, o IC fica por aqui,
-só preciso subir essa pequena ladeira...)", Color.blue);
+só preciso subir essa pequena ladeira...)", blue);
         while (ret.MoveNext())
             yield return ret.Current;
 

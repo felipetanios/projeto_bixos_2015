@@ -4,6 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(AudioSource))]
 public class Cena3bManager : MonoBehaviour
 {
+	public Color green;
 
     // Use this for initialization
     void Start()
@@ -20,8 +21,8 @@ public class Cena3bManager : MonoBehaviour
 
         PanelManager.Instance.EnableUI();
 
-        ret = TextBox.Instance.Type(@"Bixo burro, você não sabe que
-é perda de tempo procurar um professor do IA!?", Color.green);
+		ret = TextBox.Instance.Type(@"Bixão, você não sabe que é perda de tempo procurar 
+um professor do IA!?", green);
         while (ret.MoveNext())
             yield return ret.Current;
 
@@ -34,7 +35,7 @@ public class Cena3bManager : MonoBehaviour
         yield return new WaitForSeconds(.2f);
 
         ret = TextBox.Instance.Type(@"Bom, eu imagino que fique perto do IC,
-um lugar bem longínquo e desconhecido pela maior parte da Unicamp.", Color.green);
+um lugar bem longínquo e desconhecido pela maior parte da Unicamp.", green);
         while (ret.MoveNext())
             yield return ret.Current;
 
@@ -46,17 +47,17 @@ um lugar bem longínquo e desconhecido pela maior parte da Unicamp.", Color.gree
 
         yield return new WaitForSeconds(.2f);
 
-        ret = TextBox.Instance.Type("Bixo.\t.\t.\t.\t.\t. Você tem um mapa...", Color.green);
+        ret = TextBox.Instance.Type("Bixo.\t.\t.\t.\t.\t. Você tem um mapa...", green);
         while (ret.MoveNext())
             yield return ret.Current;
 
         yield return new WaitForSeconds(.5f);
 
-        //ret = imageManager.FadeTo(0, 1f);
-        //while (ret.MoveNext())
-        //    yield return ret.Current;
+		FadeOut.Instance.BeginFadeOut ();
+        while (FadeOut.Instance.finishedFade == false)
+            yield return null;
 
         // TODO: link to map level
-        //Application.LoadLevel(???);
+		Application.LoadLevel("cena4");
     }
 }

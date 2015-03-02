@@ -6,6 +6,7 @@ public class Cena3Manager : MonoBehaviour
 {
 
     public AudioClip poof;
+	public Color blue;
 
     // Use this for initialization
     void Start()
@@ -23,7 +24,7 @@ public class Cena3Manager : MonoBehaviour
         PanelManager.Instance.EnableUI();
 
         ret = TextBox.Instance.Type(@"(Bolas, acho que estou perdido!
-Melhor perguntar para algum professor, o que poderia dar errado?)", Color.blue);
+Melhor perguntar para algum professor, o que poderia dar errado?)", blue);
         while (ret.MoveNext())
             yield return ret.Current;
 
@@ -34,7 +35,7 @@ Melhor perguntar para algum professor, o que poderia dar errado?)", Color.blue);
             yield return ret.Current;
 
         ret = TextBox.Instance.Type(@"(Olha, um professor!
-Vou perguntar para ele)", Color.blue);
+Vou perguntar para ele)", blue);
         while (ret.MoveNext())
             yield return ret.Current;
 
@@ -47,7 +48,7 @@ Vou perguntar para ele)", Color.blue);
             yield return ret.Current;
 
         ret = TextBox.Instance.Type(@"(Pra onde ele foi!?
-Preciso encontrar algum professor!)", Color.blue);
+Preciso encontrar algum professor!)", blue);
         while (ret.MoveNext())
             yield return ret.Current;
 

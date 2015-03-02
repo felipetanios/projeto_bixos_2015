@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Cena4bManager : MonoBehaviour
 {
+	public Color blue;
+	public Color green;
 
     // Use this for initialization
     void Start()
@@ -20,12 +22,12 @@ public class Cena4bManager : MonoBehaviour
         PanelManager.Instance.EnableUI();
 
         ret = TextBox.Instance.Type(@"(Ué... Tudo indica que aqui é o lugar certo, mas…
-por que a porta está fechada!? Isso não faz nenhum sentido!)", Color.blue);
+por que a porta está fechada!? Isso não faz nenhum sentido!)", blue);
         while (ret.MoveNext())
             yield return ret.Current;
 
         ret = TextBox.Instance.Type("(Eu devo realmente não saber de nada!\n" +
-            "Afinal de contas, eu devo ser apenas.\t.\t. um bixo.\t.\t. burro.\t.\t.)", Color.blue);
+	"Afinal de contas, eu devo ser apenas.\t.\t. um bixão.\t.\t.)", blue);
         while (ret.MoveNext())
             yield return ret.Current;
 
@@ -35,7 +37,7 @@ por que a porta está fechada!? Isso não faz nenhum sentido!)", Color.blue);
         while (ret.MoveNext())
             yield return ret.Current;
 
-        ret = TextBox.Instance.Type("(Ei! Espera! Um veterano esperto!)", Color.blue);
+        ret = TextBox.Instance.Type("(Ei! Espera! Um veterano esperto!)", blue);
         while (ret.MoveNext())
             yield return ret.Current;
 
@@ -45,7 +47,7 @@ por que a porta está fechada!? Isso não faz nenhum sentido!)", Color.blue);
 
         yield return new WaitForSeconds(.2f);
 
-        ret = TextBox.Instance.Type(@"Sim?", Color.green);
+        ret = TextBox.Instance.Type(@"Sim?", green);
         while (ret.MoveNext())
             yield return ret.Current;
 
@@ -57,20 +59,20 @@ por que a porta está fechada!? Isso não faz nenhum sentido!)", Color.blue);
 
         yield return new WaitForSeconds(.2f);
 
-        ret = TextBox.Instance.Type(@"É evidente... Jamais encontrará uma porta aberta tão cedo por aqui,
-você sempre tem que adivinhar a certa,
-ao que tudo aponta... Tente ir pelos fundos!", Color.green);
+		ret = TextBox.Instance.Type(@"É evidente... É bem comum que o IC tenha alguma de suas entradas 
+fechadas de vez em quando, como essa, ao que tudo aponta... 
+Tente ir pelos fundos!", green);
         while (ret.MoveNext())
             yield return ret.Current;
 
         ret = TextBox.Instance.Type(@"Uau! Então tudo faz sentido!
-Eu não devo ser apenas um bixo burro, afinal de contas!");
+Eu não devo ser apenas um bixão, afinal de contas!");
         while (ret.MoveNext())
             yield return ret.Current;
 
         yield return new WaitForSeconds(.2f);
 
-        ret = TextBox.Instance.Type("Não...\nVocê ainda é um bixo burro.", Color.green);
+		ret = TextBox.Instance.Type("Não...\nVocê ainda é um bixão.", green);
         while (ret.MoveNext())
             yield return ret.Current;
 
@@ -80,9 +82,9 @@ Eu não devo ser apenas um bixo burro, afinal de contas!");
 
         yield return new WaitForSeconds(.5f);
 
-        //ret = imageManager.FadeTo(0, 1f);
-        //while (ret.MoveNext())
-        //    yield return ret.Current;
+		FadeOut.Instance.BeginFadeOut ();
+        while (FadeOut.Instance.finishedFade == false)
+            yield return null;
 
         //  TODO: link to cena5
         //Application.LoadLevel("cena5");
