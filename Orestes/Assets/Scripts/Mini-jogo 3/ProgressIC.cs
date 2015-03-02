@@ -22,6 +22,11 @@ public class ProgressIC : MonoBehaviour
 	
 	private float start;
 	private float width;
+
+	private float initial;
+	private float total;
+
+	private bool finished;
 	
 	// Use this for initialization
 	void Awake()
@@ -52,20 +57,25 @@ public class ProgressIC : MonoBehaviour
 		start = guiTexture.pixelInset.x;
 		width = guiTexture.pixelInset.width - indicator.guiTexture.pixelInset.width;
 	}
-	
+
+	void Start () {
+		initial = CameraScrolling.Instance.progress;
+		total = 1 - initial;
+	}
+
 	// FixedUpdate is called once per physics frame
 	void FixedUpdate()
 	{
-		var inset = indicator.guiTexture.pixelInset;
+		if (!finished) {
+			var inset = indicator.guiTexture.pixelInset;
 
-		Debug.Log (start);
+			inset.x = start + (width * ((CameraScrolling.Instance.progress - initial)/total));
 
-		inset.x = width * CameraScrolling.Instance.progress;
+			indicator.guiTexture.pixelInset = inset;
+		}
 
-		indicator.guiTexture.pixelInset = inset;
-
-		if (CameraScrolling.Instance.progress == 1) {
-			Debug.Log ("YAY");
+		if (CameraScrolling.Instance.progress > 0.99f) {
+			finished = true;
 		}
 	}
 }

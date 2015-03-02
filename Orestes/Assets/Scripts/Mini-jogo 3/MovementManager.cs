@@ -41,6 +41,7 @@ public class MovementManager : MonoBehaviour
 
                 RhythmMovement.Instance.enabled = false;
 				RhythmBar.Instance.gameObject.SetActive(false);
+				EndMovement.Instance.enabled = false;
 
                 break;
 
@@ -52,6 +53,7 @@ public class MovementManager : MonoBehaviour
 				PlayerSprites.Instance.Ops();
 
 				RunMovement.Instance.enabled = false;
+				EndMovement.Instance.enabled = false;
 
 				RhythmBar.Instance.gameObject.SetActive(true);
 				// Set your stuff, Im waking you up!
@@ -62,15 +64,16 @@ public class MovementManager : MonoBehaviour
 				RhythmMovement.Instance.enabled = false;
 				
 				// Never forget the sprites
-				PlayerSprites.Instance.IsRunning(false);
+				PlayerSprites.Instance.IsRunning(true);
 				PlayerSprites.Instance.IsJumping(false);
 				PlayerSprites.Instance.IsFalling(false);
-				PlayerSprites.Instance.End();
+				//PlayerSprites.Instance.End();
 				
 				RunMovement.Instance.enabled = false;
 				RhythmMovement.Instance.enabled = true;
 				RhythmBar.Instance.gameObject.SetActive(false);
-				
+				EndMovement.Instance.enabled = true;
+
 				break;
         }
     }
