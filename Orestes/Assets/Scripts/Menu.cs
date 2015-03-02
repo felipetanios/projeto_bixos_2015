@@ -16,4 +16,10 @@ public class Menu : MonoBehaviour
         creditosPanel.SetActive(mostra);
     }
 
+    public void Muta()
+    {
+        var music = Camera.main.GetComponent<AudioSource>();
+        music.mute = !music.mute;
+    }
+
 }
