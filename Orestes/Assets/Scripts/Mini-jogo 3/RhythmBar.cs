@@ -141,13 +141,13 @@ public class RhythmBar : MonoBehaviour
     {
         UpdatePosition();
         DetectHit();
-		
+				
 		if (hits >= requiredHits) {
 			hits = 0;
 			SpeedUp(0.2f);
 
 			// Change it back to run mode
-			MovementManager.Instance.ChangeMode(0);
+			MovementManager.Instance.ChangeMode(MovementManager.Mode.Run);
         }
     }
 
@@ -179,6 +179,8 @@ public class RhythmBar : MonoBehaviour
 
 			if (distance <= Screen.width * (1f / 100f)) {
 				incr = 1;
+				GameObject.Find("ProgressHitSound").GetComponent<AudioSource>().Play();
+				
 			}
             else {
                 return;

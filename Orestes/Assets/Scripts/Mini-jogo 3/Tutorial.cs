@@ -16,9 +16,14 @@ public class Tutorial : MonoBehaviour {
 	void OnMouseDown () {
 		Time.timeScale = 1;
 		progressIC.SetActive (true);
+		Debug.Log("OK");
+		
 		MovementManager.Instance.ChangeMode (MovementManager.Mode.Rhythm);
+		Debug.Log("OK");
+		
 
-		GameObject.Destroy (gameObject);
+		Destroy (gameObject);
+		gameObject.SetActive(false);
 	}
 
 	void Update () {

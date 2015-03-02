@@ -62,6 +62,8 @@ public class RunMovement : MonoBehaviour
 			doubleJump = true;
 
 			PlayerSprites.Instance.IsJumping(true);
+			
+			GameObject.Find("JumpSound").GetComponent<AudioSource>().Play();
 		}
 		// Doublejump!?
 		else if (isJumping && doubleJump && Input.GetButtonDown("Jump"))
@@ -71,6 +73,8 @@ public class RunMovement : MonoBehaviour
 
 			PlayerSprites.Instance.IsJumping(true);
 			PlayerSprites.Instance.IsFalling(false);
+			GameObject.Find("JumpSound").GetComponent<AudioSource>().Play();
+			
 		}
 		// Or if he just reached the ground
 		else if (grounded && currentYSpeed < 0)

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class MovementManager : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class MovementManager : MonoBehaviour
     }
 
 	void Start ()
-	{
+	{		
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
@@ -33,10 +34,12 @@ public class MovementManager : MonoBehaviour
 
     public void ChangeMode(Mode mode)
     {
+    	Debug.Log (gameObject.name);
 		this.mode = mode;
 
         switch (mode) {
             case Mode.Run:
+				GameObject.Find ("InhaleSound").GetComponent<AudioSource>().enabled = false;
                 RunMovement.Instance.enabled = true;
 
 				// Never forget the sprites
@@ -45,13 +48,15 @@ public class MovementManager : MonoBehaviour
                 RhythmMovement.Instance.enabled = false;
 				RhythmBar.Instance.gameObject.SetActive(false);
 				EndMovement.Instance.enabled = false;
-
-				slow.enabled = false;	
-				fast.enabled = true;
-			
+				
+				try{
+					slow.enabled = false;
+					fast.enabled = true;
+				}catch(Exception e){}
 			break;
 
             case Mode.Rhythm:
+				GameObject.Find ("InhaleSound").GetComponent<AudioSource>().enabled = true;
                 RhythmMovement.Instance.enabled = true;
 
 				// Never forget the sprites
@@ -65,8 +70,10 @@ public class MovementManager : MonoBehaviour
 				// Set your stuff, Im waking you up!
 				RhythmBar.Instance.WokeUp ();
 
-				slow.enabled = true;	
-				fast.enabled = false;
+				try{
+					slow.enabled = true;	
+					fast.enabled = false;
+				}catch(Exception e){}
 
 				break;
 			case Mode.End:
@@ -91,6 +98,7 @@ public class MovementManager : MonoBehaviour
     }
 
 	void Update () {
+		
 		if (FadeOut.Instance.finishedFade == true) {
 			Application.LoadLevel("cena4b");
 		}

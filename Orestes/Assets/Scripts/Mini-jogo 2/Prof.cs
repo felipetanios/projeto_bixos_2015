@@ -59,6 +59,9 @@ public class Prof : MonoBehaviour
             // Starts the animation + moving
             moving.SetBool("isClicked", true);
             gameManager.profOnScreen = true;
+            
+			if(!GameObject.Find("ProfFound").GetComponent<AudioSource>().isPlaying)
+				GameObject.Find("ProfFound").GetComponent<AudioSource>().Play();
 
             FuckYou();
         }

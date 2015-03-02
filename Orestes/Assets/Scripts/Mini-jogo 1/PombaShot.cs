@@ -50,6 +50,14 @@ public class PombaShot : MonoBehaviour
 
             // down is the new up! para que ela possa subir o que desceu
             down *= -1;
+            
+			AudioSource a1 = GameObject.Find("PoopSound1").GetComponent<AudioSource>();
+			AudioSource a2 = GameObject.Find("PoopSound2").GetComponent<AudioSource>();
+			
+			if(!a1.isPlaying)
+				a1.Play();
+			else if(!a2.isPlaying)
+				a2.Play ();
         }
 
         // em que o fator que multiplica o y eh a magnitude do arco
@@ -66,5 +74,7 @@ public class PombaShot : MonoBehaviour
             // down is down once again... para a proxima chamada
             down *= -1;
         }
+        
+
     }
 }

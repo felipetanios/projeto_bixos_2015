@@ -44,6 +44,7 @@ public class RhythmMovement : MonoBehaviour
 		else {
 			amountToMove.x = 0;
 		}
+		
 
 		if (!Physics2D.OverlapCircle (groundCheck.position, .02f, groundMask)) {
 			toGoY -= gravity * Time.deltaTime;

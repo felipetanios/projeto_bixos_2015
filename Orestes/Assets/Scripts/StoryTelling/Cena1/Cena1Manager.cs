@@ -85,6 +85,7 @@ public class Cena1Manager : MonoBehaviour {
 
 		yield return new WaitForSeconds(4);
 		Maquina0.Instance.Raspe ();
+		Maquina0.Instance.GetComponent<AudioSource>().Play();
 		yield return new WaitForSeconds(0.7f);
 		Bixo3.Instance.Careca ();
 		
