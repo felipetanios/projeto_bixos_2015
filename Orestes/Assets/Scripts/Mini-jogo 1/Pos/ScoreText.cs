@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ScoreText : MonoBehaviour
 {
+	float timeSinceStart = 0;
 
     // Use this for initialization
     void Start()
@@ -15,7 +16,9 @@ public class ScoreText : MonoBehaviour
     }
 
 	void Update () {
-		if (Input.GetButton("Next"))
+		timeSinceStart += Time.deltaTime;
+
+		if (Input.GetButton("Next") && timeSinceStart > 3)
 			Application.LoadLevel("cena3");
 	}
 }

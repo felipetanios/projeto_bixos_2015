@@ -137,7 +137,7 @@ public class RhythmBar : MonoBehaviour
 		requiredHits = 3 * timesTried;
 	}
 
-    void Update()
+    void FixedUpdate()
     {
         UpdatePosition();
         DetectHit();

@@ -78,5 +78,9 @@ indivíduo suficientemente curioso não consiga descobrir!");
 		FadeOut.Instance.BeginFadeOut ();
 		while (FadeOut.Instance.finishedFade == false)
 			yield return null;
+
+		yield return new WaitForSeconds (5f);
+
+		Application.LoadLevel("menu");
 	}
 }

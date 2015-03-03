@@ -52,7 +52,7 @@ public class MovementManager : MonoBehaviour
 				try{
 					slow.enabled = false;
 					fast.enabled = true;
-				}catch(Exception e){}
+			}catch(Exception e){ return; }
 			break;
 
             case Mode.Rhythm:
@@ -73,7 +73,7 @@ public class MovementManager : MonoBehaviour
 				try{
 					slow.enabled = true;	
 					fast.enabled = false;
-				}catch(Exception e){}
+				}catch(Exception e){return;}
 
 				break;
 			case Mode.End:

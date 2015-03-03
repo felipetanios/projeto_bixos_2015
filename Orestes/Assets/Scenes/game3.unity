@@ -1292,7 +1292,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcfd075dd58cccf498ec668ae6151a9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultSpeed: 30
+  groundCheck: {fileID: 969193306}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  gravity: 30
+  defaultSpeed: 5
 --- !u!1 &968811777
 GameObject:
   m_ObjectHideFlags: 0

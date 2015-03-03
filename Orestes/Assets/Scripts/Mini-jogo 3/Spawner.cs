@@ -17,7 +17,7 @@ public class Spawner : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		var cameraScrolling = CameraScrolling.Instance;
 
 		transform.Translate(cameraScrolling.defaultVector.magnitude * scalingFactorX, 0, 0);

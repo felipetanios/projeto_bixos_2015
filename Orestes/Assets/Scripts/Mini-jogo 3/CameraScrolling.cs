@@ -40,7 +40,7 @@ public class CameraScrolling : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 		var endLocation = gameEnd.position.x + 20.6f;
 		progress = (transform.position.x + 9)/endLocation;
