@@ -14,10 +14,10 @@ PlayerSettings:
   productName: Bixo's Quest
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
-  defaultScreenWidth: 960
-  defaultScreenHeight: 600
-  defaultScreenWidthWeb: 960
-  defaultScreenHeightWeb: 600
+  defaultScreenWidth: 1024
+  defaultScreenHeight: 576
+  defaultScreenWidthWeb: 720
+  defaultScreenHeightWeb: 576
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   m_ActiveColorSpace: 0
