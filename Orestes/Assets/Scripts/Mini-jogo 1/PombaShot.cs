@@ -61,7 +61,7 @@ public class PombaShot : MonoBehaviour
         }
 
         // em que o fator que multiplica o y eh a magnitude do arco
-        rigidbody2D.transform.Translate(new Vector2(pombaMove.speed * Time.deltaTime, down * Mathf.Sin(oscilation) * .07f));
+		rigidbody2D.transform.Translate(new Vector2(pombaMove.speed * Time.deltaTime, down * Mathf.Sin(oscilation) *  Screen.height * 0.0002f));
 
         if (oscilation >= Mathf.PI) {
             // Reinicia o cooldown

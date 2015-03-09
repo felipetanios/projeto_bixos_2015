@@ -14,6 +14,8 @@ public class PombaMove : MonoBehaviour
 
     void Start()
     {
+		oscilationMagnitude = Screen.height * 0.0001f;
+
         StartCoroutine("Die");
     }
 

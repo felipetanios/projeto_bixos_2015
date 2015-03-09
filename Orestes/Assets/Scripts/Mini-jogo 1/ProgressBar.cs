@@ -73,7 +73,7 @@ public class ProgressBar : MonoBehaviour
         // Dano, retroceder
         if (flinchCounter > 0) {
 
-            progresso -= 0.1f * (Time.fixedDeltaTime / TEMPO_TOTAL);
+            progresso -= 1 * (Time.fixedDeltaTime / TEMPO_TOTAL);
 
             flinchCounter--;
             if (progresso == 0)

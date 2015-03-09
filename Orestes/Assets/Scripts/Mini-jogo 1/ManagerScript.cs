@@ -20,7 +20,7 @@ public class ManagerScript : MonoBehaviour
     void Finish()
     {
         score = UnityEngine.Time.realtimeSinceStartup - score;
-        score = 60 / score * 1000;
+        score = 30 / score * 1000;
 
         // Chamar a próxima cena
         Application.LoadLevel("game1-pos");
