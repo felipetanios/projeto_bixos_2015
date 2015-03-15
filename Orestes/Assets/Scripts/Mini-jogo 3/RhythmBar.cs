@@ -101,7 +101,7 @@ public class RhythmBar : MonoBehaviour
             height = Screen.width * (2 / 40f)
         };
 
-		leftTarget = objectLeftTarget.guiTexture.pixelInset.x;
+        leftTarget = objectLeftTarget.guiTexture.pixelInset.x + (objectLeftTarget.guiTexture.pixelInset.width/2);
 
         var objectRightTarget = new GameObject();
         objectRightTarget.AddComponent<GUITexture>();
@@ -119,7 +119,7 @@ public class RhythmBar : MonoBehaviour
 			height = Screen.width * (2 / 40f)
         };
 
-		rightTarget = objectRightTarget.guiTexture.pixelInset.x;
+        rightTarget = objectRightTarget.guiTexture.pixelInset.x + (objectRightTarget.guiTexture.pixelInset.width/2);
 
         velocity = 0.75f;
 		timesTried = 1;
@@ -171,22 +171,18 @@ public class RhythmBar : MonoBehaviour
         if (Input.GetButtonDown("Jump")) {
             var inset = indicator.guiTexture.pixelInset;
             float spacing = inset.width;
-            var distanceLeft = Mathf.Abs(inset.x - leftTarget);
+            var distanceLeft = Mathf.Abs(leftTarget - (inset.x + (spacing/2)));
 			var distanceRight = Mathf.Abs(rightTarget - (inset.x + (spacing/2)));
             var distance = Mathf.Min(distanceLeft, distanceRight);
 
-            float incr = 0;
-
-			if (distance <= Screen.width * (1f / 100f)) {
-				incr = 1;
+			if (distance <= Screen.width * (2f / 100f))
 				GameObject.Find("ProgressHitSound").GetComponent<AudioSource>().Play();
-				
-			}
-            else {
+			else {
+                ScoreJogo3.Instance.MissedHits++;
                 return;
 			}
 
-            hits += incr;
+            hits++;
 
             if (OnHit != null)
                 OnHit();

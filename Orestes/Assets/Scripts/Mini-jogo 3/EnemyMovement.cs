@@ -9,4 +9,10 @@ public class EnemyMovement : MonoBehaviour {
 			collider2D.enabled = false;
 		}
 	}
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "End")
+            Destroy(gameObject);
+    }
 }

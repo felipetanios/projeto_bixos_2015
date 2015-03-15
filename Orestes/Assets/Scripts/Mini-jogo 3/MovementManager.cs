@@ -29,7 +29,7 @@ public class MovementManager : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "EndGame") {
-            ChangeMode(Mode.End);
+            ScoreJogo3.Instance.Show();
         }
     }
 
@@ -103,7 +103,6 @@ public class MovementManager : MonoBehaviour
 
     void Update()
     {
-		
         if (FadeOut.Instance.finishedFade == true) {
             Application.LoadLevel("cena4b");
         }

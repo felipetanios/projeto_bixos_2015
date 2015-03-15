@@ -11,6 +11,8 @@ public class PlayerHealth : MonoBehaviour {
 
 			// Change it to rhythm mode
 			MovementManager.Instance.ChangeMode(MovementManager.Mode.Rhythm);
+
+            ScoreJogo3.Instance.TimesHit++;
 			
 		}
 	}
