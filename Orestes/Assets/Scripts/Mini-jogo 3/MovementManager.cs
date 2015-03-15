@@ -8,13 +8,13 @@ public class MovementManager : MonoBehaviour
     {
         Run,
         Rhythm,
-		End
+        End
     }
 
     public Mode mode;
 
-	public AudioSource fast;
-	public AudioSource slow;
+    public AudioSource fast;
+    public AudioSource slow;
 
     private static MovementManager instance;
 
@@ -22,87 +22,92 @@ public class MovementManager : MonoBehaviour
         get { return instance; }
     }
 
-	void Start ()
-	{		
-	}
+    void Start()
+    {		
+    }
 
-	void OnTriggerEnter2D (Collider2D other) {
-		if (other.tag == "EndGame") {
-			ChangeMode(Mode.End);
-		}
-	}
-
-    public void ChangeMode(Mode mode)
+    void OnTriggerEnter2D(Collider2D other)
     {
-    	Debug.Log (gameObject.name);
-		this.mode = mode;
-
-        switch (mode) {
-            case Mode.Run:
-				GameObject.Find ("InhaleSound").GetComponent<AudioSource>().enabled = false;
-                RunMovement.Instance.enabled = true;
-
-				// Never forget the sprites
-				PlayerSprites.Instance.IsRunning(true);
-
-                RhythmMovement.Instance.enabled = false;
-				RhythmBar.Instance.gameObject.SetActive(false);
-				EndMovement.Instance.enabled = false;
-				
-				try{
-					slow.enabled = false;
-					fast.enabled = true;
-			}catch(Exception e){ return; }
-			break;
-
-            case Mode.Rhythm:
-				GameObject.Find ("InhaleSound").GetComponent<AudioSource>().enabled = true;
-                RhythmMovement.Instance.enabled = true;
-
-				// Never forget the sprites
-				PlayerSprites.Instance.IsRunning(false);
-				PlayerSprites.Instance.Ops();
-
-				RunMovement.Instance.enabled = false;
-				EndMovement.Instance.enabled = false;
-
-				RhythmBar.Instance.gameObject.SetActive(true);
-				// Set your stuff, Im waking you up!
-				RhythmBar.Instance.WokeUp ();
-
-				try{
-					slow.enabled = true;	
-					fast.enabled = false;
-				}catch(Exception e){return;}
-
-				break;
-			case Mode.End:
-				RhythmMovement.Instance.enabled = false;
-				
-				// Never forget the sprites
-				PlayerSprites.Instance.IsRunning(true);
-				PlayerSprites.Instance.IsJumping(false);
-				PlayerSprites.Instance.IsFalling(false);
-				//PlayerSprites.Instance.End();
-				
-				RunMovement.Instance.enabled = false;
-				RhythmMovement.Instance.enabled = false;
-				RhythmBar.Instance.gameObject.SetActive(false);
-
-				EndMovement.Instance.enabled = true;
-
-				FadeOut.Instance.BeginFadeOut ();
-
-				break;
+        if (other.tag == "EndGame") {
+            ChangeMode(Mode.End);
         }
     }
 
-	void Update () {
+    public void ChangeMode(Mode mode)
+    {
+        this.mode = mode;
+
+        switch (mode) {
+            case Mode.Run:
+                GameObject.Find("InhaleSound").GetComponent<AudioSource>().enabled = false;
+                RunMovement.Instance.enabled = true;
+
+				// Never forget the sprites
+                PlayerSprites.Instance.IsRunning(true);
+
+                RhythmMovement.Instance.enabled = false;
+                RhythmBar.Instance.gameObject.SetActive(false);
+                EndMovement.Instance.enabled = false;
+				
+                try {
+                    slow.enabled = false;
+                    fast.enabled = true;
+                } catch (Exception) {
+                    return;
+                }
+                break;
+
+            case Mode.Rhythm:
+                GameObject.Find("InhaleSound").GetComponent<AudioSource>().enabled = true;
+                RhythmMovement.Instance.enabled = true;
+
+				// Never forget the sprites
+                PlayerSprites.Instance.IsRunning(false);
+                PlayerSprites.Instance.Ops();
+
+                RunMovement.Instance.enabled = false;
+                EndMovement.Instance.enabled = false;
+
+                RhythmBar.Instance.gameObject.SetActive(true);
+				// Set your stuff, Im waking you up!
+                RhythmBar.Instance.WokeUp();
+
+                try {
+                    slow.enabled = true;	
+                    fast.enabled = false;
+                } catch (Exception) {
+                    return;
+                }
+
+                break;
+            case Mode.End:
+                RhythmMovement.Instance.enabled = false;
+				
+				// Never forget the sprites
+                PlayerSprites.Instance.IsRunning(true);
+                PlayerSprites.Instance.IsJumping(false);
+                PlayerSprites.Instance.IsFalling(false);
+				//PlayerSprites.Instance.End();
+				
+                RunMovement.Instance.enabled = false;
+                RhythmMovement.Instance.enabled = false;
+                RhythmBar.Instance.gameObject.SetActive(false);
+
+                EndMovement.Instance.enabled = true;
+
+                FadeOut.Instance.BeginFadeOut();
+
+                break;
+        }
+    }
+
+    void Update()
+    {
 		
-		if (FadeOut.Instance.finishedFade == true) {
-			Application.LoadLevel("cena4b");
-		}
-	}
+        if (FadeOut.Instance.finishedFade == true) {
+            Application.LoadLevel("cena4b");
+        }
+    }
 
     // Singletons
     void Awake()
