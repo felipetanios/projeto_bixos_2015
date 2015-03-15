@@ -82,8 +82,8 @@ public class RhythmBar : MonoBehaviour
             height = Screen.width * (4.45f / 40f)
         };
 
-        start = indicator.guiTexture.pixelInset.x;
-        width = guiTexture.pixelInset.width - (0.3f * indicator.guiTexture.pixelInset.width);
+        start = indicator.guiTexture.pixelInset.x - 0.1f;
+        width = guiTexture.pixelInset.width + 0.1f - (0.3f * indicator.guiTexture.pixelInset.width);
 
         var objectLeftTarget = new GameObject();
         objectLeftTarget.AddComponent<GUITexture>();
@@ -95,9 +95,9 @@ public class RhythmBar : MonoBehaviour
 		alpha0.a = 0;
 		objectLeftTarget.guiTexture.color = alpha0;
         objectLeftTarget.guiTexture.pixelInset = new Rect {
-            x = Screen.width * (6.21f / 20f),
+            x = Screen.width * (6.1f / 20f),
             y = Screen.height * (1.3f / 40f),
-            width = Screen.width * (1f / 100f),
+            width = Screen.width * (2f / 100f),
             height = Screen.width * (2 / 40f)
         };
 
@@ -113,9 +113,9 @@ public class RhythmBar : MonoBehaviour
 		alpha0.a = 0;
 		objectRightTarget.guiTexture.color = alpha0;
         objectRightTarget.guiTexture.pixelInset = new Rect {
-			x = Screen.width * (13.45f / 20f),
+			x = Screen.width * (13.35f / 20f),
 			y = Screen.height * (1.3f / 40f),
-			width = Screen.width * (1f / 100f),
+			width = Screen.width * (2f / 100f),
 			height = Screen.width * (2 / 40f)
         };
 
@@ -171,7 +171,7 @@ public class RhythmBar : MonoBehaviour
         if (Input.GetButtonDown("Jump")) {
             var inset = indicator.guiTexture.pixelInset;
             float spacing = inset.width;
-            var distanceLeft = Mathf.Abs((inset.x + (spacing/2)) - leftTarget);
+            var distanceLeft = Mathf.Abs(inset.x - leftTarget);
 			var distanceRight = Mathf.Abs(rightTarget - (inset.x + (spacing/2)));
             var distance = Mathf.Min(distanceLeft, distanceRight);
 
