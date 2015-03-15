@@ -53,6 +53,8 @@ public class PombaShot : MonoBehaviour
             
 			AudioSource a1 = GameObject.Find("PoopSound1").GetComponent<AudioSource>();
 			AudioSource a2 = GameObject.Find("PoopSound2").GetComponent<AudioSource>();
+            a1.volume = 0.15f;
+            a2.volume = 0.15f;
 			
 			if(!a1.isPlaying)
 				a1.Play();
